@@ -4,9 +4,9 @@ import GoogleLoginBtn from "./_components/LoginGoogleBtn"
 
 const AccountLoginPage = () => {
   return (
-    <div>
+    <div className="md:mt-20">
       <h1 className="text-3xl font-semibold mb-4 text-center">Welcome back</h1>
-      <div className="px-4">
+      <div className="px-4 md:max-w-[400px] mx-auto">
 
         <LoginForm />
         <div className="flex items-center justify-center gap-2 my-4">
