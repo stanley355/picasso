@@ -6,7 +6,7 @@ type TAccountLayout = {
 
 const AccountLayout = ({ children }: TAccountLayout) => {
   return (
-    <div className='h-screen w-full'>
+    <div className='h-screen w-full overflow-auto'>
       {children}
     </div>
   )

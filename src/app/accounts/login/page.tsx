@@ -13,7 +13,7 @@ const AccountLoginPage = () => {
         <LoginForm />
         <div className="flex items-center justify-center gap-2 my-4">
           <span>Don&apos;t have an account?</span>
-          <Link className="underline" href="/account/register">Sign up</Link>
+          <Link className="underline" href="/accounts/register">Sign up</Link>
         </div>
         <div className="flex items-center gap-2 mb-4">
           <span className="flex-1 h-[1px] bg-primary" />

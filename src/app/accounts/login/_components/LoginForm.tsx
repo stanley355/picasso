@@ -27,8 +27,7 @@ const LoginForm = () => {
     try {
       const user = await loginUser(email, password)
       updateStore('isLoading', false);
-
-      // TODO: Redirect user to acc page
+      if (user.token) window.location.href = "/accounts"
       return;
     } catch (error: any) {
       updateStore('isLoading', false);

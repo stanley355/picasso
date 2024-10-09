@@ -1,12 +1,15 @@
+
 'use client'
 import { useShallow } from "zustand/shallow";
-import { loginUserWithGmail } from "@/lib/api/author/users/loginUserWithGmail";
 import { GoogleOAuthProvider, GoogleLogin, CredentialResponse } from "@react-oauth/google";
 import { decode, JwtPayload } from "jsonwebtoken";
-import { useLoginStore } from "../_stores/useLoginStore";
+
+import { useRegisterStore } from "../_stores/useRegisterStore";
+
+import { loginUserWithGmail } from "@/lib/api/author/users/loginUserWithGmail";
 
 const GoogleLoginBtn = () => {
-  const { updateStore } = useLoginStore(
+  const { updateStore } = useRegisterStore(
     useShallow((state) => ({ updateStore: state.updateStore })),
   )
 
