@@ -6,14 +6,39 @@ import { useLoginStore } from '../_stores/useLoginStore'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { loginUser } from '@/lib/api/author/users/loginUser'
 
 const LoginForm = () => {
-  const { isLoading } = useLoginStore(
-    useShallow((state) => ({ isLoading: state.isLoading })),
+  const { isLoading, updateStore } = useLoginStore(
+    useShallow((state) => ({ isLoading: state.isLoading, updateStore: state.updateStore })),
   );
 
+  const handleSubmit = async (formData: FormData) => {
+    updateStore('isLoading', true);
+    updateStore('errorMsg', '')
+    const email = formData.get('email') as string
+    const password = formData.get('password') as string
+
+    if (!password) {
+      updateStore('errorMsg', "Password can't be empty");
+      return;
+    }
+
+    try {
+      const user = await loginUser(email, password)
+      updateStore('isLoading', false);
+
+      // TODO: Redirect user to acc page
+      return;
+    } catch (error: any) {
+      updateStore('isLoading', false);
+      updateStore('errorMsg', error.message);
+      return;
+    }
+  }
+
   return (
-    <form>
+    <form action={handleSubmit}>
       <Label htmlFor='emailInput'>Email address</Label>
       <Input type='email' id='emailInput' name='email' className='mb-4' />
       <div className='flex items-center justify-between mb-1'>

@@ -1,16 +1,12 @@
 "use server";
 import { cookies } from "next/headers";
-import { JwtPayload } from "jsonwebtoken";
 import { AUTHOR_TOKEN, AUTHOR_URL } from "../../constant";
 
-export const loginUserWithGmail = async (
-  payload: JwtPayload
-): Promise<boolean> => {
-  const url = `${AUTHOR_URL}v1/users/login/gmail/`;
-  const data = {
-    fullname: payload.name,
-    email: payload.email,
-  };
+export const loginUser = async (
+  email: string,
+  password: string
+): Promise<{ token: string }> => {
+  const url = `${AUTHOR_URL}v1/users/login/`;
 
   try {
     const response = await fetch(url, {
@@ -19,16 +15,17 @@ export const loginUserWithGmail = async (
         "Content-Type": "application/json",
         Authorization: String(AUTHOR_TOKEN),
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify({ email, password }),
     });
 
     const user = await response.json();
     if (!response.ok) {
       throw new Error(user.status_text);
     }
+
     cookies().set("token", user.token);
-    return true;
-  } catch (error: any) {
-    throw new Error(error.message);
+    return user;
+  } catch (err: any) {
+    throw new Error(err.message);
   }
 };

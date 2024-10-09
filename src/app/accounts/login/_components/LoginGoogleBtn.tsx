@@ -1,6 +1,6 @@
 'use client'
 import { useShallow } from "zustand/shallow";
-import { loginUsersWithGmail } from "@/lib/api/author/users/loginUserWithGmail";
+import { loginUserWithGmail } from "@/lib/api/author/users/loginUserWithGmail";
 import { GoogleOAuthProvider, GoogleLogin, CredentialResponse } from "@react-oauth/google";
 import { decode, JwtPayload } from "jsonwebtoken";
 import { useLoginStore } from "../_stores/useLoginStore";
@@ -12,18 +12,20 @@ const GoogleLoginBtn = () => {
 
   const failMsg = "Fail to login with gmail, please try again";
 
-
   const handleGoogleLogin = async (credential: CredentialResponse) => {
     updateStore('isLoading', true)
+    updateStore('errorMsg', '');
 
-    const credentialToken = String(credential.credential);
-    const jwtPayload = decode(credentialToken) as JwtPayload;
-    const userToken = await loginUsersWithGmail(jwtPayload);
-
-    updateStore('isLoading', false)
-
-    if (!userToken) {
-      updateStore('errorMsg', false);
+    try {
+      const credentialToken = String(credential.credential);
+      const jwtPayload = decode(credentialToken) as JwtPayload;
+      const user = await loginUserWithGmail(jwtPayload);
+      updateStore('isLoading', false)
+      // TODO: Redirect user to acc page
+      return;
+    } catch (error) {
+      updateStore('errorMsg', failMsg);
+      updateStore('isLoading', false)
       return;
     }
   }
