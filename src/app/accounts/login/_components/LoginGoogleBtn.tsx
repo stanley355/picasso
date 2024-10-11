@@ -23,8 +23,8 @@ const GoogleLoginBtn = () => {
       updateStore('isLoading', false)
       if (loginSuccess) window.location.href = "/accounts"
       return;
-    } catch (error) {
-      updateStore('errorMsg', failMsg);
+    } catch (error: any) {
+      updateStore('errorMsg', error.message);
       updateStore('isLoading', false)
       return;
     }

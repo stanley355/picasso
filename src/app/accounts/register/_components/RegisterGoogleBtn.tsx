@@ -13,7 +13,6 @@ const GoogleLoginBtn = () => {
     useShallow((state) => ({ updateStore: state.updateStore })),
   )
 
-  const failMsg = "Fail to login with gmail, please try again";
 
   const handleGoogleLogin = async (credential: CredentialResponse) => {
     updateStore('isLoading', true)
@@ -26,8 +25,8 @@ const GoogleLoginBtn = () => {
       updateStore('isLoading', false)
       if (loginSuccess) window.location.href = "/accounts"
       return;
-    } catch (error) {
-      updateStore('errorMsg', failMsg);
+    } catch (error: any) {
+      updateStore('errorMsg', error.message);
       updateStore('isLoading', false)
       return;
     }
@@ -38,9 +37,10 @@ const GoogleLoginBtn = () => {
       <GoogleLogin
         locale="en-US"
         onSuccess={handleGoogleLogin}
-        onError={() =>
+        onError={() => {
+          const failMsg = "Fail to login with gmail, please try again";
           updateStore('errorMsg', failMsg)
-        }
+        }}
         text="continue_with"
         theme="filled_blue"
       />
