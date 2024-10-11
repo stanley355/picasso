@@ -15,12 +15,11 @@ const LoginForm = () => {
 
   const handleSubmit = async (formData: FormData) => {
     updateStore('isLoading', true);
-    updateStore('errorMsg', '')
     const email = formData.get('email') as string
     const password = formData.get('password') as string
 
-    if (!password) {
-      updateStore('errorMsg', "Password can't be empty");
+    if (!email || !password) {
+      updateStore('errorMsg', "Email and Password can't be empty");
       return;
     }
 
@@ -45,7 +44,9 @@ const LoginForm = () => {
         <Link className='underline text-xs' href="/accounts/forgot-password">forgot password</Link>
       </div>
       <Input type='password' id='passInput' name='password' className='mb-4' />
-      <Button type='submit' className='w-full' disabled={isLoading}>Login</Button>
+      <Button type='submit' className='w-full' disabled={isLoading}>
+        {isLoading ? "Logging in..." : 'Login'}
+      </Button>
     </form>
   )
 }
