@@ -1,33 +1,31 @@
-'use client'
-import { Tooltip } from 'react-tooltip'
-import { Button } from '@/components/ui/button'
-import { useState } from 'react'
-import Link from 'next/link'
+"use client";
+import { Tooltip } from "react-tooltip";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import Link from "next/link";
 
 const ForgotPasswordPage = () => {
   const [isCopied, setIsCopied] = useState(false);
 
   const onClick = () => {
-    window.navigator.clipboard.writeText('winatastanley355@gmail.com');
-    setIsCopied(true)
-  }
+    window.navigator.clipboard.writeText("winatastanley355@gmail.com");
+    setIsCopied(true);
+  };
 
   return (
     <div>
-      <div className='text-center text-xl font-bold py-4 sm:mb-32'>AI</div>
+      <div className="text-center text-xl font-bold py-4 sm:mb-32">AI</div>
 
-      <h1 className="text-3xl font-semibold mb-4 text-center">Reset Password</h1>
+      <h1 className="text-3xl font-semibold mb-4 text-center">
+        Reset Password
+      </h1>
       <div className="px-4 md:max-w-[400px] mx-auto flex flex-col items-center justify-center">
-        <div className='text-center mb-2'>Email the system admin at:</div>
-        <Button
-          id='adminEmail'
-          onClick={onClick}
-          className='mb-4'
-        >
+        <div className="text-center mb-2">Email the system admin at:</div>
+        <Button id="adminEmail" onClick={onClick} className="mb-4">
           winatastanley355@gmail.com
         </Button>
         <Tooltip anchorSelect="#adminEmail">
-          {isCopied ? 'Copied to clipboard' : 'Click to copy'}
+          {isCopied ? "Copied to clipboard" : "Click to copy"}
         </Tooltip>
         <ol className="leading-8 list-decimal list-inside mb-4 text-justify">
           <li>
@@ -46,12 +44,12 @@ const ForgotPasswordPage = () => {
             <b> (2) we can know that it&apos;s you</b>!{" "}
           </li>
         </ol>
-        <Link className='underline' href="/accounts/login">
+        <Link className="underline" href="/accounts/login">
           Back to login page
         </Link>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ForgotPasswordPage
+export default ForgotPasswordPage;
