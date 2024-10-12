@@ -14,12 +14,12 @@ const MainHeaderSelect = () => {
   const router = useRouter();
 
   const defaulValue = useMemo(() => {
-    if (pathname.includes('/accounts')) {
-      return "/accounts"
+    if (pathname.includes("/accounts")) {
+      return "/accounts";
     }
 
-    return ''
-  }, [pathname])
+    return "";
+  }, [pathname]);
 
   return (
     <Select

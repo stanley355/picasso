@@ -14,7 +14,10 @@ const AccountHeaderSelect = () => {
   const router = useRouter();
 
   return (
-    <Select defaultValue={pathname} onValueChange={(value) => router.push(value)}>
+    <Select
+      defaultValue={pathname}
+      onValueChange={(value) => router.push(value)}
+    >
       <SelectTrigger
         className={cn(
           "border-none bg-foreground text-background focus:ring-transparent ring-offset-0 ring-offset-transparent h-8 md:hidden px-0",
