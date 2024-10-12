@@ -1,6 +1,6 @@
-import Link from "next/link"
-import LanguageaiHeaderSelect from "./LanguageaiHeaderSelect"
-import MainHeaderSelect from "./MainHeaderSelect"
+import Link from "next/link";
+import LanguageaiHeaderSelect from "./LanguageaiHeaderSelect";
+import MainHeaderSelect from "./MainHeaderSelect";
 
 const HeaderLeft = () => {
   return (
@@ -8,7 +8,7 @@ const HeaderLeft = () => {
       <MainHeaderSelect />
       <LanguageaiHeaderSelect />
     </div>
-  )
-}
+  );
+};
 
-export default HeaderLeft
+export default HeaderLeft;

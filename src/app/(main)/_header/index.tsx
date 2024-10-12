@@ -17,13 +17,16 @@ const MainHeader = () => {
       >
         <Link
           href="/accounts/login"
-          className={cn(buttonVariants({ variant: "secondary" }), 'h-8')}
+          className={cn(buttonVariants({ variant: "secondary" }), "h-8")}
         >
           Login
         </Link>
         <Link
           href="/accounts/register"
-          className={cn(buttonVariants({ variant: "secondary" }), "hidden md:inline h-8")}
+          className={cn(
+            buttonVariants({ variant: "secondary" }),
+            "hidden md:inline h-8",
+          )}
         >
           Sign up
         </Link>
