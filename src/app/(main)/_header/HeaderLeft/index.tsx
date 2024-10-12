@@ -1,4 +1,3 @@
-import Link from "next/link";
 import LanguageaiHeaderSelect from "./LanguageaiHeaderSelect";
 import MainHeaderSelect from "./MainHeaderSelect";
 

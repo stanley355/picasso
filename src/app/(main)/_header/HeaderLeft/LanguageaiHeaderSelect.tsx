@@ -8,7 +8,6 @@ import {
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
-import { useMemo } from "react";
 
 const LanguageaiHeaderSelect = () => {
   const pathname = usePathname();
