@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { registerUser } from '@/lib/api/author/users/registerUser'
+import { sendFirebaseEvent } from '@/lib/firebase/sendFirebaseEvent'
 
 const RegisterForm = () => {
   const { isLoading, updateStore } = useRegisterStore(
@@ -55,6 +56,7 @@ const RegisterForm = () => {
     }
 
     updateStore('isLoading', true);
+    sendFirebaseEvent('register')
     try {
       const requestBody = {
         fullname,
@@ -64,9 +66,7 @@ const RegisterForm = () => {
       }
       const user = await registerUser(requestBody)
       updateStore('isLoading', false);
-
       if (user?.token) window.location.href = "/accounts/"
-      // TODO: Redirect user to acc page
       return;
     } catch (error: any) {
       updateStore('isLoading', false);

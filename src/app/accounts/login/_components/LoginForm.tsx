@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { loginUser } from '@/lib/api/author/users/loginUser'
+import { sendFirebaseEvent } from '@/lib/firebase/sendFirebaseEvent'
 
 const LoginForm = () => {
   const { isLoading, updateStore } = useLoginStore(
@@ -14,7 +15,6 @@ const LoginForm = () => {
   );
 
   const handleSubmit = async (formData: FormData) => {
-    updateStore('isLoading', true);
     const email = formData.get('email') as string
     const password = formData.get('password') as string
 
@@ -23,6 +23,8 @@ const LoginForm = () => {
       return;
     }
 
+    updateStore('isLoading', true);
+    sendFirebaseEvent('login')
     try {
       const user = await loginUser(email, password)
       updateStore('isLoading', false);

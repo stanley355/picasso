@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import React from "react";
 
 const AccountLogout = () => {
   const handleAction = async () => {

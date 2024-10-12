@@ -7,6 +7,7 @@ import { decode, JwtPayload } from "jsonwebtoken";
 import { useRegisterStore } from "../_stores/useRegisterStore";
 
 import { loginUserWithGmail } from "@/lib/api/author/users/loginUserWithGmail";
+import { sendFirebaseEvent } from "@/lib/firebase/sendFirebaseEvent";
 
 const GoogleLoginBtn = () => {
   const { updateStore } = useRegisterStore(
@@ -17,6 +18,7 @@ const GoogleLoginBtn = () => {
   const handleGoogleLogin = async (credential: CredentialResponse) => {
     updateStore('isLoading', true)
     updateStore('errorMsg', '');
+    sendFirebaseEvent('register_gmail');
 
     try {
       const credentialToken = String(credential.credential);

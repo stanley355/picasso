@@ -4,6 +4,7 @@ import { loginUserWithGmail } from "@/lib/api/author/users/loginUserWithGmail";
 import { GoogleOAuthProvider, GoogleLogin, CredentialResponse } from "@react-oauth/google";
 import { decode, JwtPayload } from "jsonwebtoken";
 import { useLoginStore } from "../_stores/useLoginStore";
+import { sendFirebaseEvent } from "@/lib/firebase/sendFirebaseEvent";
 
 const GoogleLoginBtn = () => {
   const { updateStore } = useLoginStore(
@@ -15,6 +16,7 @@ const GoogleLoginBtn = () => {
   const handleGoogleLogin = async (credential: CredentialResponse) => {
     updateStore('isLoading', true)
     updateStore('errorMsg', '');
+    sendFirebaseEvent('login_gmail')
 
     try {
       const credentialToken = String(credential.credential);
