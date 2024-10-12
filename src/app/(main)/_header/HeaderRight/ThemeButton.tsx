@@ -12,7 +12,13 @@ const ThemeButton = () => {
       size="icon"
       className="h-8 w-8"
       onClick={() => {
-        resolvedTheme === "dark" ? setTheme("light") : setTheme("dark");
+        if (resolvedTheme === 'dark') {
+          setTheme('light');
+          return
+        }
+
+        setTheme('dark');
+        return;
       }}
     >
       {resolvedTheme === "light" && <MdDarkMode />}
