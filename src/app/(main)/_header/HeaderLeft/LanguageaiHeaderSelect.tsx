@@ -16,14 +16,14 @@ const LanguageaiHeaderSelect = () => {
     <Select defaultValue={pathname}>
       <SelectTrigger
         className={cn(
-          "border-none bg-foreground text-background ring-offset-0 ring-offset-transparent h-8",
-          { hidden: !pathname.includes("/languageai") },
+          "border-none bg-foreground text-background focus:ring-transparent ring-offset-0 ring-offset-transparent h-8 md:hidden",
+          { hidden: !pathname.includes("/languageai/") },
         )}
       >
         <span className="mr-4">/</span>
         <SelectValue />
       </SelectTrigger>
-      <SelectContent>
+      <SelectContent className="border shadow">
         <SelectItem value="/languageai/checkbot">Checkbot</SelectItem>
         <SelectItem value="/languageai/translate">Translate</SelectItem>
         <SelectItem value="/languageai/translate/audio">

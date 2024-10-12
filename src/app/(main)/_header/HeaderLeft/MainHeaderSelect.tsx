@@ -17,7 +17,7 @@ const MainHeaderSelect = () => {
       defaultValue={pathname}
       onValueChange={(value) => router.push(value)}
     >
-      <SelectTrigger className="border-none bg-foreground text-background ring-offset-0 ring-offset-transparent h-8">
+      <SelectTrigger className="border-none bg-foreground text-background focus:ring-transparent ring-offset-0 ring-offset-transparent h-8 px-2">
         <SelectValue />
       </SelectTrigger>
       <SelectContent>
