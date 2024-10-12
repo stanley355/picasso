@@ -20,11 +20,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={workSans.className}>
         <FirebaseProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-          >
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             {children}
           </ThemeProvider>
         </FirebaseProvider>
