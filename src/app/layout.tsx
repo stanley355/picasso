@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Work_Sans } from "next/font/google";
 import "./globals.css";
 import FirebaseProvider from "@/components/providers/FirebaseProvider";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
 
 const workSans = Work_Sans({ subsets: ["latin"] });
 
@@ -16,9 +17,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={workSans.className}>
-        <FirebaseProvider>{children}</FirebaseProvider>
+        <FirebaseProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+          >
+            {children}
+          </ThemeProvider>
+        </FirebaseProvider>
       </body>
     </html>
   );

@@ -1,6 +1,6 @@
-import Link from "next/link"
-import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
+import Link from "next/link";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
 
 const NoTokenHeader = () => {
   return (
@@ -21,7 +21,7 @@ const NoTokenHeader = () => {
         Sign up
       </Link>
     </div>
-  )
-}
+  );
+};
 
-export default NoTokenHeader
+export default NoTokenHeader;
