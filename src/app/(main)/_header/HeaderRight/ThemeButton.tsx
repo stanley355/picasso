@@ -12,12 +12,12 @@ const ThemeButton = () => {
       size="icon"
       className="h-8 w-8"
       onClick={() => {
-        if (resolvedTheme === 'dark') {
-          setTheme('light');
-          return
+        if (resolvedTheme === "dark") {
+          setTheme("light");
+          return;
         }
 
-        setTheme('dark');
+        setTheme("dark");
         return;
       }}
     >
