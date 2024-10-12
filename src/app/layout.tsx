@@ -18,9 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={workSans.className}>
-        <FirebaseProvider>
-          {children}
-        </FirebaseProvider>
+        <FirebaseProvider>{children}</FirebaseProvider>
       </body>
     </html>
   );

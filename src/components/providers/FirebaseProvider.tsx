@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { useEffect, createContext } from "react";
 import { getAnalytics } from "firebase/analytics";
 import initFirebaseApp from "@/lib/firebase/initFirebaseApp";
@@ -9,8 +9,6 @@ export const FirebaseContext = createContext({
 
 const FirebaseProvider = ({ children }: { children: React.ReactNode }) => {
   const firebaseApp = initFirebaseApp();
-
-  console.log(firebaseApp);
 
   useEffect(() => {
     if (firebaseApp) {
