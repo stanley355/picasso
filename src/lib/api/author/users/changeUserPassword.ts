@@ -10,7 +10,7 @@ type TRequestBody = {
 };
 
 export const changeUserPassword = async (
-  reqBody: TRequestBody
+  reqBody: TRequestBody,
 ): Promise<{ token: string }> => {
   const url = `${AUTHOR_URL}v1/users/change-password/`;
 
