@@ -32,6 +32,9 @@ const AccountHeaderSelect = () => {
         <SelectItem value="/accounts/change-password">
           Change Password
         </SelectItem>
+        <SelectItem value="/accounts/logout">
+          Change Password
+        </SelectItem>
       </SelectContent>
     </Select>
   );
