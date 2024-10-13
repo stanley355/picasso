@@ -18,12 +18,16 @@ const MainHeaderSelect = () => {
       return "/accounts";
     }
 
+    if (pathname.includes("/languageai")) {
+      return "/languageai"
+    }
+
     return "";
   }, [pathname]);
 
   return (
     <Select
-      defaultValue={defaulValue}
+      value={defaulValue}
       onValueChange={(value) => router.push(value)}
     >
       <SelectTrigger className="border-none bg-foreground text-background focus:ring-transparent ring-offset-0 ring-offset-transparent h-8 px-2">

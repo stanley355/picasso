@@ -6,7 +6,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { cn } from "@/lib/utils";
 import { usePathname, useRouter } from "next/navigation";
 
 const AccountHeaderSelect = () => {
@@ -19,10 +18,7 @@ const AccountHeaderSelect = () => {
       onValueChange={(value) => router.push(value)}
     >
       <SelectTrigger
-        className={cn(
-          "border-none bg-foreground text-background focus:ring-transparent ring-offset-0 ring-offset-transparent h-8 md:hidden px-0",
-          { hidden: !pathname.includes("/accounts") },
-        )}
+        className="border-none bg-foreground text-background focus:ring-transparent ring-offset-0 ring-offset-transparent h-8 md:hidden px-0"
       >
         <span className="mr-2">/</span>
         <SelectValue />
