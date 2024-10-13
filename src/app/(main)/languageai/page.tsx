@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const LanguageaiHome = () => {
-  return (
-    <div>page</div>
-  )
-}
+  return <div>page</div>;
+};
 
-export default LanguageaiHome 
+export default LanguageaiHome;

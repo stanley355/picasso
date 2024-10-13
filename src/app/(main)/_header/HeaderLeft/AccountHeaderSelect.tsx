@@ -17,9 +17,7 @@ const AccountHeaderSelect = () => {
       defaultValue={pathname}
       onValueChange={(value) => router.push(value)}
     >
-      <SelectTrigger
-        className="border-none bg-foreground text-background focus:ring-transparent ring-offset-0 ring-offset-transparent h-8 md:hidden px-0"
-      >
+      <SelectTrigger className="border-none bg-foreground text-background focus:ring-transparent ring-offset-0 ring-offset-transparent h-8 md:hidden px-0">
         <span className="mr-2">/</span>
         <SelectValue />
       </SelectTrigger>
