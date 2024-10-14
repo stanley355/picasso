@@ -21,9 +21,6 @@ const LanguageaiHeaderSelect = () => {
         <SelectItem value="/languageai">Home</SelectItem>
         <SelectItem value="/languageai/checkbot">Checkbot</SelectItem>
         <SelectItem value="/languageai/translate">Translate</SelectItem>
-        <SelectItem value="/languageai/translate/audio">
-          Translate Audio
-        </SelectItem>
         <SelectItem value="/languageai/speech-to-text">
           Speech to Text
         </SelectItem>

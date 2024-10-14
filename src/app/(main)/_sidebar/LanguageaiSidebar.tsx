@@ -23,11 +23,6 @@ const LanguageaiSidebar = () => {
       href: "/languageai/translate",
     },
     {
-      icon: <BsTranslate />,
-      title: "Translate Audio",
-      href: "/languageai/translate/audio",
-    },
-    {
       icon: <PiFileAudioDuotone />,
       title: "Speech to Text",
       href: "/languageai/speech-to-text",
