@@ -43,7 +43,7 @@ const TranslateForm = () => {
     const variant = formData.get("variant") as string;
     const diff = formData.get("diff") as string;
 
-    const contentLanguage = formData.get("contentLanguage") as string
+    const contentLanguage = formData.get("contentLanguage") as string;
     const content = formData.get("content") as string;
     const targetLanguage = formData.get("targetLanguage") as string;
 
@@ -63,7 +63,10 @@ const TranslateForm = () => {
       const reqBody = {
         content_language: contentLanguage,
         target_language: targetLanguage,
-        system_content: createTranslateSystemContent(contentLanguage, targetLanguage),
+        system_content: createTranslateSystemContent(
+          contentLanguage,
+          targetLanguage,
+        ),
         user_content: content,
         n: Number(variant),
         temperature: Number(diff),

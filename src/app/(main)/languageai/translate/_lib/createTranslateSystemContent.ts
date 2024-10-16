@@ -1,6 +1,6 @@
 export const createTranslateSystemContent = (
   contentLanguage: string,
-  targetLanguage: string
+  targetLanguage: string,
 ) => {
   if (contentLanguage === "" || contentLanguage === "detect") {
     const content = `You are a translator. You will be provided with a text, and your task is translate the text to ${targetLanguage}. 
