@@ -1,6 +1,6 @@
 "use client";
 import { useShallow } from "zustand/shallow";
-import { loginUserWithGmail } from "@/lib/api/author/users/loginUserWithGmail";
+import { toast } from "react-toastify";
 import {
   GoogleOAuthProvider,
   GoogleLogin,
@@ -9,6 +9,7 @@ import {
 import { decode, JwtPayload } from "jsonwebtoken";
 import { useLoginStore } from "../_stores/useLoginStore";
 import { sendFirebaseEvent } from "@/lib/firebase/sendFirebaseEvent";
+import { loginUserWithGmail } from "@/lib/api/author/users/loginUserWithGmail";
 
 const GoogleLoginBtn = () => {
   const { updateStore } = useLoginStore(
@@ -19,7 +20,6 @@ const GoogleLoginBtn = () => {
 
   const handleGoogleLogin = async (credential: CredentialResponse) => {
     updateStore("isLoading", true);
-    updateStore("errorMsg", "");
     sendFirebaseEvent("login_gmail");
 
     try {
@@ -30,7 +30,7 @@ const GoogleLoginBtn = () => {
       if (loginSuccess) window.location.href = "/accounts";
       return;
     } catch (error: any) {
-      updateStore("errorMsg", error.message);
+      toast(error.message)
       updateStore("isLoading", false);
       return;
     }
@@ -43,7 +43,7 @@ const GoogleLoginBtn = () => {
       <GoogleLogin
         locale="en-US"
         onSuccess={handleGoogleLogin}
-        onError={() => updateStore("errorMsg", failMsg)}
+        onError={() => toast(failMsg)}
         text="continue_with"
         theme="filled_blue"
       />

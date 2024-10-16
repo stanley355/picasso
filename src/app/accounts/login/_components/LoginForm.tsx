@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { loginUser } from "@/lib/api/author/users/loginUser";
 import { sendFirebaseEvent } from "@/lib/firebase/sendFirebaseEvent";
+import { toast } from "react-toastify";
 
 const LoginForm = () => {
   const { isLoading, updateStore } = useLoginStore(
@@ -22,7 +23,7 @@ const LoginForm = () => {
     const password = formData.get("password") as string;
 
     if (!email || !password) {
-      updateStore("errorMsg", "Email and Password can't be empty");
+      toast("Email and password can't be empty");
       return;
     }
 
@@ -35,7 +36,7 @@ const LoginForm = () => {
       return;
     } catch (error: any) {
       updateStore("isLoading", false);
-      updateStore("errorMsg", error.message);
+      toast(error.message)
       return;
     }
   };

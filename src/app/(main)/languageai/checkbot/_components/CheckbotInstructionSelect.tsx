@@ -15,9 +15,11 @@ const CheckbotInstructionSelect = () => {
         <SelectValue placeholder="Select instruction" />
       </SelectTrigger>
       <SelectContent>
-        {CHECKBOT_INSTRUCTIONS.map((instruction) =>
-          <SelectItem value={instruction.value} key={instruction.label}>{instruction.label}</SelectItem>
-        )}
+        {CHECKBOT_INSTRUCTIONS.map((instruction) => (
+          <SelectItem value={instruction.value} key={instruction.label}>
+            {instruction.label}
+          </SelectItem>
+        ))}
       </SelectContent>
     </Select>
   );

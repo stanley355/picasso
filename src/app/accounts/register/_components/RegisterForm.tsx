@@ -1,5 +1,6 @@
 "use client";
 import { useShallow } from "zustand/shallow";
+import { toast } from "react-toastify";
 import { useRegisterStore } from "../_stores/useRegisterStore";
 
 import { Button } from "@/components/ui/button";
@@ -23,40 +24,34 @@ const RegisterForm = () => {
     const repassword = formData.get("repassword") as string;
 
     if (!fullname || !password || !email || !repassword) {
-      updateStore("errorMsg", "Please fill all field");
+      toast("Please fill all field");
       return;
     }
 
     if (fullname.length < 4) {
-      updateStore("errorMsg", "Invalid fullname: 4 characters minimum");
+      toast("Invalid fullname: 4 characters minimum");
       return;
     }
 
     const hasSymbolRegex = /[^A-Za-z0-9\s]/g;
     if (hasSymbolRegex.test(fullname)) {
-      updateStore(
-        "errorMsg",
-        "Invalid fullname: Fullname can't contain symbol",
-      );
+      toast("Invalid fullname: Fullname can't contain symbol");
       return;
     }
 
     const validEmailRegex = /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/g;
     if (!validEmailRegex.test(email)) {
-      updateStore("errorMsg", "Invalid email: format");
+      toast("Invalid email: format");
       return;
     }
 
     if (String(password).length < 4) {
-      updateStore("errorMsg", "Invalid password: 4 characters minimum");
+      toast("Invalid password: 4 characters minimum");
       return;
     }
 
     if (password !== repassword) {
-      updateStore(
-        "errorMsg",
-        "Invalid password: Password is not similar to retype password",
-      );
+      toast("Invalid password: Password is not similar to retype password");
       return;
     }
 
@@ -75,7 +70,7 @@ const RegisterForm = () => {
       return;
     } catch (error: any) {
       updateStore("isLoading", false);
-      updateStore("errorMsg", error.message);
+      toast(error.message);
       return;
     }
   };

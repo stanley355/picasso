@@ -11,6 +11,7 @@ import { useRegisterStore } from "../_stores/useRegisterStore";
 
 import { loginUserWithGmail } from "@/lib/api/author/users/loginUserWithGmail";
 import { sendFirebaseEvent } from "@/lib/firebase/sendFirebaseEvent";
+import { toast } from "react-toastify";
 
 const GoogleLoginBtn = () => {
   const { updateStore } = useRegisterStore(
@@ -19,7 +20,6 @@ const GoogleLoginBtn = () => {
 
   const handleGoogleLogin = async (credential: CredentialResponse) => {
     updateStore("isLoading", true);
-    updateStore("errorMsg", "");
     sendFirebaseEvent("register_gmail");
 
     try {
@@ -30,7 +30,7 @@ const GoogleLoginBtn = () => {
       if (loginSuccess) window.location.href = "/accounts";
       return;
     } catch (error: any) {
-      updateStore("errorMsg", error.message);
+      toast(error.message)
       updateStore("isLoading", false);
       return;
     }
@@ -45,7 +45,7 @@ const GoogleLoginBtn = () => {
         onSuccess={handleGoogleLogin}
         onError={() => {
           const failMsg = "Fail to login with gmail, please try again";
-          updateStore("errorMsg", failMsg);
+          toast(failMsg)
         }}
         text="continue_with"
         theme="filled_blue"

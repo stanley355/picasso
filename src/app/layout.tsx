@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Work_Sans } from "next/font/google";
+import Providers from "@/components/providers";
 import "./globals.css";
-import FirebaseProvider from "@/components/providers/FirebaseProvider";
-import { ThemeProvider } from "@/components/providers/ThemeProvider";
 
 const workSans = Work_Sans({ subsets: ["latin"] });
 
@@ -19,11 +18,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={workSans.className}>
-        <FirebaseProvider>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            {children}
-          </ThemeProvider>
-        </FirebaseProvider>
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );
