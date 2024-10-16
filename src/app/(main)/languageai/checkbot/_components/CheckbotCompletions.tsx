@@ -13,7 +13,7 @@ const CheckbotCompletions = () => {
   );
 
   return (
-    <Tabs className="h-full" defaultValue="completion0" >
+    <Tabs className="h-full" defaultValue="completion0">
       <TabsList className="w-full rounded-none gap-1 mb-2">
         {completions.map((_, index) => (
           <TabsTrigger
@@ -31,9 +31,7 @@ const CheckbotCompletions = () => {
           key={`completionContent${index}`}
           className="text-sm flex gap-1 pr-2"
         >
-          <div className="flex-1 px-2">
-            {completion}
-          </div>
+          <div className="flex-1 px-2">{completion}</div>
           <Button size="icon" onClick={() => copyToClipboard(completion)}>
             <LuCopy />
           </Button>
