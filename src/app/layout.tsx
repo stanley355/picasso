@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Work_Sans } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import Providers from "@/components/providers";
 import "./globals.css";
 
-const workSans = Work_Sans({ subsets: ["latin"] });
+const workSans = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
