@@ -19,6 +19,7 @@ const GoogleLoginBtn = () => {
   const failMsg = "Fail to login with gmail, please try again";
 
   const handleGoogleLogin = async (credential: CredentialResponse) => {
+    updateStore('showLoginModal', false);
     updateStore("isLoading", true);
     sendFirebaseEvent("login_gmail");
 
@@ -27,7 +28,7 @@ const GoogleLoginBtn = () => {
       const jwtPayload = decode(credentialToken) as JwtPayload;
       const loginSuccess = await loginUserWithGmail(jwtPayload);
       updateStore("isLoading", false);
-      if (loginSuccess) window.location.href = "/accounts";
+      if (loginSuccess) window.location.reload();
       return;
     } catch (error: any) {
       toast(error.message);

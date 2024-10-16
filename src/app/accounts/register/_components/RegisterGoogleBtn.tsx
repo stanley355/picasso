@@ -12,13 +12,18 @@ import { useRegisterStore } from "../_stores/useRegisterStore";
 import { loginUserWithGmail } from "@/lib/api/author/users/loginUserWithGmail";
 import { sendFirebaseEvent } from "@/lib/firebase/sendFirebaseEvent";
 import { toast } from "react-toastify";
+import { useLoginStore } from "../../login/_stores/useLoginStore";
 
 const GoogleLoginBtn = () => {
   const { updateStore } = useRegisterStore(
     useShallow((state) => ({ updateStore: state.updateStore })),
   );
+  const { updateLoginStore } = useLoginStore(
+    useShallow((state) => ({ updateLoginStore: state.updateStore })),
+  );
 
   const handleGoogleLogin = async (credential: CredentialResponse) => {
+    updateLoginStore('showLoginModal', false);
     updateStore("isLoading", true);
     sendFirebaseEvent("register_gmail");
 

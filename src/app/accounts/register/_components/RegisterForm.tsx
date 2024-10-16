@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { registerUser } from "@/lib/api/author/users/registerUser";
 import { sendFirebaseEvent } from "@/lib/firebase/sendFirebaseEvent";
+import { useLoginStore } from "../../login/_stores/useLoginStore";
 
 const RegisterForm = () => {
   const { isLoading, updateStore } = useRegisterStore(
@@ -16,8 +17,14 @@ const RegisterForm = () => {
       updateStore: state.updateStore,
     })),
   );
+  const { updateLoginStore } = useLoginStore(
+    useShallow((state) => ({
+      updateLoginStore: state.updateStore,
+    })),
+  );
 
   const handleSubmit = async (formData: FormData) => {
+    updateLoginStore('showLoginModal', false);
     const fullname = formData.get("fullname") as string;
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;

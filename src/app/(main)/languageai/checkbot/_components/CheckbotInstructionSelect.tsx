@@ -10,13 +10,13 @@ import { CHECKBOT_INSTRUCTIONS } from "../_lib/constant";
 
 const CheckbotInstructionSelect = () => {
   return (
-    <Select name="instruction">
+    <Select name="instructionId" >
       <SelectTrigger id="instruction">
         <SelectValue placeholder="Select instruction" />
       </SelectTrigger>
       <SelectContent>
-        {CHECKBOT_INSTRUCTIONS.map((instruction) => (
-          <SelectItem value={instruction.value} key={instruction.label}>
+        {CHECKBOT_INSTRUCTIONS.map((instruction, index) => (
+          <SelectItem value={String(index)} key={instruction.label}>
             {instruction.label}
           </SelectItem>
         ))}

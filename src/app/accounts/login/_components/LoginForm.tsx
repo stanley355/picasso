@@ -19,6 +19,7 @@ const LoginForm = () => {
   );
 
   const handleSubmit = async (formData: FormData) => {
+    updateStore('showLoginModal', false);
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
 
@@ -32,7 +33,7 @@ const LoginForm = () => {
     try {
       const user = await loginUser(email, password);
       updateStore("isLoading", false);
-      if (user.token) window.location.href = "/accounts";
+      if (user.token) window.location.reload();
       return;
     } catch (error: any) {
       updateStore("isLoading", false);

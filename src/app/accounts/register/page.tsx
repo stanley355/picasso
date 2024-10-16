@@ -1,8 +1,15 @@
 import Link from "next/link";
 import GoogleLoginBtn from "../login/_components/LoginGoogleBtn";
 import RegisterForm from "./_components/RegisterForm";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
-const AccountRegisterPage = () => {
+const AccountRegisterPage = async () => {
+  const token = cookies().get('token');
+  if (token?.value) {
+    redirect("/accounts")
+  }
+
   return (
     <>
       <div className="text-center text-xl font-bold py-4 sm:mb-20">AI</div>

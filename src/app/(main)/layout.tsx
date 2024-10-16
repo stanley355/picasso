@@ -1,3 +1,4 @@
+import LoginModal from "../accounts/login/_components/LoginModal";
 import MainHeader from "./_header";
 import Sidebar from "./_sidebar";
 
@@ -11,8 +12,9 @@ const MainLayout = ({ children }: TMainLayout) => {
       <MainHeader />
       <div className="rounded-lg flex-1 md:flex">
         <Sidebar />
-        <div className="flex-1 overflow-y-auto rounded-lg h-full bg-background">
+        <div className="flex-1 overflow-y-auto rounded-lg h-full bg-background relative">
           {children}
+          <LoginModal />
         </div>
       </div>
     </div>

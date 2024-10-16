@@ -12,5 +12,5 @@ export function middleware(request: NextRequest) {
 
 // only applies to the following paths
 export const config = {
-  matcher: ["/accounts", "/accounts/change-password", "/accounts/logout"],
+  matcher: ["/accounts", "/accounts/change-password", "/accounts/"],
 };
