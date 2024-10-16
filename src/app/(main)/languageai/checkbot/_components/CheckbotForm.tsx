@@ -2,9 +2,7 @@
 
 import { useShallow } from "zustand/shallow";
 import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
 
-import CheckbotHead from "./CheckbotHead";
 import CheckbotInstructionSelect from "./CheckbotInstructionSelect";
 import CheckbotVariantSelect from "./CheckbotVariantSelect";
 import CheckbotDiffSelect from "./CheckbotDiffSelect";

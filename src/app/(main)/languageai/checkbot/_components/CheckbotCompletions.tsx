@@ -21,7 +21,7 @@ const CheckbotCompletions = () => {
             key={`completionTrigger${index}`}
             className="rounded-md"
           >
-            Result {index + 1}
+            Variant {index + 1}
           </TabsTrigger>
         ))}
       </TabsList>
