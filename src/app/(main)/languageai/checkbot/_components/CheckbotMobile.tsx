@@ -9,24 +9,28 @@ import CheckbotCompletions from "./CheckbotCompletions";
 const CheckbotMobile = () => {
   const { completions } = useCheckbotStore(
     useShallow((state) => ({
-      completions: state.completions
+      completions: state.completions,
     })),
   );
 
   return (
-    <PanelGroup direction="vertical">
-      <Panel id="mobileFormPanel" order={1} defaultSize={50} >
-        <CheckbotForm />
-      </Panel>
-      {completions.length > 0 &&
-        <PanelResizeHandle className="bg-foreground text-background py-2 flex items-center justify-center">
-          <LuSeparatorHorizontal className="text-lg" />
-        </PanelResizeHandle >
-      }
-      {completions.length > 0 && <Panel id="mobileCompletionPanel" order={2} defaultSize={50}  >
-        <CheckbotCompletions />
-      </Panel>}
-    </PanelGroup>
+    <div className="h-full lg:hidden">
+      <PanelGroup direction="vertical">
+        <Panel id="mobileFormPanel" order={1} defaultSize={50}>
+          <CheckbotForm />
+        </Panel>
+        {completions.length > 0 && (
+          <PanelResizeHandle className="bg-foreground text-background py-2 flex items-center justify-center">
+            <LuSeparatorHorizontal className="text-lg" />
+          </PanelResizeHandle>
+        )}
+        {completions.length > 0 && (
+          <Panel id="mobileCompletionPanel" order={2} defaultSize={50}>
+            <CheckbotCompletions />
+          </Panel>
+        )}
+      </PanelGroup>
+    </div>
   );
 };
 

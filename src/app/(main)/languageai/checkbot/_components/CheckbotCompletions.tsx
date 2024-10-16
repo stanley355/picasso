@@ -1,36 +1,46 @@
-import { useCheckbotStore } from '../_stores/useCheckbotStore';
-import { useShallow } from 'zustand/shallow';
-import { Tabs, TabsList, TabsContent, TabsTrigger } from '@/components/ui/tabs';
+import { useCheckbotStore } from "../_stores/useCheckbotStore";
+import { useShallow } from "zustand/shallow";
+import { Tabs, TabsList, TabsContent, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
+import { LuCopy } from "react-icons/lu";
+import { copyToClipboard } from "@/lib/copyToClipboard";
 
 const CheckbotCompletions = () => {
   const { completions } = useCheckbotStore(
     useShallow((state) => ({
-      completions: state.completions
+      completions: state.completions,
     })),
   );
 
   return (
-    <Tabs className="h-full border-t" defaultValue='completion0'>
-      <TabsList className='w-full rounded-none'>
-        {completions.map((_, index) =>
+    <Tabs className="h-full" defaultValue="completion0" >
+      <TabsList className="w-full rounded-none gap-1 mb-2">
+        {completions.map((_, index) => (
           <TabsTrigger
             value={`completion${index}`}
             key={`completionTrigger${index}`}
-
-          >Result {index + 1}</TabsTrigger>
-        )}
+            className="rounded-md"
+          >
+            Result {index + 1}
+          </TabsTrigger>
+        ))}
       </TabsList>
-      {completions.map((completion, index) =>
+      {completions.map((completion, index) => (
         <TabsContent
           value={`completion${index}`}
           key={`completionContent${index}`}
-          className='p-2 text-sm'
+          className="text-sm flex gap-1 pr-2"
         >
-          {completion}
+          <div className="flex-1 px-2">
+            {completion}
+          </div>
+          <Button size="icon" onClick={() => copyToClipboard(completion)}>
+            <LuCopy />
+          </Button>
         </TabsContent>
-      )}
+      ))}
     </Tabs>
-  )
-}
+  );
+};
 
-export default CheckbotCompletions
+export default CheckbotCompletions;

@@ -39,6 +39,7 @@ const CheckbotForm = () => {
 
     const variant = formData.get("variant") as string;
     const diff = formData.get("diff") as string;
+
     const instructionId = formData.get("instructionId") as string;
     const content = formData.get("content") as string;
 
@@ -76,12 +77,12 @@ const CheckbotForm = () => {
 
   return (
     <form className="flex flex-col h-full" action={handleAction}>
-      <CheckbotHead />
+      <h1 className="text-xl font-semibold p-2 border-b">Checkbot</h1>
       <CheckbotTextarea />
-      <div className="flex p-2 gap-2 md:flex-col">
+      <div className="flex p-2 gap-2 flex-col">
         <CheckbotInstructionSelect />
-        <div className="gap-4 flex justify-end">
-          <div className="hidden md:flex gap-4">
+        <div className="gap-2 flex justify-end">
+          <div className="flex gap-2">
             <CheckbotVariantSelect />
             <CheckbotDiffSelect />
           </div>
