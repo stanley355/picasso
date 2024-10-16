@@ -16,7 +16,7 @@ const CheckbotInstructionSelect = () => {
       </SelectTrigger>
       <SelectContent>
         {CHECKBOT_INSTRUCTIONS.map((instruction, index) => (
-          <SelectItem value={String(index)} key={instruction.label}>
+          <SelectItem value={String(index)} key={instruction.label} onClick={() => { }}>
             {instruction.label}
           </SelectItem>
         ))}
