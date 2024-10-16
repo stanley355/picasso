@@ -13,6 +13,7 @@ import { useCheckbotStore } from "../_stores/useCheckbotStore";
 import { toast } from "react-toastify";
 import { CHECKBOT_INSTRUCTIONS } from "../_lib/constant";
 import { fetchCheckbot } from "@/lib/api/author/checkbots/fetchCheckbot";
+import { sendFirebaseEvent } from "@/lib/firebase/sendFirebaseEvent";
 
 const CheckbotForm = () => {
   const { updateLoginStore } = useLoginStore(
@@ -51,6 +52,7 @@ const CheckbotForm = () => {
     }
 
     updateStore("isLoading", true);
+    sendFirebaseEvent('checkbot')
     const instruction = CHECKBOT_INSTRUCTIONS[Number(instructionId)];
 
     try {
