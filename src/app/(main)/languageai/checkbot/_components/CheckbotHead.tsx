@@ -4,9 +4,9 @@ import CheckbotDiffSelect from "./CheckbotDiffSelect";
 
 const CheckbotHead = () => {
   return (
-    <div className="border-b p-2 flex items-center justify-between">
+    <div className="border-b p-2 flex items-center justify-between md:justify-start">
       <h1 className="text-xl font-semibold">Checkbot</h1>
-      <div className="gap-1 flex">
+      <div className="gap-1 flex md:hidden">
         <CheckbotVariantSelect />
         <CheckbotDiffSelect />
       </div>

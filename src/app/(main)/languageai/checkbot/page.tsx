@@ -1,10 +1,9 @@
-import React from "react";
-import CheckbotHead from "./_components/CheckbotHead";
+import CheckbotMobile from "./_components/CheckbotMobile";
 
 const CheckbotPage = () => {
   return (
-    <div>
-      <CheckbotHead />
+    <div className=" w-full h-full">
+      <CheckbotMobile />
     </div>
   );
 };
