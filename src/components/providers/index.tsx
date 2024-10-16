@@ -1,5 +1,3 @@
-"use client";
-import { useTheme } from "next-themes";
 import FirebaseProvider from "./FirebaseProvider";
 import { ThemeProvider } from "./ThemeProvider";
 import { ToastContainer } from "react-toastify";
@@ -10,7 +8,6 @@ type TProviders = {
 };
 
 const Providers = ({ children }: TProviders) => {
-  const { resolvedTheme } = useTheme();
 
   return (
     <FirebaseProvider>
@@ -18,7 +15,6 @@ const Providers = ({ children }: TProviders) => {
         {children}
         <ToastContainer
           position="top-center"
-          theme={resolvedTheme === "dark" ? "dark" : "light"}
         />
       </ThemeProvider>
     </FirebaseProvider>
