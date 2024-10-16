@@ -16,6 +16,8 @@ import TranslateContentLanguageSelect from "./TranslateContentLanguageSelect";
 import TranslateTargetLanguageSelect from "./TranslateTargetLanguageSelect";
 import TranslateDiffSelect from "./TranslateDiffSelect";
 import TranslateVariantSelect from "./TranslateVariantSelect";
+import { fetchTranslation } from "@/lib/api/author/translation/fetchTranslation";
+import { createTranslateSystemContent } from "../_lib/createTranslateSystemContent";
 
 const TranslateForm = () => {
   const { updateLoginStore } = useLoginStore(
@@ -41,11 +43,12 @@ const TranslateForm = () => {
     const variant = formData.get("variant") as string;
     const diff = formData.get("diff") as string;
 
-    const instructionId = formData.get("instructionId") as string;
+    const contentLanguage = formData.get("contentLanguage") as string
     const content = formData.get("content") as string;
+    const targetLanguage = formData.get("targetLanguage") as string;
 
-    if (!instructionId) {
-      toast("Please select instruction");
+    if (!targetLanguage) {
+      toast("Please select target language");
       return;
     }
     if (!content) {
@@ -54,20 +57,21 @@ const TranslateForm = () => {
     }
 
     updateStore("isLoading", true);
-    sendFirebaseEvent("checkbot");
-    // const instruction = CHECKBOT_INSTRUCTIONS[Number(instructionId)];
+    sendFirebaseEvent("translate");
 
     try {
-      // const reqBody = {
-      //   instruction: instruction.label,
-      //   system_content: instruction.value,
-      //   user_content: content,
-      //   n: Number(variant),
-      //   temperature: Number(diff),
-      // };
-      // const checkbot = await fetchCheckbot(reqBody);
-      // const completions = checkbot.map((bot) => bot.completion_content);
-      // updateStore("completions", completions);
+      const reqBody = {
+        content_language: contentLanguage,
+        target_language: targetLanguage,
+        system_content: createTranslateSystemContent(contentLanguage, targetLanguage),
+        user_content: content,
+        n: Number(variant),
+        temperature: Number(diff),
+      };
+
+      const translation = await fetchTranslation(reqBody);
+      const completions = translation.map((bot) => bot.completion_content);
+      updateStore("completions", completions);
       updateStore("isLoading", false);
       return;
     } catch (error: any) {
