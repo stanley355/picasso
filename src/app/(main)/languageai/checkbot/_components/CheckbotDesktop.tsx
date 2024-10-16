@@ -16,9 +16,9 @@ const CheckbotDesktop = () => {
       <div className="flex-1 border-r">
         <CheckbotForm />
       </div>
-      <div className="flex-1 max-w-[50%] border-l">
+      {completions.length > 0 && <div className="flex-1 max-w-[50%] border-l">
         <CheckbotCompletions />
-      </div>
+      </div>}
     </div>
   );
 };
