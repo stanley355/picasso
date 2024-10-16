@@ -12,7 +12,10 @@ const LanguageaiHeaderSelect = () => {
   const pathname = usePathname();
   const router = useRouter();
   return (
-    <Select defaultValue={pathname} onValueChange={(value) => router.push(value)}>
+    <Select
+      defaultValue={pathname}
+      onValueChange={(value) => router.push(value)}
+    >
       <SelectTrigger className="border-none bg-foreground text-background focus:ring-transparent ring-offset-0 ring-offset-transparent h-8 md:hidden">
         <span className="mr-4">/</span>
         <SelectValue />

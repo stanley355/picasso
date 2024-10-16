@@ -1,16 +1,18 @@
-'use client'
-import { Tooltip } from 'react-tooltip'
-import { Select, SelectContent, SelectItem, SelectTrigger } from '@/components/ui/select'
-import { SelectValue } from '@radix-ui/react-select'
+"use client";
+import { Tooltip } from "react-tooltip";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+} from "@/components/ui/select";
+import { SelectValue } from "@radix-ui/react-select";
 
 const CheckbotDiffSelect = () => {
   return (
     <div>
-      <Select
-        name='diff'
-        defaultValue="1.0"
-      >
-        <SelectTrigger id='diff'>
+      <Select name="diff" defaultValue="1.0">
+        <SelectTrigger id="diff">
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
@@ -20,12 +22,12 @@ const CheckbotDiffSelect = () => {
           <SelectItem value="1.5">Diff: High</SelectItem>
         </SelectContent>
       </Select>
-      <Tooltip anchorSelect="#diff" className='hidden md:block'>
+      <Tooltip anchorSelect="#diff" className="hidden md:block">
         <div>Higher diff will make the output more random,</div>
         <div>Lower diff will make it more focused and deterministic</div>
       </Tooltip>
     </div>
-  )
-}
+  );
+};
 
-export default CheckbotDiffSelect
+export default CheckbotDiffSelect;
