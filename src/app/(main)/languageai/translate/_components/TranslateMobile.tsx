@@ -1,4 +1,3 @@
-
 "use client";
 import { useShallow } from "zustand/shallow";
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";

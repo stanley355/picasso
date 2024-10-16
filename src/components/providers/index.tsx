@@ -8,14 +8,11 @@ type TProviders = {
 };
 
 const Providers = ({ children }: TProviders) => {
-
   return (
     <FirebaseProvider>
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
         {children}
-        <ToastContainer
-          position="top-center"
-        />
+        <ToastContainer position="top-center" />
       </ThemeProvider>
     </FirebaseProvider>
   );

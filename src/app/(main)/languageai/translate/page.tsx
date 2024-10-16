@@ -1,11 +1,11 @@
-import TranslateMobile from "./_components/TranslateMobile"
+import TranslateMobile from "./_components/TranslateMobile";
 
 const TranslatePage = () => {
   return (
-    <div className='w-full h-full'>
+    <div className="w-full h-full">
       <TranslateMobile />
     </div>
-  )
-}
+  );
+};
 
-export default TranslatePage 
+export default TranslatePage;

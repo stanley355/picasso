@@ -1,4 +1,3 @@
-
 "use client";
 import {
   Select,
@@ -16,14 +15,9 @@ const TranslateContentLanguageSelect = () => {
         <SelectValue placeholder="Detect Language" />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="detect">
-          Detect Language
-        </SelectItem>
+        <SelectItem value="detect">Detect Language</SelectItem>
         {TRANSLATE_LANGUAGES.map((language: string) => (
-          <SelectItem
-            value={language}
-            key={`content_language_${language}`}
-          >
+          <SelectItem value={language} key={`content_language_${language}`}>
             {language}
           </SelectItem>
         ))}
