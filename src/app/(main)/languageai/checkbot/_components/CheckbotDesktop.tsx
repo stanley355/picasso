@@ -13,7 +13,7 @@ const CheckbotDesktop = () => {
 
   return (
     <div className="hidden md:flex h-full">
-      <div className="flex-1 border-r">
+      <div className="flex-1">
         <CheckbotForm />
       </div>
       {completions.length > 0 && (

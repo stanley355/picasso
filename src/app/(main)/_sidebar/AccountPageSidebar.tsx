@@ -7,7 +7,7 @@ import { LuKey, LuLogOut, LuUserCircle } from "react-icons/lu";
 const AccountPageSidebar = () => {
   const pathname = usePathname();
   const buttonClassname =
-    "text-background flex items-center justify-start px-2 py-1 rounded hover:text-foreground hover:bg-background gap-2 text-sm ";
+    "flex items-center justify-start px-2 py-1 hover:bg-background rounded gap-2 text-sm ";
 
   const MENU = [
     {
@@ -28,13 +28,13 @@ const AccountPageSidebar = () => {
   ];
 
   return (
-    <div className="flex flex-col pr-4 bg-foreground rounded-l-md h-full gap-2">
+    <div className="flex flex-col pr-4 rounded-l-md h-full gap-2">
       {MENU.map((menu) => (
         <Link
           href={menu.href}
           key={menu.title}
           className={cn(buttonClassname, {
-            "bg-background text-foreground": menu.href === pathname,
+            "bg-background": menu.href === pathname,
           })}
         >
           {menu.icon}

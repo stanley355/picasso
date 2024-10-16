@@ -27,7 +27,7 @@ const MainHeaderSelect = () => {
 
   return (
     <Select value={defaulValue} onValueChange={(value) => router.push(value)}>
-      <SelectTrigger className="border-none bg-foreground text-background focus:ring-transparent ring-offset-0 ring-offset-transparent h-8 px-2">
+      <SelectTrigger className="border-none bg-transparent h-8 px-2">
         <SelectValue />
       </SelectTrigger>
       <SelectContent>
