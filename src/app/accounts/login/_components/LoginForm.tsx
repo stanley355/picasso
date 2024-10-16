@@ -36,7 +36,7 @@ const LoginForm = () => {
       return;
     } catch (error: any) {
       updateStore("isLoading", false);
-      toast(error.message)
+      toast(error.message);
       return;
     }
   };

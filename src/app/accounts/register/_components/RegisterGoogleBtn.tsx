@@ -30,7 +30,7 @@ const GoogleLoginBtn = () => {
       if (loginSuccess) window.location.href = "/accounts";
       return;
     } catch (error: any) {
-      toast(error.message)
+      toast(error.message);
       updateStore("isLoading", false);
       return;
     }
@@ -45,7 +45,7 @@ const GoogleLoginBtn = () => {
         onSuccess={handleGoogleLogin}
         onError={() => {
           const failMsg = "Fail to login with gmail, please try again";
-          toast(failMsg)
+          toast(failMsg);
         }}
         text="continue_with"
         theme="filled_blue"

@@ -30,7 +30,7 @@ const GoogleLoginBtn = () => {
       if (loginSuccess) window.location.href = "/accounts";
       return;
     } catch (error: any) {
-      toast(error.message)
+      toast(error.message);
       updateStore("isLoading", false);
       return;
     }
