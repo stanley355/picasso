@@ -19,7 +19,7 @@ const LoginForm = () => {
   );
 
   const handleSubmit = async (formData: FormData) => {
-    updateStore('showLoginModal', false);
+    updateStore("showLoginModal", false);
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
 

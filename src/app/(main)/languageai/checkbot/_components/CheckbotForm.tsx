@@ -8,9 +8,9 @@ import CheckbotDiffSelect from "./CheckbotDiffSelect";
 
 const CheckbotForm = () => {
   const handleAction = (formData: FormData) => {
-    const variant = formData.get('variant') as string;
-    const diff = formData.get('diff') as string;
-    const instructionId = formData.get('instructionId') as string;
+    const variant = formData.get("variant") as string;
+    const diff = formData.get("diff") as string;
+    const instructionId = formData.get("instructionId") as string;
   };
 
   return (

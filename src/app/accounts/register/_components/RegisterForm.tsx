@@ -24,7 +24,7 @@ const RegisterForm = () => {
   );
 
   const handleSubmit = async (formData: FormData) => {
-    updateLoginStore('showLoginModal', false);
+    updateLoginStore("showLoginModal", false);
     const fullname = formData.get("fullname") as string;
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;

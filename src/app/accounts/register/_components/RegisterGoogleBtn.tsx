@@ -23,7 +23,7 @@ const GoogleLoginBtn = () => {
   );
 
   const handleGoogleLogin = async (credential: CredentialResponse) => {
-    updateLoginStore('showLoginModal', false);
+    updateLoginStore("showLoginModal", false);
     updateStore("isLoading", true);
     sendFirebaseEvent("register_gmail");
 

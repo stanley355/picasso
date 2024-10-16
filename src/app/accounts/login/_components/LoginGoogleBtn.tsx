@@ -19,7 +19,7 @@ const GoogleLoginBtn = () => {
   const failMsg = "Fail to login with gmail, please try again";
 
   const handleGoogleLogin = async (credential: CredentialResponse) => {
-    updateStore('showLoginModal', false);
+    updateStore("showLoginModal", false);
     updateStore("isLoading", true);
     sendFirebaseEvent("login_gmail");
 

@@ -10,7 +10,7 @@ import { CHECKBOT_INSTRUCTIONS } from "../_lib/constant";
 
 const CheckbotInstructionSelect = () => {
   return (
-    <Select name="instructionId" >
+    <Select name="instructionId">
       <SelectTrigger id="instruction">
         <SelectValue placeholder="Select instruction" />
       </SelectTrigger>

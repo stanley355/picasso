@@ -5,9 +5,9 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 const AccountRegisterPage = async () => {
-  const token = cookies().get('token');
+  const token = cookies().get("token");
   if (token?.value) {
-    redirect("/accounts")
+    redirect("/accounts");
   }
 
   return (
