@@ -1,13 +1,13 @@
-import { useState, memo } from 'react'
-import { LuX } from 'react-icons/lu'
-import { Button } from '@/components/ui/button'
-import { Textarea } from '@/components/ui/textarea'
+import { useState, memo } from "react";
+import { LuX } from "react-icons/lu";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 
 const CheckbotTextarea = () => {
-  const [value, setValue] = useState('')
+  const [value, setValue] = useState("");
 
   return (
-    <div className='relative flex-1 border-b'>
+    <div className="relative flex-1 border-b">
       <Textarea
         name="content"
         placeholder="Enter text"
@@ -15,11 +15,17 @@ const CheckbotTextarea = () => {
         onChange={(e) => setValue(e.target.value)}
         value={value}
       />
-      <Button size="icon" variant="ghost" type='button' className='absolute top-0 right-0' onClick={() => setValue('')}>
-        <LuX className='text-xl' />
+      <Button
+        size="icon"
+        variant="ghost"
+        type="button"
+        className="absolute top-0 right-0"
+        onClick={() => setValue("")}
+      >
+        <LuX className="text-xl" />
       </Button>
     </div>
-  )
-}
+  );
+};
 
-export default memo(CheckbotTextarea)
+export default memo(CheckbotTextarea);

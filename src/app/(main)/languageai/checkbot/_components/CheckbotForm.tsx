@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { useShallow } from "zustand/shallow";
 import { Button } from "@/components/ui/button";
@@ -33,25 +33,25 @@ const CheckbotForm = () => {
   const handleAction = async (formData: FormData) => {
     const token = await getUserToken();
     if (!token) {
-      updateLoginStore('showLoginModal', true);
+      updateLoginStore("showLoginModal", true);
       return;
     }
 
     const variant = formData.get("variant") as string;
     const diff = formData.get("diff") as string;
     const instructionId = formData.get("instructionId") as string;
-    const content = formData.get('content') as string;
+    const content = formData.get("content") as string;
 
     if (!instructionId) {
-      toast('Please select instruction');
+      toast("Please select instruction");
       return;
     }
     if (!content) {
-      toast('Please enter your text');
+      toast("Please enter your text");
       return;
     }
 
-    updateStore('isLoading', true)
+    updateStore("isLoading", true);
     const instruction = CHECKBOT_INSTRUCTIONS[Number(instructionId)];
 
     try {
@@ -60,16 +60,16 @@ const CheckbotForm = () => {
         system_content: instruction.value,
         user_content: content,
         n: Number(variant),
-        temperature: Number(diff)
-      }
+        temperature: Number(diff),
+      };
       const checkbot = await fetchCheckbot(reqBody);
       const completions = checkbot.map((bot) => bot.completion_content);
-      updateStore('completions', completions);
-      updateStore('isLoading', false);
+      updateStore("completions", completions);
+      updateStore("isLoading", false);
       return;
     } catch (error: any) {
-      updateStore('isLoading', false);
-      toast(error.message)
+      updateStore("isLoading", false);
+      toast(error.message);
       return;
     }
   };
@@ -85,7 +85,9 @@ const CheckbotForm = () => {
             <CheckbotVariantSelect />
             <CheckbotDiffSelect />
           </div>
-          <Button type="submit" disabled={isLoading}>{isLoading ? "Checking..." : 'Check'}</Button>
+          <Button type="submit" disabled={isLoading}>
+            {isLoading ? "Checking..." : "Check"}
+          </Button>
         </div>
       </div>
     </form>
