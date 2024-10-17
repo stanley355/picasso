@@ -21,7 +21,7 @@ const TranslateMobile = () => {
           <TranslateForm />
         </Panel>
         {completions.length > 0 && (
-          <PanelResizeHandle className="bg-foreground text-background py-2 flex items-center justify-center">
+          <PanelResizeHandle className="bg-foreground py-2 flex items-center justify-center">
             <LuSeparatorHorizontal className="text-lg" />
           </PanelResizeHandle>
         )}

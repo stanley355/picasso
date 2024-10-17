@@ -11,7 +11,7 @@
 @layer base {
   :root {
     --background: #ffffff;
-    --foreground: #f6f6f6;
+    --foreground: #f8fafc;
     --text: #000000;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 3.9% / 80%;

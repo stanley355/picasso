@@ -12,7 +12,7 @@ const MainLayout = ({ children }: TMainLayout) => {
       <MainHeader />
       <div className="rounded-lg flex-1 md:flex">
         <Sidebar />
-        <div className="flex-1 overflow-y-auto rounded-lg h-full bg-background relative">
+        <div className="flex-1 overflow-y-auto rounded-lg h-full bg-background relative border">
           {children}
           <LoginModal />
         </div>
