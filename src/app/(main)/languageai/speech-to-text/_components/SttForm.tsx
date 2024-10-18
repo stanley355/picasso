@@ -67,10 +67,10 @@ const SttForm = () => {
         file_url: downloadURL,
         temperature: Number(diff),
         language,
-        ...granularity && {
-          timestamp_granularities: granularity
-        }
-      }
+        ...(granularity && {
+          timestamp_granularities: granularity,
+        }),
+      };
 
       const stt = await fetchSpeechToText(reqBody);
 

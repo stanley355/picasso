@@ -62,7 +62,11 @@ const SttAudioInput = () => {
         onClick={() => inputRef.current.click()}
         disabled={isLoading}
       >
-        {isLoading ? <IoIosAperture className="text-3xl animate-spin" /> : <IoIosCloudUpload className="text-3xl" />}
+        {isLoading ? (
+          <IoIosAperture className="text-3xl animate-spin" />
+        ) : (
+          <IoIosCloudUpload className="text-3xl" />
+        )}
         <div className="line-clamp-1 max-w-[75%]">
           {file?.name ? file.name : "Upload your file here"}
         </div>

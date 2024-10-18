@@ -13,7 +13,7 @@ type TRequestBody = {
 };
 
 export const fetchSpeechToText = async (
-  reqBody: TRequestBody
+  reqBody: TRequestBody,
 ): Promise<TCheckbot[]> => {
   const token = cookies().get("token");
   const user = decode(String(token?.value)) as JwtPayload;
