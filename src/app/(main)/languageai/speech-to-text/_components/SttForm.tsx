@@ -14,6 +14,7 @@ import SttGranularitySelect from "./SttGranularitySelect";
 
 import { getUserToken } from "@/lib/getUserToken";
 import { decode, JwtPayload } from "jsonwebtoken";
+import { fetchSpeechToText } from "@/lib/api/author/stt/fetchSpeechToText";
 
 const SttForm = () => {
   const { updateLoginStore } = useLoginStore(
@@ -35,10 +36,10 @@ const SttForm = () => {
       return;
     }
 
-    const file = formData.get('file') as File;
-    const language = formData.get('language') as string;
-    const diff = formData.get('diff') as string;
-    const granularity = formData.get('granularity') as string;
+    const file = formData.get("file") as File;
+    const language = formData.get("language") as string;
+    const diff = formData.get("diff") as string;
+    const granularity = formData.get("granularity") as string;
 
     if (!file) {
       toast("Please upload audio file");
@@ -50,7 +51,7 @@ const SttForm = () => {
       return;
     }
 
-    updateStore('isLoading', true);
+    updateStore("isLoading", true);
 
     try {
       const user = decode(token) as JwtPayload;
@@ -60,13 +61,24 @@ const SttForm = () => {
       const storef = ref(storage, firebasePath);
       const result = await uploadBytes(storef, file);
       const downloadURL = await getDownloadURL(result.ref);
-      console.log(downloadURL);
 
-      updateStore('isLoading', false)
+      const reqBody = {
+        file_name: file.name,
+        file_url: downloadURL,
+        temperature: Number(diff),
+        language,
+        ...granularity && {
+          timestamp_granularities: granularity
+        }
+      }
+
+      const stt = await fetchSpeechToText(reqBody);
+
+      updateStore("isLoading", false);
     } catch (error) {
-      updateStore('isLoading', false)
-      toast('Conversion failed, please try again')
-      console.error(error)
+      updateStore("isLoading", false);
+      toast("Conversion failed, please try again");
+      console.error(error);
       return;
     }
   };

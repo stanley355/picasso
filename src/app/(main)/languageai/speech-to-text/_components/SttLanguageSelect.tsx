@@ -6,21 +6,20 @@ import {
   SelectTrigger,
 } from "@/components/ui/select";
 import { SelectValue } from "@radix-ui/react-select";
-import { TRANSLATE_LANGUAGES } from "../../translate/_lib/constant";
 import { Tooltip } from "react-tooltip";
+import { STT_LANGUAGE_LIST } from "../_stores/constant";
 
 const SttLanguageSelect = () => {
   return (
     <div>
-
       <Select name="language">
         <SelectTrigger id="language" className="h-10">
           <SelectValue placeholder="Audio Language" />
         </SelectTrigger>
         <SelectContent>
-          {TRANSLATE_LANGUAGES.map((language: string) => (
-            <SelectItem value={language} key={`target_language_${language}`}>
-              {language}
+          {STT_LANGUAGE_LIST.map((language) => (
+            <SelectItem value={language.value} key={language.value}>
+              {language.label}
             </SelectItem>
           ))}
         </SelectContent>

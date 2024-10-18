@@ -2,10 +2,11 @@ import { useRef, useState, memo, ChangeEvent } from "react";
 import { useShallow } from "zustand/shallow";
 import { useLoginStore } from "@/app/accounts/login/_stores/useLoginStore";
 import { toast } from "react-toastify";
-import { IoIosCloudUpload } from "react-icons/io";
+import { IoIosAperture, IoIosCloudUpload } from "react-icons/io";
 
 import { Button } from "@/components/ui/button";
 import { getUserToken } from "@/lib/getUserToken";
+import { useSttStore } from "../_stores/useSttStore";
 
 const SttAudioInput = () => {
   const inputRef = useRef<any>(null);
@@ -13,6 +14,12 @@ const SttAudioInput = () => {
   const { updateLoginStore } = useLoginStore(
     useShallow((state) => ({
       updateLoginStore: state.updateStore,
+    })),
+  );
+
+  const { isLoading } = useSttStore(
+    useShallow((state) => ({
+      isLoading: state.isLoading,
     })),
   );
 
@@ -53,8 +60,9 @@ const SttAudioInput = () => {
         className="w-full h-full rounded-none flex-col gap-2"
         variant="ghost"
         onClick={() => inputRef.current.click()}
+        disabled={isLoading}
       >
-        <IoIosCloudUpload className="text-3xl" />
+        {isLoading ? <IoIosAperture className="text-3xl animate-spin" /> : <IoIosCloudUpload className="text-3xl" />}
         <div className="line-clamp-1 max-w-[75%]">
           {file?.name ? file.name : "Upload your file here"}
         </div>
