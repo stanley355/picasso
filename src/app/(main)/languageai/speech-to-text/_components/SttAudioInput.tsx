@@ -25,22 +25,24 @@ const SttAudioInput = () => {
 
     const target = e.target as any;
     const file = target.files[0];
-    const maxFileSize = 24 * 1024 * 1024; // 24MB
-    if (file.size > maxFileSize) {
-      toast("Max file size is 24MB");
+    if (file) {
+      const maxFileSize = 24 * 1024 * 1024; // 24MB
+      if (file?.size > maxFileSize) {
+        toast("Max file size is 24MB");
+        return;
+      }
+
+      setFile(file);
       return;
     }
-
-    setFile(file);
-    return;
   };
 
   return (
     <div className="w-full mb-4 flex-1">
       <input
         type="file"
-        id="audoFile"
-        name="audioFile"
+        id="file"
+        name="file"
         ref={inputRef}
         accept="*.mp3, *.mp4, *.wav"
         className="invisible h-0"

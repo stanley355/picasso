@@ -1,15 +1,74 @@
 "use client";
-import React from "react";
-import SttAudioInput from "./SttAudioInput";
-import DiffSelect from "../../_components/DiffSelect";
-import SttLanguageSelect from "./SttLanguageSelect";
-import SttGranularitySelect from "./SttGranularitySelect";
+import { useShallow } from "zustand/shallow";
+import { useSttStore } from "../_stores/useSttStore";
+import { useLoginStore } from "@/app/accounts/login/_stores/useLoginStore";
+import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
+import { toast } from "react-toastify";
+
 import { Button } from "@/components/ui/button";
 
+import DiffSelect from "../../_components/DiffSelect";
+import SttAudioInput from "./SttAudioInput";
+import SttLanguageSelect from "./SttLanguageSelect";
+import SttGranularitySelect from "./SttGranularitySelect";
+
+import { getUserToken } from "@/lib/getUserToken";
+import { decode, JwtPayload } from "jsonwebtoken";
+
 const SttForm = () => {
-  const handleAction = (formData: FormData) => {
-    const b = Object.fromEntries(formData);
-    console.log(b);
+  const { updateLoginStore } = useLoginStore(
+    useShallow((state) => ({
+      updateLoginStore: state.updateStore,
+    })),
+  );
+  const { updateStore, isLoading } = useSttStore(
+    useShallow((state) => ({
+      isLoading: state.isLoading,
+      updateStore: state.updateStore,
+    })),
+  );
+
+  const handleAction = async (formData: FormData) => {
+    const token = await getUserToken();
+    if (!token) {
+      updateLoginStore("showLoginModal", true);
+      return;
+    }
+
+    const file = formData.get('file') as File;
+    const language = formData.get('language') as string;
+    const diff = formData.get('diff') as string;
+    const granularity = formData.get('granularity') as string;
+
+    if (!file) {
+      toast("Please upload audio file");
+      return;
+    }
+
+    if (!language) {
+      toast("Please input audio language");
+      return;
+    }
+
+    updateStore('isLoading', true);
+
+    try {
+      const user = decode(token) as JwtPayload;
+      const time = new Date().getTime();
+      const firebasePath = `audio/transcriptions/${user.id}:${time}`;
+      const storage = getStorage();
+      const storef = ref(storage, firebasePath);
+      const result = await uploadBytes(storef, file);
+      const downloadURL = await getDownloadURL(result.ref);
+      console.log(downloadURL);
+
+      updateStore('isLoading', false)
+    } catch (error) {
+      updateStore('isLoading', false)
+      toast('Conversion failed, please try again')
+      console.error(error)
+      return;
+    }
   };
 
   return (
@@ -20,7 +79,9 @@ const SttForm = () => {
         <div className="flex gap-4 justify-end">
           <SttGranularitySelect />
           <DiffSelect />
-          <Button className="h-10">Convert</Button>
+          <Button className="h-10" disabled={isLoading}>
+            {isLoading ? "Converting..." : "Convert"}
+          </Button>
         </div>
       </div>
     </form>

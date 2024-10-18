@@ -21,9 +21,9 @@ const SttGranularitySelect = () => {
   ];
   return (
     <div>
-      <Select name="granularity" defaultValue="Word">
+      <Select name="granularity">
         <SelectTrigger id="granularity" className="h-10">
-          <SelectValue placeholder="Audio Language" />
+          <SelectValue placeholder="Timestamp: None" />
         </SelectTrigger>
         <SelectContent>
           {GRANULARITY_OPTIONS.map((granulary) => (
