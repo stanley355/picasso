@@ -10,7 +10,6 @@ const ThemeButton = () => {
     <Button
       variant="secondary"
       size="icon"
-      className="h-8 w-8"
       onClick={() => {
         if (resolvedTheme === "dark") {
           setTheme("light");
