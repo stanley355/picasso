@@ -8,11 +8,11 @@ type TMainLayout = {
 
 const MainLayout = ({ children }: TMainLayout) => {
   return (
-    <div className="h-screen w-full overflow-hidden p-2 bg-foreground flex flex-col md:p-4">
+    <div className="h-screen w-full overflow-hidden p-2 flex flex-col md:p-4">
       <MainHeader />
       <div className="rounded-lg flex-1 md:flex">
         <Sidebar />
-        <div className="flex-1 overflow-y-auto rounded-lg h-full bg-background relative border">
+        <div className="flex-1 overflow-y-auto rounded-lg h-full bg-foreground relative">
           {children}
           <LoginModal />
         </div>

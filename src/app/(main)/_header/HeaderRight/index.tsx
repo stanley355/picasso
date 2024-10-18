@@ -1,16 +1,22 @@
 import { cookies } from "next/headers";
-import React from "react";
-import AuthenticatedHeader from "./AuthenticatedHeader";
-import NoTokenHeader from "./NoTokenHeader";
+import HeaderRightMobileBtn from "./HeaderRightMobileBtn";
 
 const HeaderRight = () => {
-  const token = cookies().get("token");
 
-  if (token?.value) {
-    return <AuthenticatedHeader />;
-  }
+  return (
+    <div>
+      <HeaderRightMobileBtn />
+    </div>
+    // <Button variant="secondary">
+    // </Button>
+  )
+  // const token = cookies().get("token");
 
-  return <NoTokenHeader />;
+  // if (token?.value) {
+  //   return <AuthenticatedHeader />;
+  // }
+
+  // return <NoTokenHeader />;
 };
 
 export default HeaderRight;
