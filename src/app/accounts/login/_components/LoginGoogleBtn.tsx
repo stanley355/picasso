@@ -33,7 +33,7 @@ const GoogleLoginBtn = () => {
     } catch (error: any) {
       updateStore("isLoading", false);
       toast("Login failed, please try again");
-      console.error(error)
+      console.error(error);
       return;
     }
   };

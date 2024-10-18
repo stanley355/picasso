@@ -80,7 +80,7 @@ const TranslateForm = () => {
     } catch (err: any) {
       updateStore("isLoading", false);
       toast("Translate failed, please try again");
-      console.error(err)
+      console.error(err);
       return;
     }
   };

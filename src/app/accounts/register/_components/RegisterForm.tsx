@@ -78,7 +78,7 @@ const RegisterForm = () => {
     } catch (error: any) {
       updateStore("isLoading", false);
       toast("Register failed, please try again");
-      console.error(error)
+      console.error(error);
       return;
     }
   };

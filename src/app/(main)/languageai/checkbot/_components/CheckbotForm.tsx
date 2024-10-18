@@ -73,7 +73,7 @@ const CheckbotForm = () => {
     } catch (err) {
       updateStore("isLoading", false);
       toast("Check failed, please try again");
-      console.error(err)
+      console.error(err);
       return;
     }
   };
