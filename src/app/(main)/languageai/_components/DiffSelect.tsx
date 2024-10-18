@@ -1,3 +1,4 @@
+
 "use client";
 import { Tooltip } from "react-tooltip";
 import {
@@ -8,11 +9,11 @@ import {
 } from "@/components/ui/select";
 import { SelectValue } from "@radix-ui/react-select";
 
-const CheckbotDiffSelect = () => {
+const DiffSelect = () => {
   return (
     <div>
       <Select name="diff" defaultValue="1.0">
-        <SelectTrigger id="diff">
+        <SelectTrigger id="diff" className="h-10">
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
@@ -30,4 +31,4 @@ const CheckbotDiffSelect = () => {
   );
 };
 
-export default CheckbotDiffSelect;
+export default DiffSelect;

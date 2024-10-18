@@ -2,7 +2,7 @@
 import { useShallow } from "zustand/shallow";
 import { useCheckbotStore } from "../_stores/useCheckbotStore";
 import CheckbotForm from "./CheckbotForm";
-import CheckbotCompletions from "./CheckbotCompletions";
+import CompletionTabs from "../../_components/CompletionTabs";
 
 const CheckbotDesktop = () => {
   const { completions } = useCheckbotStore(
@@ -17,8 +17,8 @@ const CheckbotDesktop = () => {
         <CheckbotForm />
       </div>
       {completions.length > 0 && (
-        <div className="flex-1 max-w-[50%] border-l">
-          <CheckbotCompletions />
+        <div className="flex-1 max-w-[50%]">
+          <CompletionTabs completions={completions} />
         </div>
       )}
     </div>

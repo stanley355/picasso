@@ -1,3 +1,4 @@
+
 "use client";
 import { Tooltip } from "react-tooltip";
 import {
@@ -8,11 +9,11 @@ import {
 } from "@/components/ui/select";
 import { SelectValue } from "@radix-ui/react-select";
 
-const CheckbotVariantSelect = () => {
+const VariantSelect = () => {
   return (
     <div>
       <Select name="variant" defaultValue="1">
-        <SelectTrigger id="variant">
+        <SelectTrigger id="variant" className="h-10">
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
@@ -29,4 +30,4 @@ const CheckbotVariantSelect = () => {
   );
 };
 
-export default CheckbotVariantSelect;
+export default VariantSelect;

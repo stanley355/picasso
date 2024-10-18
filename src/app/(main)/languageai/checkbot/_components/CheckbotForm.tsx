@@ -1,19 +1,21 @@
 "use client";
 
+import { toast } from "react-toastify";
 import { useShallow } from "zustand/shallow";
+import { useLoginStore } from "@/app/accounts/login/_stores/useLoginStore";
+import { useCheckbotStore } from "../_stores/useCheckbotStore";
+
 import { Button } from "@/components/ui/button";
+import DiffSelect from "../../_components/DiffSelect";
+import VariantSelect from "../../_components/VariantSelect";
 
 import CheckbotInstructionSelect from "./CheckbotInstructionSelect";
-import CheckbotVariantSelect from "./CheckbotVariantSelect";
-import CheckbotDiffSelect from "./CheckbotDiffSelect";
-import { getUserToken } from "@/lib/getUserToken";
-import { useLoginStore } from "@/app/accounts/login/_stores/useLoginStore";
 import CheckbotTextarea from "./CheckbotTextarea";
-import { useCheckbotStore } from "../_stores/useCheckbotStore";
-import { toast } from "react-toastify";
-import { CHECKBOT_INSTRUCTIONS } from "../_lib/constant";
+
+import { getUserToken } from "@/lib/getUserToken";
 import { fetchCheckbot } from "@/lib/api/author/checkbots/fetchCheckbot";
 import { sendFirebaseEvent } from "@/lib/firebase/sendFirebaseEvent";
+import { CHECKBOT_INSTRUCTIONS } from "../_lib/constant";
 
 const CheckbotForm = () => {
   const { updateLoginStore } = useLoginStore(
@@ -76,15 +78,14 @@ const CheckbotForm = () => {
   };
 
   return (
-    <form className="flex flex-col h-full" action={handleAction}>
-      <h1 className="text-xl font-semibold p-2 border-b">Checkbot</h1>
+    <form className="flex flex-col h-full rounded-lg" action={handleAction}>
       <CheckbotTextarea />
-      <div className="flex p-2 gap-2 flex-col">
+      <div className="flex p-2 py-4 flex-col gap-4 md:p-4 md:gap-2">
         <CheckbotInstructionSelect />
-        <div className="gap-2 flex justify-end">
-          <CheckbotVariantSelect />
-          <CheckbotDiffSelect />
-          <Button type="submit" disabled={isLoading}>
+        <div className="flex items-center justify-end  gap-2">
+          <DiffSelect />
+          <VariantSelect />
+          <Button type="submit" disabled={isLoading} className="h-10">
             {isLoading ? "Checking..." : "Check"}
           </Button>
         </div>

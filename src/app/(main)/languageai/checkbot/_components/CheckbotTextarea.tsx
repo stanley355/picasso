@@ -7,11 +7,11 @@ const CheckbotTextarea = () => {
   const [value, setValue] = useState("");
 
   return (
-    <div className="relative flex-1 border-b">
+    <div className="flex flex-1">
       <Textarea
         name="content"
         placeholder="Enter text"
-        className="resize-none w-full h-full rounded-none border-none"
+        className="resize-none w-full h-full rounded-none border-none flex-1"
         onChange={(e) => setValue(e.target.value)}
         value={value}
       />
@@ -19,7 +19,6 @@ const CheckbotTextarea = () => {
         size="icon"
         variant="ghost"
         type="button"
-        className="absolute top-0 right-0"
         onClick={() => setValue("")}
       >
         <LuX className="text-xl" />

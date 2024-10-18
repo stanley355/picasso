@@ -11,7 +11,7 @@ import { CHECKBOT_INSTRUCTIONS } from "../_lib/constant";
 const CheckbotInstructionSelect = () => {
   return (
     <Select name="instructionId">
-      <SelectTrigger id="instruction">
+      <SelectTrigger id="instruction" className="h-10">
         <SelectValue placeholder="Select instruction" />
       </SelectTrigger>
       <SelectContent>
@@ -19,7 +19,7 @@ const CheckbotInstructionSelect = () => {
           <SelectItem
             value={String(index)}
             key={instruction.label}
-            onClick={() => {}}
+            onClick={() => { }}
           >
             {instruction.label}
           </SelectItem>
