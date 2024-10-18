@@ -16,13 +16,14 @@ const CompletionTabs = ({ completions }: TCompletionTabs) => {
     if (completions.length > 0) {
       setActiveTab(activeTab);
     }
-  }, [completions]);
+  }, [completions, setActiveTab]);
 
   return (
     <div className="w-full h-full p-2">
       <div className="flex gap-2 mb-2">
         {[...Array(completions.length)].map((_, index) => (
           <Button
+            key={`completionTrigger${index}`}
             className="flex-1"
             variant={index === activeTab ? "secondary" : "ghost"}
             onClick={() => setActiveTab(index)}
