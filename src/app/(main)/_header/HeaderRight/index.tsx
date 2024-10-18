@@ -10,28 +10,39 @@ import { cn } from "@/lib/utils";
 const ThemeButton = dynamic(() => import("./ThemeButton"), { ssr: false });
 
 const HeaderRight = () => {
-  const token = cookies().get('token');
+  const token = cookies().get("token");
 
   return (
     <div className="flex items-center justify-center">
       <HeaderRightMobileBtn />
-      {token?.value ?
+      {token?.value ? (
         <div className="hidden md:flex items-center gap-2">
           <ThemeButton />
-          <Link href="/accounts" className={cn(buttonVariants({ variant: "secondary", size: "icon" }))}>
-            <LuUser className="text-xl" />
+          <Link
+            href="/accounts"
+            className={cn(
+              buttonVariants({ variant: "secondary", size: "icon" }),
+            )}
+          >
+            <LuUser />
           </Link>
         </div>
-        :
+      ) : (
         <div className="hidden md:flex items-center gap-2">
-          <Link href="/accounts/login" className={buttonVariants({ variant: "secondary" })}>
+          <Link
+            href="/accounts/login"
+            className={buttonVariants({ variant: "secondary" })}
+          >
             Login
           </Link>
-          <Link href="/accounts/register" className={buttonVariants({ variant: "default" })}>
+          <Link
+            href="/accounts/register"
+            className={buttonVariants({ variant: "default" })}
+          >
             Sign up
           </Link>
         </div>
-      }
+      )}
     </div>
   );
   // const token = cookies().get("token");

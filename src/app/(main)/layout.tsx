@@ -1,5 +1,6 @@
 import LoginModal from "../accounts/login/_components/LoginModal";
 import MainHeader from "./_header";
+import HeaderMobileMenu from "./_header/HeaderMobileMenu";
 import Sidebar from "./_sidebar";
 
 type TMainLayout = {
@@ -15,6 +16,7 @@ const MainLayout = ({ children }: TMainLayout) => {
         <div className="flex-1 overflow-y-auto rounded-lg h-full bg-foreground relative">
           {children}
           <LoginModal />
+          <HeaderMobileMenu />
         </div>
       </div>
     </div>
