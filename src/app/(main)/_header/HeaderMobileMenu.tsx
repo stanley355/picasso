@@ -38,12 +38,17 @@ const HeaderMobileMenu = () => {
         </Button>
       </div>
 
-
-      <div className={cn("flex-col gap-4", isAccountTab ? "hidden" : "flex")} onClick={() => updateStore('showMobileMenu', false)}>
+      <div
+        className={cn("flex-col gap-4", isAccountTab ? "hidden" : "flex")}
+        onClick={() => updateStore("showMobileMenu", false)}
+      >
         <LanguageSidebarMenu />
         <SupportSidebarMenu />
       </div>
-      <div className={cn(isAccountTab ? "block" : "hidden")} onClick={() => updateStore("showMobileMenu", false)}>
+      <div
+        className={cn(isAccountTab ? "block" : "hidden")}
+        onClick={() => updateStore("showMobileMenu", false)}
+      >
         <AccountSidebarMenu />
       </div>
     </div>
