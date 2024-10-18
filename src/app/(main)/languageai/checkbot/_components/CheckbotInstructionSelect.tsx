@@ -19,7 +19,7 @@ const CheckbotInstructionSelect = () => {
           <SelectItem
             value={String(index)}
             key={instruction.label}
-            onClick={() => { }}
+            onClick={() => {}}
           >
             {instruction.label}
           </SelectItem>
