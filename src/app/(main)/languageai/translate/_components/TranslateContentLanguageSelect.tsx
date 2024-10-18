@@ -11,7 +11,7 @@ import { TRANSLATE_LANGUAGES } from "../_lib/constant";
 const TranslateContentLanguageSelect = () => {
   return (
     <Select name="contentLanguage">
-      <SelectTrigger id="contentLanguage">
+      <SelectTrigger id="contentLanguage" className="h-10">
         <SelectValue placeholder="Detect Language" />
       </SelectTrigger>
       <SelectContent>

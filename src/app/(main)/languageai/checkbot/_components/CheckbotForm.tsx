@@ -80,7 +80,7 @@ const CheckbotForm = () => {
   return (
     <form className="flex flex-col h-full rounded-lg" action={handleAction}>
       <CheckbotTextarea />
-      <div className="flex p-2 py-4 flex-col gap-4 md:p-4 md:gap-2">
+      <div className="flex p-4 flex-col gap-4 md:gap-2">
         <CheckbotInstructionSelect />
         <div className="flex items-center justify-end  gap-2">
           <DiffSelect />

@@ -7,7 +7,7 @@ const TranslateTextarea = () => {
   const [value, setValue] = useState("");
 
   return (
-    <div className="relative flex-1 border-b">
+    <div className="flex flex-1">
       <Textarea
         name="content"
         placeholder="Enter text"
@@ -19,7 +19,6 @@ const TranslateTextarea = () => {
         size="icon"
         variant="ghost"
         type="button"
-        className="absolute top-0 right-0"
         onClick={() => setValue("")}
       >
         <LuX className="text-xl" />

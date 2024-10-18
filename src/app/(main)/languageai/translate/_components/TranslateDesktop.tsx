@@ -3,7 +3,7 @@ import { useShallow } from "zustand/shallow";
 import { useTranslateStore } from "../_stores/useTranslateStore";
 
 import TranslateForm from "./TranslateForm";
-import TranslateCompletions from "./TranslateCompletions";
+import CompletionTabs from "../../_components/CompletionTabs";
 
 const TranslateDesktop = () => {
   const { completions } = useTranslateStore(
@@ -18,8 +18,9 @@ const TranslateDesktop = () => {
         <TranslateForm />
       </div>
       {completions.length > 0 && (
-        <div className="flex-1 max-w-[50%] border-l">
-          <TranslateCompletions />
+        <div className="flex-1 max-w-[50%]">
+          <CompletionTabs completions={completions} />
+          {/* <TranslateCompletions /> */}
         </div>
       )}
     </div>

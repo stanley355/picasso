@@ -7,15 +7,15 @@ import { useTranslateStore } from "../_stores/useTranslateStore";
 import { useLoginStore } from "@/app/accounts/login/_stores/useLoginStore";
 
 import { Button } from "@/components/ui/button";
-
-import { getUserToken } from "@/lib/getUserToken";
-import { sendFirebaseEvent } from "@/lib/firebase/sendFirebaseEvent";
+import DiffSelect from "../../_components/DiffSelect";
+import VariantSelect from "../../_components/VariantSelect";
 
 import TranslateTextarea from "./TranslateTextarea";
 import TranslateContentLanguageSelect from "./TranslateContentLanguageSelect";
 import TranslateTargetLanguageSelect from "./TranslateTargetLanguageSelect";
-import TranslateDiffSelect from "./TranslateDiffSelect";
-import TranslateVariantSelect from "./TranslateVariantSelect";
+
+import { getUserToken } from "@/lib/getUserToken";
+import { sendFirebaseEvent } from "@/lib/firebase/sendFirebaseEvent";
 import { fetchTranslation } from "@/lib/api/author/translation/fetchTranslation";
 import { createTranslateSystemContent } from "../_lib/createTranslateSystemContent";
 
@@ -86,18 +86,17 @@ const TranslateForm = () => {
 
   return (
     <form className="flex flex-col h-full" action={handleAction}>
-      <h1 className="text-xl font-semibold p-2 border-b">Translate</h1>
       <TranslateTextarea />
-      <div className="flex p-2 gap-2 flex-col">
+      <div className="flex p-4 flex-col gap-4 md:gap-2">
         <div className="flex gap-2 justify-between items-center">
           <TranslateContentLanguageSelect />
           <LuArrowRight className="text-3xl" />
           <TranslateTargetLanguageSelect />
         </div>
-        <div className="gap-2 flex justify-end">
-          <TranslateVariantSelect />
-          <TranslateDiffSelect />
-          <Button type="submit" disabled={isLoading}>
+        <div className="flex items-center justify-end  gap-2">
+          <DiffSelect />
+          <VariantSelect />
+          <Button type="submit" disabled={isLoading} className="h-10">
             {isLoading ? "Checking..." : "Check"}
           </Button>
         </div>

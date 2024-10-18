@@ -5,7 +5,7 @@ import { useTranslateStore } from "../_stores/useTranslateStore";
 
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
 import TranslateForm from "./TranslateForm";
-import TranslateCompletions from "./TranslateCompletions";
+import CompletionTabs from "../../_components/CompletionTabs";
 
 const TranslateMobile = () => {
   const { completions } = useTranslateStore(
@@ -21,13 +21,13 @@ const TranslateMobile = () => {
           <TranslateForm />
         </Panel>
         {completions.length > 0 && (
-          <PanelResizeHandle className="bg-foreground py-2 flex items-center justify-center">
+          <PanelResizeHandle className="bg-background py-2 flex items-center justify-center">
             <LuSeparatorHorizontal className="text-lg" />
           </PanelResizeHandle>
         )}
         {completions.length > 0 && (
           <Panel id="mobileCompletionPanel" order={2} defaultSize={50}>
-            <TranslateCompletions />
+            <CompletionTabs completions={completions} />
           </Panel>
         )}
       </PanelGroup>
