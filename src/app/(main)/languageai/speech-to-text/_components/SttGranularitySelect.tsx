@@ -9,7 +9,6 @@ import { SelectValue } from "@radix-ui/react-select";
 import { Tooltip } from "react-tooltip";
 
 const SttGranularitySelect = () => {
-
   const GRANULARITY_OPTIONS = [
     {
       label: "Timestamp: Word",
@@ -22,7 +21,6 @@ const SttGranularitySelect = () => {
   ];
   return (
     <div>
-
       <Select name="granularity" defaultValue="Word">
         <SelectTrigger id="granularity" className="h-10">
           <SelectValue placeholder="Audio Language" />

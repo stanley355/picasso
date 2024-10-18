@@ -1,9 +1,4 @@
-import {
-  useRef,
-  useState,
-  memo,
-  ChangeEvent,
-} from "react";
+import { useRef, useState, memo, ChangeEvent } from "react";
 import { useShallow } from "zustand/shallow";
 import { useLoginStore } from "@/app/accounts/login/_stores/useLoginStore";
 import { toast } from "react-toastify";
@@ -36,8 +31,8 @@ const SttAudioInput = () => {
       return;
     }
 
-    setFile(file)
-    return
+    setFile(file);
+    return;
   };
 
   return (
@@ -51,14 +46,17 @@ const SttAudioInput = () => {
         className="invisible h-0"
         onChange={handleUpload}
       />
-      <Button type="button" className="w-full h-full rounded-none flex-col gap-2" variant="ghost" onClick={() => inputRef.current.click()}>
+      <Button
+        type="button"
+        className="w-full h-full rounded-none flex-col gap-2"
+        variant="ghost"
+        onClick={() => inputRef.current.click()}
+      >
         <IoIosCloudUpload className="text-3xl" />
-        <div className="line-clamp-1 max-w-[75%]">{
-          file?.name ? file.name :
-            "Upload your file here"}</div>
-        <div>{
-          file?.size ? `${file.size % 1024} KB` :
-            "*.mp3,.mp4, .wav"}</div>
+        <div className="line-clamp-1 max-w-[75%]">
+          {file?.name ? file.name : "Upload your file here"}
+        </div>
+        <div>{file?.size ? `${file.size % 1024} KB` : "*.mp3,.mp4, .wav"}</div>
       </Button>
     </div>
   );
