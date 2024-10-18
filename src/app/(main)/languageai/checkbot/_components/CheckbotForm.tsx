@@ -70,9 +70,10 @@ const CheckbotForm = () => {
       updateStore("completions", completions);
       updateStore("isLoading", false);
       return;
-    } catch (error: any) {
+    } catch (err) {
       updateStore("isLoading", false);
-      toast(error.message);
+      toast("Check failed, please try again");
+      console.error(err)
       return;
     }
   };

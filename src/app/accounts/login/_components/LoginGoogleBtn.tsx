@@ -31,8 +31,9 @@ const GoogleLoginBtn = () => {
       if (loginSuccess) window.location.reload();
       return;
     } catch (error: any) {
-      toast(error.message);
       updateStore("isLoading", false);
+      toast("Login failed, please try again");
+      console.error(error)
       return;
     }
   };

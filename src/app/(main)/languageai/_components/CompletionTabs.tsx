@@ -14,7 +14,7 @@ const CompletionTabs = ({ completions }: TCompletionTabs) => {
   useEffect(() => {
     // reset index if user reprompt
     if (completions.length > 0) {
-      setActiveTab(activeTab);
+      setActiveTab(0);
     }
   }, [completions, setActiveTab]);
 

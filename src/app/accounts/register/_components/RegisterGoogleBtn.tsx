@@ -35,8 +35,9 @@ const GoogleLoginBtn = () => {
       if (loginSuccess) window.location.href = "/accounts";
       return;
     } catch (error: any) {
-      toast(error.message);
       updateStore("isLoading", false);
+      toast("Register failed, please try again");
+      console.error(error)
       return;
     }
   };

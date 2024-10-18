@@ -37,7 +37,8 @@ const LoginForm = () => {
       return;
     } catch (error: any) {
       updateStore("isLoading", false);
-      toast(error.message);
+      toast("Login failed, please try again");
+      console.error(error)
       return;
     }
   };
