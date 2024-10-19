@@ -57,7 +57,7 @@ const SttAudioInput = () => {
       />
       <Button
         type="button"
-        className="w-full h-full rounded-none flex-col gap-2"
+        className="w-full h-full rounded-none flex-col gap-2 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-accent"
         variant="ghost"
         onClick={() => inputRef.current.click()}
         disabled={isLoading}

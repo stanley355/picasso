@@ -1,12 +1,19 @@
 "use client";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 
 const AccountSidebarMenu = () => {
   const pathname = usePathname();
-  const hasToken = document.cookie.includes("token");
+  const [hasToken, setHasToken] = useState(false);
+
+
+  useEffect(() => {
+    const token = document.cookie.includes("token");
+    setHasToken(token)
+  }, [])
 
   const BASE_MENU = [
     {
