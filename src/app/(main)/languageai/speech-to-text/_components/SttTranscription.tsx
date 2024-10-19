@@ -3,14 +3,17 @@ import { LuCopy } from "react-icons/lu";
 import { Button } from "@/components/ui/button";
 import { copyToClipboard } from "@/lib/copyToClipboard";
 import { cn } from "@/lib/utils";
-import { TTranscriptionSegment, TTranscriptionWord } from "@/lib/api/author/types/TTranscription";
+import {
+  TTranscriptionSegment,
+  TTranscriptionWord,
+} from "@/lib/api/author/types/TTranscription";
 import SttWordTable from "./SttWordTable";
 import SttSegmentTable from "./SttSegmentTable";
 
 type TSttTranscription = {
   text: string;
-  words: TTranscriptionWord[] | null,
-  segments: TTranscriptionSegment[] | null
+  words: TTranscriptionWord[] | null;
+  segments: TTranscriptionSegment[] | null;
 };
 
 const SttTranscription = ({ text, words, segments }: TSttTranscription) => {
@@ -33,28 +36,28 @@ const SttTranscription = ({ text, words, segments }: TSttTranscription) => {
         >
           Transcription
         </Button>
-        {(words || segments) && <Button
-          className="flex-1"
-          variant={showTimestamp ? "secondary" : "ghost"}
-          onClick={() => setShowTimestamp(true)}
-        >
-          Timestamp
-        </Button>}
+        {(words || segments) && (
+          <Button
+            className="flex-1"
+            variant={showTimestamp ? "secondary" : "ghost"}
+            onClick={() => setShowTimestamp(true)}
+          >
+            Timestamp
+          </Button>
+        )}
       </div>
       <div className="flex-1 overflow-auto">
-        <div className={cn(
-          "text-sm p-2 gap-2",
-          showTimestamp ? "hidden" : "flex",
-        )}>
+        <div
+          className={cn("text-sm p-2 gap-2", showTimestamp ? "hidden" : "flex")}
+        >
           <div className="flex-1">{text}</div>
           <Button size="icon" onClick={() => copyToClipboard(text)}>
             <LuCopy />
           </Button>
         </div>
-        <div className={cn(
-          "text-sm p-2 gap-2",
-          showTimestamp ? "flex" : "hidden",
-        )}>
+        <div
+          className={cn("text-sm p-2 gap-2", showTimestamp ? "flex" : "hidden")}
+        >
           {words && <SttWordTable words={words} />}
           {segments && <SttSegmentTable segments={segments} />}
         </div>

@@ -1,4 +1,3 @@
-
 "use client";
 import { useShallow } from "zustand/shallow";
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
@@ -12,7 +11,7 @@ const SttMobile = () => {
     useShallow((state) => ({
       text: state.text,
       words: state.words,
-      segments: state.segments
+      segments: state.segments,
     })),
   );
 
