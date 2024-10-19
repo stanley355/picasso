@@ -32,12 +32,12 @@ const CompletionTabs = ({ completions }: TCompletionTabs) => {
           </Button>
         ))}
       </div>
-      <div>
+      <div className="overflow-auto">
         {completions.map((completion, index) => (
           <div
             key={`completionContent${index}`}
             className={cn(
-              "text-sm p-2 gap-2 overflow-auto",
+              "text-sm p-2 gap-2",
               activeTab === index ? "flex " : "hidden",
             )}
           >

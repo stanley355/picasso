@@ -5,11 +5,14 @@ import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
 import { LuSeparatorHorizontal } from "react-icons/lu";
 import SttForm from "./SttForm";
 import { useSttStore } from "../_stores/useSttStore";
+import SttTranscription from "./SttTranscription";
 
 const SttMobile = () => {
-  const { text } = useSttStore(
+  const { text, words, segments } = useSttStore(
     useShallow((state) => ({
-      text: state.text
+      text: state.text,
+      words: state.words,
+      segments: state.segments
     })),
   );
 
@@ -26,7 +29,7 @@ const SttMobile = () => {
         )}
         {text && (
           <Panel id="mobileCompletionPanel" order={2} defaultSize={50}>
-            {text}
+            <SttTranscription text={text} words={words} segments={segments} />
           </Panel>
         )}
       </PanelGroup>

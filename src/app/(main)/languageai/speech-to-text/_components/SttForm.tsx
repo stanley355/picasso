@@ -74,6 +74,8 @@ const SttForm = () => {
 
       const stt = await fetchSpeechToText(reqBody);
       updateStore("text", stt.text);
+      updateStore("words", stt.words);
+      updateStore("segments", stt.segments);
       updateStore("isLoading", false);
     } catch (error) {
       updateStore("isLoading", false);
