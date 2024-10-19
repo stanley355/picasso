@@ -8,7 +8,6 @@ import {
 } from "@/components/ui/table";
 import {
   TTranscriptionSegment,
-  TTranscriptionWord,
 } from "@/lib/api/author/types/TTranscription";
 import React from "react";
 
