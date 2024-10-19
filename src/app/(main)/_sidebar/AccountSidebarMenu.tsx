@@ -3,11 +3,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
-import { useEffect } from "react";
 
 const AccountSidebarMenu = () => {
   const pathname = usePathname();
-  const hasToken = document.cookie.includes('token')
+  const hasToken = document.cookie.includes("token");
 
   const BASE_MENU = [
     {
@@ -38,7 +37,7 @@ const AccountSidebarMenu = () => {
   return (
     <div>
       <div className="font-bold px-4 mb-2">Account</div>
-      <div className={cn("flex-col gap-2", hasToken ? "hidden" : 'flex')}>
+      <div className={cn("flex-col gap-2", hasToken ? "hidden" : "flex")}>
         {BASE_MENU.map((item) => (
           <Link
             href={item.href}
@@ -54,7 +53,7 @@ const AccountSidebarMenu = () => {
           </Link>
         ))}
       </div>
-      <div className={cn("flex-col gap-2", hasToken ? "flex" : 'hidden')}>
+      <div className={cn("flex-col gap-2", hasToken ? "flex" : "hidden")}>
         {MENU.map((item) => (
           <Link
             href={item.href}
