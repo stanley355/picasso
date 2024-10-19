@@ -14,7 +14,7 @@ type TRequestBody = {
 };
 
 export const fetchTranslation = async (
-  reqBody: TRequestBody
+  reqBody: TRequestBody,
 ): Promise<TTranslation[]> => {
   const token = cookies().get("token");
   const user = decode(String(token?.value)) as JwtPayload;
