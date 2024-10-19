@@ -1,4 +1,4 @@
-export type TCheckbot = {
+export type TTranslation = {
   id: number;
   user_id: string;
   created_at: string;

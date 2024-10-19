@@ -2,13 +2,14 @@ import { create } from "zustand";
 
 type TUseSttStore = {
   isLoading: boolean;
-  completions: string[];
+  text: string;
   updateStore: (key: keyof TUseSttStore, value: any) => void;
 };
 
 export const useSttStore = create<TUseSttStore>((set) => ({
   isLoading: false,
-  completions: [],
+  text: "",
+
   updateStore: (key, value) =>
     set((state) => ({
       ...state,

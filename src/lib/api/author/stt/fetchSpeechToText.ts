@@ -2,7 +2,7 @@
 import { cookies } from "next/headers";
 import { AUTHOR_TOKEN, AUTHOR_URL } from "../../constant";
 import { decode, JwtPayload } from "jsonwebtoken";
-import { TCheckbot } from "../types/TCheckbot";
+import { TTranscription } from "../types/TTranscription";
 
 type TRequestBody = {
   file_name: string;
@@ -13,8 +13,8 @@ type TRequestBody = {
 };
 
 export const fetchSpeechToText = async (
-  reqBody: TRequestBody,
-): Promise<TCheckbot[]> => {
+  reqBody: TRequestBody
+): Promise<TTranscription> => {
   const token = cookies().get("token");
   const user = decode(String(token?.value)) as JwtPayload;
 

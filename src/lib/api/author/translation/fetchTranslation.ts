@@ -2,7 +2,7 @@
 import { cookies } from "next/headers";
 import { AUTHOR_TOKEN, AUTHOR_URL } from "../../constant";
 import { decode, JwtPayload } from "jsonwebtoken";
-import { TCheckbot } from "../types/TCheckbot";
+import { TTranslation } from "../types/TTranslation";
 
 type TRequestBody = {
   content_language: string;
@@ -14,8 +14,8 @@ type TRequestBody = {
 };
 
 export const fetchTranslation = async (
-  reqBody: TRequestBody,
-): Promise<TCheckbot[]> => {
+  reqBody: TRequestBody
+): Promise<TTranslation[]> => {
   const token = cookies().get("token");
   const user = decode(String(token?.value)) as JwtPayload;
 
