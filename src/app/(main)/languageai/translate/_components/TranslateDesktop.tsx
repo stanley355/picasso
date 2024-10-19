@@ -18,9 +18,8 @@ const TranslateDesktop = () => {
         <TranslateForm />
       </div>
       {completions.length > 0 && (
-        <div className="flex-1 max-w-[50%]">
+        <div className="flex-1 max-w-[50%] border-l">
           <CompletionTabs completions={completions} />
-          {/* <TranslateCompletions /> */}
         </div>
       )}
     </div>
