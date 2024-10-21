@@ -1,7 +1,5 @@
 "use client";
-import { useShallow } from "zustand/shallow";
-import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
-import { LuSeparatorHorizontal } from "react-icons/lu";
+import { Panel, PanelGroup } from "react-resizable-panels";
 import TtsForm from "./TtsForm";
 
 const TtsMobile = () => {

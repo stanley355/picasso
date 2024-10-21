@@ -5,6 +5,14 @@ import TtsTextarea from "./TtsTextarea";
 import TtsVoiceSelect from "./TtsVoiceSelect";
 
 const TtsForm = () => {
+
+  // const handleAction = async (formData: FormData) => {
+  //   // console.log(formData);
+  //   const data = Object.fromEntries(formData)
+  //   console.log(data);
+
+  // }
+
   return (
     <form action="" className="flex flex-col flex-1 h-full">
       <TtsTextarea />
