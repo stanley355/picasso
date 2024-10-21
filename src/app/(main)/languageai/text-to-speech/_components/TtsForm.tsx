@@ -1,8 +1,8 @@
-import { Button } from "@/components/ui/button"
-import TtsResponseFormatSelect from "./TtsResponseFormatSelect"
-import TtsSpeedSelect from "./TtsSpeedSelect"
-import TtsTextarea from "./TtsTextarea"
-import TtsVoiceSelect from "./TtsVoiceSelect"
+import { Button } from "@/components/ui/button";
+import TtsResponseFormatSelect from "./TtsResponseFormatSelect";
+import TtsSpeedSelect from "./TtsSpeedSelect";
+import TtsTextarea from "./TtsTextarea";
+import TtsVoiceSelect from "./TtsVoiceSelect";
 
 const TtsForm = () => {
   return (
@@ -17,7 +17,7 @@ const TtsForm = () => {
         <Button className="h-10">Convert</Button>
       </div>
     </form>
-  )
-}
+  );
+};
 
-export default TtsForm
+export default TtsForm;

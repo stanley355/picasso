@@ -5,7 +5,6 @@ import { LuSeparatorHorizontal } from "react-icons/lu";
 import TtsForm from "./TtsForm";
 
 const TtsMobile = () => {
-
   return (
     <div className="md:hidden flex-1">
       <PanelGroup direction="vertical">
