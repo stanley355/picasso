@@ -51,7 +51,7 @@ const SttAudioInput = () => {
         id="file"
         name="file"
         ref={inputRef}
-        accept="*.mp3, *.mp4, *.wav"
+        accept="*.mp3, *.wav"
         className="invisible h-0"
         onChange={handleUpload}
       />
@@ -70,7 +70,7 @@ const SttAudioInput = () => {
         <div className="line-clamp-1 max-w-[75%]">
           {file?.name ? file.name : "Upload your file here"}
         </div>
-        <div>{file?.size ? `${file.size % 1024} KB` : "*.mp3,.mp4, .wav"}</div>
+        <div>{file?.size ? `${file.size % 1024} KB` : "*.mp3 or *.wav"}</div>
       </Button>
     </div>
   );

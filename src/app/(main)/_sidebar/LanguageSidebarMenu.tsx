@@ -17,12 +17,12 @@ const LanguageSidebarMenu = () => {
       href: "/languageai/translate",
     },
     {
-      title: "Speech to Text",
-      href: "/languageai/speech-to-text",
-    },
-    {
       title: "Text to Speech",
       href: "/languageai/text-to-speech",
+    },
+    {
+      title: "Speech to Text",
+      href: "/languageai/speech-to-text",
     },
   ];
 

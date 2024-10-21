@@ -6,10 +6,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import {
-  TTranscriptionSegment,
-} from "@/lib/api/author/types/TTranscription";
-import React from "react";
+import { TTranscriptionSegment } from "@/lib/api/author/types/TTranscription";
 
 type TSttSegmentTable = {
   segments: TTranscriptionSegment[];
