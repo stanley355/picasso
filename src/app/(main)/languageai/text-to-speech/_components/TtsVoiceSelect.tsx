@@ -11,12 +11,12 @@ import { SelectValue } from "@radix-ui/react-select";
 const TtsVoiceSelect = () => {
   return (
     <div>
-      <Select name="voice" defaultValue="Alpha">
+      <Select name="voice" defaultValue="Alloy">
         <SelectTrigger id="voice" className="h-10">
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="Alpha">Voice: Alpha</SelectItem>
+          <SelectItem value="Alloy">Voice: Alloy</SelectItem>
           <SelectItem value="Echo">Voice: Echo</SelectItem>
           <SelectItem value="Fable">Voice Fable</SelectItem>
           <SelectItem value="Nova">Voice: Nova</SelectItem>

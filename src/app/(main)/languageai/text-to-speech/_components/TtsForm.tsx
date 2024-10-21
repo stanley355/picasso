@@ -3,18 +3,67 @@ import TtsResponseFormatSelect from "./TtsResponseFormatSelect";
 import TtsSpeedSelect from "./TtsSpeedSelect";
 import TtsTextarea from "./TtsTextarea";
 import TtsVoiceSelect from "./TtsVoiceSelect";
+import { toast } from "react-toastify";
+import { fetchTextToSpeech } from "@/lib/api/author/tts/fetchTextToSpeech";
+import { useShallow } from "zustand/shallow";
+import { useLoginStore } from "@/app/accounts/login/_stores/useLoginStore";
+import { getUserToken } from "@/lib/getUserToken";
+import { useTtsStore } from "../_stores/useTtsStore";
 
 const TtsForm = () => {
+  const { updateLoginStore } = useLoginStore(
+    useShallow((state) => ({
+      updateLoginStore: state.updateStore,
+    })),
+  );
 
-  // const handleAction = async (formData: FormData) => {
-  //   // console.log(formData);
-  //   const data = Object.fromEntries(formData)
-  //   console.log(data);
+  const { updateStore, isLoading } = useTtsStore(
+    useShallow((state) => ({
+      isLoading: state.isLoading,
+      updateStore: state.updateStore,
+    })),
+  );
 
-  // }
+  const handleAction = async (formData: FormData) => {
+    const token = await getUserToken();
+    if (!token) {
+      updateLoginStore("showLoginModal", true);
+      return;
+    }
+
+    const content = formData.get('content') as string;
+    const voice = formData.get('voice') as string;
+    const speed = formData.get('speed') as string;
+    const output = formData.get('output') as string;
+
+    if (!content) {
+      toast('Please enter your text');
+      return;
+    }
+
+    updateStore("isLoading", true);
+    try {
+      const reqBody = {
+        input: content,
+        voice,
+        speed: Number(speed),
+        response_format: output
+      }
+
+      const tts = await fetchTextToSpeech(reqBody);
+      updateStore("isLoading", false);
+      updateStore('tts', tts);
+      return;
+    } catch (error) {
+      console.error(error)
+      updateStore("isLoading", false);
+      toast('Fail to convert, please try again');
+      return;
+    }
+  }
 
   return (
-    <form action="" className="flex flex-col flex-1 h-full">
+    <form action={handleAction} className="flex flex-col flex-1 h-full">
       <TtsTextarea />
       <div className="flex flex-col gap-2">
         <div className="flex items-center gap-2">
@@ -22,7 +71,11 @@ const TtsForm = () => {
           <TtsSpeedSelect />
           <TtsResponseFormatSelect />
         </div>
-        <Button className="h-10">Convert</Button>
+        <div className="flex justify-end">
+          <Button className="h-10" type="submit" disabled={isLoading}>
+            {isLoading ? "Converting..." : "Convert"}
+          </Button>
+        </div>
       </div>
     </form>
   );
