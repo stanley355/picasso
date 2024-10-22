@@ -1,4 +1,3 @@
-
 "use client";
 import { useShallow } from "zustand/shallow";
 import { useTtsStore } from "../_stores/useTtsStore";
@@ -8,7 +7,7 @@ import TtsResult from "./TtsResult";
 const TtsDesktop = () => {
   const { tts } = useTtsStore(
     useShallow((state) => ({
-      tts: state.tts
+      tts: state.tts,
     })),
   );
 

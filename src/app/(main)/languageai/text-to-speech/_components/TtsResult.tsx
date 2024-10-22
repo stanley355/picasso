@@ -17,7 +17,11 @@ const TtsResult = ({ tts }: TTtsResult) => {
     <div className="w-full h-full flex items-center justify-center flex-col gap-2">
       <RiVoiceprintLine className="text-lg" />
       <div>{tts?.id + "." + tts?.response_format}</div>
-      <a href={fileUrl} target="_blank" className={buttonVariants({ variant: "default" })}>
+      <a
+        href={fileUrl}
+        target="_blank"
+        className={buttonVariants({ variant: "default" })}
+      >
         Click here to download
       </a>
     </div>
