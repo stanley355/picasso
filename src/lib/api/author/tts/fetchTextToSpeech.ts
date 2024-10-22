@@ -12,7 +12,7 @@ type TRequestBody = {
 };
 
 export const fetchTextToSpeech = async (
-  reqBody: TRequestBody
+  reqBody: TRequestBody,
 ): Promise<TTranscription> => {
   const token = cookies().get("token");
   const user = decode(String(token?.value)) as JwtPayload;

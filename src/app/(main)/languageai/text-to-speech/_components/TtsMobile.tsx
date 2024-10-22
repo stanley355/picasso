@@ -9,7 +9,7 @@ import TtsResult from "./TtsResult";
 const TtsMobile = () => {
   const { tts } = useTtsStore(
     useShallow((state) => ({
-      tts: state.tts
+      tts: state.tts,
     })),
   );
 

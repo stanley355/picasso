@@ -31,13 +31,13 @@ const TtsForm = () => {
       return;
     }
 
-    const content = formData.get('content') as string;
-    const voice = formData.get('voice') as string;
-    const speed = formData.get('speed') as string;
-    const output = formData.get('output') as string;
+    const content = formData.get("content") as string;
+    const voice = formData.get("voice") as string;
+    const speed = formData.get("speed") as string;
+    const output = formData.get("output") as string;
 
     if (!content) {
-      toast('Please enter your text');
+      toast("Please enter your text");
       return;
     }
 
@@ -47,26 +47,26 @@ const TtsForm = () => {
         input: content,
         voice,
         speed: Number(speed),
-        response_format: output
-      }
+        response_format: output,
+      };
 
       const tts = await fetchTextToSpeech(reqBody);
       updateStore("isLoading", false);
-      updateStore('tts', tts);
+      updateStore("tts", tts);
       return;
     } catch (error) {
-      console.error(error)
+      console.error(error);
       updateStore("isLoading", false);
-      toast('Fail to convert, please try again');
+      toast("Fail to convert, please try again");
       return;
     }
-  }
+  };
 
   return (
     <form action={handleAction} className="flex flex-col flex-1 h-full">
       <TtsTextarea />
-      <div className="flex flex-col gap-2">
-        <div className="flex items-center gap-2">
+      <div className="flex flex-col gap-4 p-4">
+        <div className="flex items-center gap-2 justify-end">
           <TtsVoiceSelect />
           <TtsSpeedSelect />
           <TtsResponseFormatSelect />
