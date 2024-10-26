@@ -38,12 +38,8 @@ const GoogleLoginBtn = () => {
     }
   };
 
-  const clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
-  console.log(clientId);
   return (
-    <GoogleOAuthProvider
-      clientId={String(clientId)}
-    >
+    <GoogleOAuthProvider clientId={String(process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID)}>
       <GoogleLogin
         locale="en-US"
         onSuccess={handleGoogleLogin}
