@@ -3,7 +3,7 @@ import { initializeApp } from "firebase/app";
 const initFirebaseApp = () => {
   const appEnv = process.env.NEXT_PUBLIC_APP_ENV;
 
-  if (appEnv === "production") {
+  if (appEnv !== "develop") {
     const firebaseConfig = {
       apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
       authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
