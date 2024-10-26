@@ -2,8 +2,9 @@ import { initializeApp } from "firebase/app";
 
 const initFirebaseApp = () => {
   const appEnv = process.env.NEXT_PUBLIC_APP_ENV;
-
+  const apiKey =  process.env.NEXT_PUBLIC_FIREBASE_API_KEY;
   console.log(appEnv);
+  console.log(apiKey)
   if (appEnv === "production") {
     const firebaseConfig = {
       apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
