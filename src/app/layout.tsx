@@ -8,8 +8,9 @@ const workSans = Montserrat({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Languageai.id",
   description: "One AI for language and writing",
-  keywords: "languageai, fix writing, check grammar, check spelling, text paraphrase,translate, translations, translation, translator, machine translation, online translation",
-  icons: "/icon.png"
+  keywords:
+    "languageai, fix writing, check grammar, check spelling, text paraphrase,translate, translations, translation, translator, machine translation, online translation",
+  icons: "/icon.png",
 };
 
 export default function RootLayout({

@@ -15,7 +15,7 @@ import SttGranularitySelect from "./SttGranularitySelect";
 import { getUserToken } from "@/lib/getUserToken";
 import { decode, JwtPayload } from "jsonwebtoken";
 import { fetchSpeechToText } from "@/lib/api/author/stt/fetchSpeechToText";
-import {sendFirebaseEvent} from "@/lib/firebase/sendFirebaseEvent";
+import { sendFirebaseEvent } from "@/lib/firebase/sendFirebaseEvent";
 
 const SttForm = () => {
   const { updateLoginStore } = useLoginStore(
@@ -53,7 +53,7 @@ const SttForm = () => {
     }
 
     updateStore("isLoading", true);
-    sendFirebaseEvent('speech-to-text')
+    sendFirebaseEvent("speech-to-text");
 
     try {
       const user = decode(token) as JwtPayload;
