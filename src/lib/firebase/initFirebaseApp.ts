@@ -2,9 +2,9 @@ import { initializeApp } from "firebase/app";
 
 const initFirebaseApp = () => {
   const appEnv = process.env.NEXT_PUBLIC_APP_ENV;
-  const apiKey =  process.env.NEXT_PUBLIC_FIREBASE_API_KEY;
-  console.log(appEnv);
-  console.log(apiKey)
+  const apiKey = process.env.NEXT_PUBLIC_FIREBASE_API_KEY;
+  console.log(111, appEnv);
+  console.log(222, apiKey);
   if (appEnv === "production") {
     const firebaseConfig = {
       apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -16,7 +16,7 @@ const initFirebaseApp = () => {
       measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
     };
 
-    console.log(firebaseConfig);
+    console.log(333, firebaseConfig);
     const app = initializeApp(firebaseConfig);
     return app;
   }
