@@ -19,8 +19,6 @@ export const fetchTextToSpeech = async (
 
   const url = `${AUTHOR_URL}v1/text-to-speech/`;
 
-  console.log(user.id, reqBody);
-
   try {
     const response = await fetch(url, {
       method: "POST",
