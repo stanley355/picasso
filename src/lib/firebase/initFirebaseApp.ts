@@ -3,6 +3,7 @@ import { initializeApp } from "firebase/app";
 const initFirebaseApp = () => {
   const appEnv = process.env.NEXT_PUBLIC_APP_ENV;
 
+  console.log(appEnv)
   if (appEnv !== "develop") {
     const firebaseConfig = {
       apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -14,10 +15,12 @@ const initFirebaseApp = () => {
       measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
     };
 
+    console.log(firebaseConfig)
     const app = initializeApp(firebaseConfig);
     return app;
   }
 
+  console.log("Is develoop")
   return null;
 };
 
