@@ -9,6 +9,7 @@ import { useShallow } from "zustand/shallow";
 import { useLoginStore } from "@/app/accounts/login/_stores/useLoginStore";
 import { getUserToken } from "@/lib/getUserToken";
 import { useTtsStore } from "../_stores/useTtsStore";
+import {sendFirebaseEvent} from "@/lib/firebase/sendFirebaseEvent";
 
 const TtsForm = () => {
   const { updateLoginStore } = useLoginStore(
@@ -42,6 +43,7 @@ const TtsForm = () => {
     }
 
     updateStore("isLoading", true);
+    sendFirebaseEvent('text-to-speech');
     try {
       const reqBody = {
         input: content,

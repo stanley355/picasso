@@ -20,7 +20,7 @@ const SupportSidebarMenu = () => {
             "justify-start",
           )}
         >
-            Blame me!
+          Blame me!
         </Link>
       </div>
     </div>

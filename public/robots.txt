@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://languageai.id/
+
+# Sitemaps
+Sitemap: https://languageai.id/sitemap.xml
