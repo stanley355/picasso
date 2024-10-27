@@ -32,7 +32,7 @@ const CompletionTabs = ({ completions }: TCompletionTabs) => {
           </Button>
         ))}
       </div>
-      <div className="overflow-auto">
+      <div className="max-h-96 overflow-auto">
         {completions.map((completion, index) => (
           <div
             key={`completionContent${index}`}

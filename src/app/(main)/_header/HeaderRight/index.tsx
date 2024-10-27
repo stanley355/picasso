@@ -20,9 +20,7 @@ const HeaderRight = () => {
           <ThemeButton />
           <Link
             href="/accounts"
-            className={cn(
-              buttonVariants({ variant: "secondary", size: "icon" }),
-            )}
+            className={cn(buttonVariants({ variant: "default", size: "icon" }))}
           >
             <LuUser />
           </Link>
@@ -45,13 +43,6 @@ const HeaderRight = () => {
       )}
     </div>
   );
-  // const token = cookies().get("token");
-
-  // if (token?.value) {
-  //   return <AuthenticatedHeader />;
-  // }
-
-  // return <NoTokenHeader />;
 };
 
 export default HeaderRight;

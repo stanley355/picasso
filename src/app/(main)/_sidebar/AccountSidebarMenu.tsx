@@ -9,11 +9,10 @@ const AccountSidebarMenu = () => {
   const pathname = usePathname();
   const [hasToken, setHasToken] = useState(false);
 
-
   useEffect(() => {
     const token = document.cookie.includes("token");
-    setHasToken(token)
-  }, [])
+    setHasToken(token);
+  }, []);
 
   const BASE_MENU = [
     {
@@ -51,7 +50,7 @@ const AccountSidebarMenu = () => {
             key={item.title}
             className={cn(
               buttonVariants({
-                variant: pathname === item.href ? "secondary" : "ghost",
+                variant: pathname === item.href ? "default" : "ghost",
               }),
               "justify-start",
             )}
@@ -67,7 +66,7 @@ const AccountSidebarMenu = () => {
             key={item.title}
             className={cn(
               buttonVariants({
-                variant: pathname === item.href ? "secondary" : "ghost",
+                variant: pathname === item.href ? "default" : "ghost",
               }),
               "justify-start",
             )}

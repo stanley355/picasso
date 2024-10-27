@@ -1,8 +1,12 @@
 "use client";
+import dynamic from "next/dynamic";
 import { useShallow } from "zustand/shallow";
-import { IoIosClose, IoIosMenu } from "react-icons/io";
-import { Button } from "@/components/ui/button";
+import { IoIosApps, IoIosClose } from "react-icons/io";
+
 import { useHeaderStore } from "../_store/useHeaderStore";
+import { Button } from "@/components/ui/button";
+
+const ThemeButton = dynamic(() => import("./ThemeButton"), { ssr: false });
 
 const HeaderRightMobileBtn = () => {
   const { showMobileMenu, updateStore } = useHeaderStore(
@@ -13,18 +17,19 @@ const HeaderRightMobileBtn = () => {
   );
 
   return (
-    <Button
-      size="icon"
-      variant="ghost"
-      className="md:hidden"
-      onClick={() => updateStore("showMobileMenu", !showMobileMenu)}
-    >
-      {showMobileMenu ? (
-        <IoIosClose className="text-3xl" />
-      ) : (
-        <IoIosMenu className="text-3xl" />
-      )}
-    </Button>
+    <div className="flex gap-2 items-center md:hidden">
+      <ThemeButton />
+      <Button
+        size="icon"
+        onClick={() => updateStore("showMobileMenu", !showMobileMenu)}
+      >
+        {showMobileMenu ? (
+          <IoIosClose className="text-3xl" />
+        ) : (
+          <IoIosApps className="text-xl" />
+        )}
+      </Button>
+    </div>
   );
 };
 

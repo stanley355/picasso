@@ -46,7 +46,7 @@ const SttTranscription = ({ text, words, segments }: TSttTranscription) => {
           </Button>
         )}
       </div>
-      <div className="flex-1 overflow-auto">
+      <div className="flex-1 overflow-auto max-h-96">
         <div
           className={cn("text-sm p-2 gap-2", showTimestamp ? "hidden" : "flex")}
         >

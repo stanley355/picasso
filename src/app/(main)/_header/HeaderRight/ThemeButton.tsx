@@ -8,7 +8,7 @@ const ThemeButton = () => {
 
   return (
     <Button
-      variant="secondary"
+      variant="default"
       size="icon"
       onClick={() => {
         if (resolvedTheme === "dark") {

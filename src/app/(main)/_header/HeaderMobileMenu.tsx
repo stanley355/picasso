@@ -1,11 +1,14 @@
 "use client";
+import { useState } from "react";
 import { useShallow } from "zustand/shallow";
 import { useHeaderStore } from "./_store/useHeaderStore";
+
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+
 import LanguageSidebarMenu from "../_sidebar/LanguageSidebarMenu";
 import SupportSidebarMenu from "../_sidebar/SupportSidebarMenu";
 import AccountSidebarMenu from "../_sidebar/AccountSidebarMenu";
+// import BpsSidebarmenu from "../_sidebar/BpsSidebarMenu";
 import { cn } from "@/lib/utils";
 
 const HeaderMobileMenu = () => {
@@ -24,14 +27,14 @@ const HeaderMobileMenu = () => {
       <div className="flex gap-2 mb-4">
         <Button
           className="flex-1"
-          variant={isAccountTab ? "ghost" : "secondary"}
+          variant={isAccountTab ? "ghost" : "default"}
           onClick={() => setIsAccountTab(false)}
         >
           AI
         </Button>
         <Button
           className="flex-1"
-          variant={isAccountTab ? "secondary" : "ghost"}
+          variant={isAccountTab ? "default" : "ghost"}
           onClick={() => setIsAccountTab(true)}
         >
           Account
@@ -43,6 +46,7 @@ const HeaderMobileMenu = () => {
         onClick={() => updateStore("showMobileMenu", false)}
       >
         <LanguageSidebarMenu />
+        {/*<BpsSidebarmenu />*/}
         <SupportSidebarMenu />
       </div>
       <div
