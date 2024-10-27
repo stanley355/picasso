@@ -9,11 +9,10 @@ const AccountSidebarMenu = () => {
   const pathname = usePathname();
   const [hasToken, setHasToken] = useState(false);
 
-
   useEffect(() => {
     const token = document.cookie.includes("token");
-    setHasToken(token)
-  }, [])
+    setHasToken(token);
+  }, []);
 
   const BASE_MENU = [
     {

@@ -20,9 +20,7 @@ const HeaderRight = () => {
           <ThemeButton />
           <Link
             href="/accounts"
-            className={cn(
-              buttonVariants({ variant: "default", size: "icon" }),
-            )}
+            className={cn(buttonVariants({ variant: "default", size: "icon" }))}
           >
             <LuUser />
           </Link>
