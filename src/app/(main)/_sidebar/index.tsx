@@ -7,7 +7,7 @@ const Sidebar = () => {
   return (
     <div className="hidden md:flex pr-4 flex-col gap-4">
       <LanguageSidebarMenu />
-        {/*<BpsSidebarmenu />*/}
+      {/*<BpsSidebarmenu />*/}
       <AccountSidebarMenu />
       <SupportSidebarMenu />
     </div>

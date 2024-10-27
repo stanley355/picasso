@@ -11,8 +11,8 @@ const BpsSidebarmenu = () => {
   return (
     <div>
       <div className="font-bold px-4 mb-2 flex items-center gap-2">
-          <Image src="/images/bps.png" alt="BPS" width={25} height={25} />
-          Statistics
+        <Image src="/images/bps.png" alt="BPS" width={25} height={25} />
+        Statistics
       </div>
       <div className="flex flex-col gap-2">
         <Link
@@ -24,7 +24,7 @@ const BpsSidebarmenu = () => {
             "justify-start",
           )}
         >
-            Census Data
+          Census Data
         </Link>
       </div>
     </div>
