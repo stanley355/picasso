@@ -1,6 +1,6 @@
 "use client";
 import { useShallow } from "zustand/shallow";
-import { IoIosApps, IoIosClose, IoIosMenu } from "react-icons/io";
+import { IoIosApps, IoIosClose } from "react-icons/io";
 import { Button } from "@/components/ui/button";
 import { useHeaderStore } from "../_store/useHeaderStore";
 import ThemeButton from "@/app/(main)/_header/HeaderRight/ThemeButton";
