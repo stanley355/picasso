@@ -1,9 +1,12 @@
 "use client";
+import dynamic from "next/dynamic";
 import { useShallow } from "zustand/shallow";
 import { IoIosApps, IoIosClose } from "react-icons/io";
-import { Button } from "@/components/ui/button";
+
 import { useHeaderStore } from "../_store/useHeaderStore";
-import ThemeButton from "@/app/(main)/_header/HeaderRight/ThemeButton";
+import { Button } from "@/components/ui/button";
+
+const ThemeButton = dynamic(() => import("./ThemeButton"), { ssr: false });
 
 const HeaderRightMobileBtn = () => {
   const { showMobileMenu, updateStore } = useHeaderStore(
