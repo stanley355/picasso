@@ -21,7 +21,7 @@ const HeaderRight = () => {
           <Link
             href="/accounts"
             className={cn(
-              buttonVariants({ variant: "secondary", size: "icon" }),
+              buttonVariants({ variant: "default", size: "icon" }),
             )}
           >
             <LuUser />
@@ -45,13 +45,6 @@ const HeaderRight = () => {
       )}
     </div>
   );
-  // const token = cookies().get("token");
-
-  // if (token?.value) {
-  //   return <AuthenticatedHeader />;
-  // }
-
-  // return <NoTokenHeader />;
 };
 
 export default HeaderRight;

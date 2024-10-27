@@ -1,8 +1,9 @@
 "use client";
 import { useShallow } from "zustand/shallow";
-import { IoIosClose, IoIosMenu } from "react-icons/io";
+import {IoIosApps, IoIosClose, IoIosMenu} from "react-icons/io";
 import { Button } from "@/components/ui/button";
 import { useHeaderStore } from "../_store/useHeaderStore";
+import ThemeButton from "@/app/(main)/_header/HeaderRight/ThemeButton";
 
 const HeaderRightMobileBtn = () => {
   const { showMobileMenu, updateStore } = useHeaderStore(
@@ -13,18 +14,19 @@ const HeaderRightMobileBtn = () => {
   );
 
   return (
+      <div className="flex gap-2 items-center md:hidden">
+      <ThemeButton />
     <Button
       size="icon"
-      variant="ghost"
-      className="md:hidden"
       onClick={() => updateStore("showMobileMenu", !showMobileMenu)}
     >
       {showMobileMenu ? (
         <IoIosClose className="text-3xl" />
       ) : (
-        <IoIosMenu className="text-3xl" />
+        <IoIosApps className="text-xl" />
       )}
     </Button>
+      </div>
   );
 };
 

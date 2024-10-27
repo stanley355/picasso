@@ -36,7 +36,7 @@ const LanguageSidebarMenu = () => {
             key={item.title}
             className={cn(
               buttonVariants({
-                variant: pathname === item.href ? "secondary" : "ghost",
+                variant: pathname === item.href ? "default" : "ghost",
               }),
               "justify-start",
             )}

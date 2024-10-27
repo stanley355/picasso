@@ -15,7 +15,7 @@ const SupportSidebarMenu = () => {
           href="/blame-me"
           className={cn(
             buttonVariants({
-              variant: pathname === "/blame-me" ? "secondary" : "ghost",
+              variant: pathname === "/blame-me" ? "default" : "ghost",
             }),
             "justify-start",
           )}

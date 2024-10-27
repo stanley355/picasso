@@ -24,14 +24,14 @@ const HeaderMobileMenu = () => {
       <div className="flex gap-2 mb-4">
         <Button
           className="flex-1"
-          variant={isAccountTab ? "ghost" : "secondary"}
+          variant={isAccountTab ? "ghost" : "default"}
           onClick={() => setIsAccountTab(false)}
         >
           AI
         </Button>
         <Button
           className="flex-1"
-          variant={isAccountTab ? "secondary" : "ghost"}
+          variant={isAccountTab ? "default" : "ghost"}
           onClick={() => setIsAccountTab(true)}
         >
           Account

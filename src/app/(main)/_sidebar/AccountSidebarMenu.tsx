@@ -51,7 +51,7 @@ const AccountSidebarMenu = () => {
             key={item.title}
             className={cn(
               buttonVariants({
-                variant: pathname === item.href ? "secondary" : "ghost",
+                variant: pathname === item.href ? "default" : "ghost",
               }),
               "justify-start",
             )}
@@ -67,7 +67,7 @@ const AccountSidebarMenu = () => {
             key={item.title}
             className={cn(
               buttonVariants({
-                variant: pathname === item.href ? "secondary" : "ghost",
+                variant: pathname === item.href ? "default" : "ghost",
               }),
               "justify-start",
             )}
