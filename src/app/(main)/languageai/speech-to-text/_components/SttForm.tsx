@@ -16,7 +16,7 @@ import { getUserToken } from "@/lib/getUserToken";
 import { decode, JwtPayload } from "jsonwebtoken";
 import { fetchSpeechToText } from "@/lib/api/author/stt/fetchSpeechToText";
 import { sendFirebaseEvent } from "@/lib/firebase/sendFirebaseEvent";
-import {cn} from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
 const SttForm = () => {
   const { updateLoginStore } = useLoginStore(
@@ -96,8 +96,10 @@ const SttForm = () => {
         <div className="flex gap-4 justify-end">
           <SttGranularitySelect />
           <DiffSelect />
-          <Button type="submit" disabled={isLoading}
-                  className={cn("h-10", {'animate-pulse': isLoading})}
+          <Button
+            type="submit"
+            disabled={isLoading}
+            className={cn("h-10", { "animate-pulse": isLoading })}
           >
             {isLoading ? "Converting..." : "Convert"}
           </Button>
