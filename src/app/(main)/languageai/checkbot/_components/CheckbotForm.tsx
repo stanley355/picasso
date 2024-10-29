@@ -16,6 +16,7 @@ import { getUserToken } from "@/lib/getUserToken";
 import { fetchCheckbot } from "@/lib/api/author/checkbots/fetchCheckbot";
 import { sendFirebaseEvent } from "@/lib/firebase/sendFirebaseEvent";
 import { CHECKBOT_INSTRUCTIONS } from "../_lib/constant";
+import {cn} from "@/lib/utils";
 
 const CheckbotForm = () => {
   const { updateLoginStore } = useLoginStore(
@@ -86,7 +87,9 @@ const CheckbotForm = () => {
         <div className="flex items-center justify-end  gap-2">
           <DiffSelect />
           <VariantSelect />
-          <Button type="submit" disabled={isLoading} className="h-10">
+          <Button type="submit" disabled={isLoading}
+                  className={cn("h-10", {'animate-pulse': isLoading})}
+          >
             {isLoading ? "Checking..." : "Check"}
           </Button>
         </div>
