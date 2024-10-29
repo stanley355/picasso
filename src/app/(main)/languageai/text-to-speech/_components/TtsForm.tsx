@@ -10,6 +10,7 @@ import { useLoginStore } from "@/app/accounts/login/_stores/useLoginStore";
 import { getUserToken } from "@/lib/getUserToken";
 import { useTtsStore } from "../_stores/useTtsStore";
 import { sendFirebaseEvent } from "@/lib/firebase/sendFirebaseEvent";
+import { cn } from "@/lib/utils";
 
 const TtsForm = () => {
   const { updateLoginStore } = useLoginStore(
@@ -74,7 +75,11 @@ const TtsForm = () => {
           <TtsResponseFormatSelect />
         </div>
         <div className="flex justify-end">
-          <Button className="h-10" type="submit" disabled={isLoading}>
+          <Button
+            type="submit"
+            disabled={isLoading}
+            className={cn("h-10", { "animate-pulse": isLoading })}
+          >
             {isLoading ? "Converting..." : "Convert"}
           </Button>
         </div>

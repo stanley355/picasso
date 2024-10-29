@@ -25,7 +25,7 @@ const CompletionTabs = ({ completions }: TCompletionTabs) => {
           <Button
             key={`completionTrigger${index}`}
             className="flex-1"
-            variant={index === activeTab ? "secondary" : "ghost"}
+            variant={index === activeTab ? "default" : "ghost"}
             onClick={() => setActiveTab(index)}
           >
             Variant {index + 1}

@@ -18,6 +18,7 @@ import { getUserToken } from "@/lib/getUserToken";
 import { sendFirebaseEvent } from "@/lib/firebase/sendFirebaseEvent";
 import { fetchTranslation } from "@/lib/api/author/translation/fetchTranslation";
 import { createTranslateSystemContent } from "../_lib/createTranslateSystemContent";
+import { cn } from "@/lib/utils";
 
 const TranslateForm = () => {
   const { updateLoginStore } = useLoginStore(
@@ -97,8 +98,12 @@ const TranslateForm = () => {
         <div className="flex items-center justify-end  gap-2">
           <DiffSelect />
           <VariantSelect />
-          <Button type="submit" disabled={isLoading} className="h-10">
-            {isLoading ? "Checking..." : "Check"}
+          <Button
+            type="submit"
+            disabled={isLoading}
+            className={cn("h-10", { "animate-pulse": isLoading })}
+          >
+            {isLoading ? "Translating..." : "Translate"}
           </Button>
         </div>
       </div>
