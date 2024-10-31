@@ -18,7 +18,7 @@ export type TBpsDynamicDataVar = {
   graph_name: string;
 };
 
-type TResponse = (TBpsPageAndCount | TBpsDynamicDataVar)[];
+type TResponse = (TBpsPageAndCount | TBpsDynamicDataVar[])[];
 
 export const fetchBpsDynamicDataVarList = async (
   keyword: string,
