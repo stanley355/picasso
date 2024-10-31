@@ -22,18 +22,19 @@ const BpsSearchResultPage = async ({ searchParams }: TBpsSearchResultPage) => {
 
   return (
     <div className="flex flex-col h-full">
-      <h1 className="text-lg font-semibold border-b p-2">Statistic Search (BETA)</h1>
+      <h1 className="text-lg font-semibold border-b p-2">
+        Statistic Search (BETA)
+      </h1>
       <div className="flex flex-col p-2 h-full">
-
-      {typeof dynamicData?.data === "string" ? (
-        <BpsSearchResultNotFound />
-      ) : (
-        <BpsSearchResult
-          pageAndCount={dynamicData.data[0] as unknown as TBpsPageAndCount}
-          dynamicData={dynamicData.data[1] as unknown as TBpsDynamicDataVar[]}
-        />
-      )}
-      <BpsSearchBox />
+        {typeof dynamicData?.data === "string" ? (
+          <BpsSearchResultNotFound />
+        ) : (
+          <BpsSearchResult
+            pageAndCount={dynamicData.data[0] as unknown as TBpsPageAndCount}
+            dynamicData={dynamicData.data[1] as unknown as TBpsDynamicDataVar[]}
+          />
+        )}
+        <BpsSearchBox />
       </div>
     </div>
   );
