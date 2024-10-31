@@ -1,18 +1,17 @@
 import Link from "next/link";
 import BpsSearchResultPagination from "@/app/(main)/bps/search/_components/BpsSearchResultPagination";
-import {TBpsPageAndCount} from "@/lib/api/bps/types/TBpsPageAndCount";
-import {TBpsDynamicDataVar} from "@/lib/api/bps/dynamicData/fetchBpsDynamicDataVarList";
+import { TBpsPageAndCount } from "@/lib/api/bps/types/TBpsPageAndCount";
+import { TBpsDynamicDataVar } from "@/lib/api/bps/dynamicData/fetchBpsDynamicDataVarList";
 
 type TBpsSearchResult = {
-    pageAndCount: TBpsPageAndCount,
-    dynamicData: TBpsDynamicDataVar[]
-}
+  pageAndCount: TBpsPageAndCount;
+  dynamicData: TBpsDynamicDataVar[];
+};
 
-const BpsSearchResult = ({pageAndCount, dynamicData}:TBpsSearchResult) => {
-
+const BpsSearchResult = ({ pageAndCount, dynamicData }: TBpsSearchResult) => {
   return (
     <div className="h-full flex-1">
-        <BpsSearchResultPagination pageAndCount={pageAndCount} />
+      <BpsSearchResultPagination pageAndCount={pageAndCount} />
       <div className="overflow-auto flex flex-col gap-2 max-h-[70vh] md:max-h-full">
         {dynamicData.map((dynData) => (
           <Link

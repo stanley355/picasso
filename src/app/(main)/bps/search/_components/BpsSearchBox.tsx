@@ -9,11 +9,11 @@ import { useShallow } from "zustand/shallow";
 import { getUserToken } from "@/lib/getUserToken";
 import { fetchBpsDynamicDataVarList } from "@/lib/api/bps/dynamicData/fetchBpsDynamicDataVarList";
 import { useBpsSearchStore } from "@/app/(main)/bps/search/_stores/useBpsSearchStore";
-import {router} from "next/client";
-import {useRouter} from "next/navigation";
+import { router } from "next/client";
+import { useRouter } from "next/navigation";
 
 const BpsSearchBox = () => {
-  const router =useRouter();
+  const router = useRouter();
   const { updateLoginStore } = useLoginStore(
     useShallow((state) => ({
       updateLoginStore: state.updateStore,
