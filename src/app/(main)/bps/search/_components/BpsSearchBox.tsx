@@ -19,10 +19,9 @@ const BpsSearchBox = () => {
     })),
   );
 
-  const { isLoading, updateStore } = useBpsSearchStore(
+  const { isLoading} = useBpsSearchStore(
     useShallow((state) => ({
       isLoading: state.isLoading,
-      updateStore: state.updateStore,
     })),
   );
 
