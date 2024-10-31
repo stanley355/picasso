@@ -4,7 +4,7 @@ import { useBpsSearchStore } from "@/app/(main)/bps/search/_stores/useBpsSearchS
 import { useShallow } from "zustand/shallow";
 import { LuLoader2 } from "react-icons/lu";
 
-const BpsSearchEmptyHero = () => {
+const BpsSearchEmptyResult = () => {
   const { isLoading } = useBpsSearchStore(
     useShallow((state) => ({
       isLoading: state.isLoading,
@@ -23,4 +23,4 @@ const BpsSearchEmptyHero = () => {
   );
 };
 
-export default BpsSearchEmptyHero;
+export default BpsSearchEmptyResult;

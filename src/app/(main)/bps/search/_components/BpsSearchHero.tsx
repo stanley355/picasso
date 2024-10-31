@@ -11,7 +11,7 @@ const BpsSearchHero = () => {
   );
 
   return (
-    <div className="flex-1 flex flex-col items-center justify-center gap-2">
+    <div className="flex flex-col items-center justify-center gap-2 py-4 flex-1">
       <Image
         src="/images/bps.png"
         alt="BPS"

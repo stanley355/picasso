@@ -3,7 +3,7 @@ import { BPS_API_KEY, BPS_API_URL } from "@/lib/api/constant";
 import { TBpsPageAndCount } from "@/lib/api/bps/types/TBpsPageAndCount";
 import { TBpsResponse } from "@/lib/api/bps/types/TBpsResponse";
 
-type TBpsDynamicDataVar = {
+export type TBpsDynamicDataVar = {
   var_id: number;
   title: string;
   sub_id: number;
@@ -26,7 +26,7 @@ type TResponse = Record<
 export const fetchBpsDynamicDataVarList = async (
   keyword: string,
 ): Promise<TBpsResponse<TResponse>> => {
-  const url = `${BPS_API_URL}list/model/var/domain/0000/key/${BPS_API_KEY}/keyword/${keyword}`;
+  const url = `${BPS_API_URL}list/model/var/domain/0000/key/${BPS_API_KEY}/keyword/${keyword}/`;
 
   try {
     const response = await fetch(url, {
@@ -42,6 +42,7 @@ export const fetchBpsDynamicDataVarList = async (
     }
     return data;
   } catch (err: any) {
-    throw new Error(err.message);
+    console.error(err)
+    throw new Error(err);
   }
 };
