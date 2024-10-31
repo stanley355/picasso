@@ -24,7 +24,7 @@ const BpsSidebarmenu = () => {
             "justify-start",
           )}
         >
-            Search
+          Search
         </Link>
       </div>
     </div>
