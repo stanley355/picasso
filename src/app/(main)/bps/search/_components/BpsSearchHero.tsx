@@ -19,7 +19,7 @@ const BpsSearchHero = () => {
         height={100}
         className={isLoading ? "animate-bounce" : ""}
       />
-      <h2 className="text-sm">Search any information about Indonesia</h2>
+      <h2 className="text-sm">Search any statistic about Indonesia</h2>
       <h3 className="text-xs">*BPS Web API Collaboration</h3>
     </div>
   );

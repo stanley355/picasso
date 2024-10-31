@@ -22,7 +22,9 @@ const BpsSearchResultPage = async ({ searchParams }: TBpsSearchResultPage) => {
 
   return (
     <div className="flex flex-col h-full">
-      <h1 className="text-lg font-semibold border-b p-2">Statistic Search</h1>
+      <h1 className="text-lg font-semibold border-b p-2">Statistic Search (BETA)</h1>
+      <div className="flex flex-col p-2 h-full">
+
       {typeof dynamicData?.data === "string" ? (
         <BpsSearchResultNotFound />
       ) : (
@@ -32,6 +34,7 @@ const BpsSearchResultPage = async ({ searchParams }: TBpsSearchResultPage) => {
         />
       )}
       <BpsSearchBox />
+      </div>
     </div>
   );
 };
