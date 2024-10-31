@@ -9,8 +9,11 @@ import { useShallow } from "zustand/shallow";
 import { getUserToken } from "@/lib/getUserToken";
 import { fetchBpsDynamicDataVarList } from "@/lib/api/bps/dynamicData/fetchBpsDynamicDataVarList";
 import { useBpsSearchStore } from "@/app/(main)/bps/search/_stores/useBpsSearchStore";
+import {router} from "next/client";
+import {useRouter} from "next/navigation";
 
 const BpsSearchBox = () => {
+  const router =useRouter();
   const { updateLoginStore } = useLoginStore(
     useShallow((state) => ({
       updateLoginStore: state.updateStore,
@@ -38,23 +41,9 @@ const BpsSearchBox = () => {
     }
 
     updateStore("isLoading", true);
-    try {
-      const cleanKeyword = keyword.replaceAll(" ", "+");
-      const searchResult = await fetchBpsDynamicDataVarList(cleanKeyword);
-      if (typeof searchResult.data !== "string") {
-        updateStore("pageAndCount", searchResult.data[0]);
-        updateStore("dynamicData", searchResult.data[1]);
-      } else {
-        updateStore("pageAndCount", null);
-        updateStore("dynamicData", "");
-      }
-    } catch (err) {
-      console.error(err);
-    } finally {
-      updateStore("showDynamicData", true);
-      updateStore("isLoading", false);
-    }
-
+    const cleanKeyword = keyword.replaceAll(" ", "+");
+    router.push(`/bps/search/result?q=${cleanKeyword}`);
+    updateStore("isLoading", false);
     return;
   };
 

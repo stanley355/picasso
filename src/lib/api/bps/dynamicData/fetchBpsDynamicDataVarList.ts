@@ -18,15 +18,14 @@ export type TBpsDynamicDataVar = {
   graph_name: string;
 };
 
-type TResponse = Record<
-  keyof TBpsPageAndCount | keyof TBpsDynamicDataVar,
-  any
->[];
+type TResponse = (TBpsPageAndCount | TBpsDynamicDataVar)[];
 
 export const fetchBpsDynamicDataVarList = async (
   keyword: string,
+  page: number
 ): Promise<TBpsResponse<TResponse>> => {
-  const url = `${BPS_API_URL}list/model/var/domain/0000/key/${BPS_API_KEY}/keyword/${keyword}/`;
+   const url = `${BPS_API_URL}list/model/var/domain/0000/page/${page}/key/${BPS_API_KEY}/keyword/${keyword}/`;
+
 
   try {
     const response = await fetch(url, {
@@ -37,12 +36,13 @@ export const fetchBpsDynamicDataVarList = async (
     });
 
     const data = await response.json();
-    if (!response.ok) {
-      throw new Error("Fail to fetch BPS dynamic data");
-    }
     return data;
   } catch (err: any) {
     console.error(err);
-    throw new Error(err);
+    return {
+      status: "ERROR",
+      "data-availability": 'list-not-available',
+      data: ""
+    }
   }
 };
