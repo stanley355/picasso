@@ -42,7 +42,7 @@ export const fetchBpsDynamicDataVarList = async (
     }
     return data;
   } catch (err: any) {
-    console.error(err)
+    console.error(err);
     throw new Error(err);
   }
 };

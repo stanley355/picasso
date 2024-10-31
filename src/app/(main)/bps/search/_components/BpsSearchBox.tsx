@@ -1,90 +1,89 @@
 "use client";
-import {LuArrowUpCircle, LuLoader2} from "react-icons/lu";
-import {toast} from "react-toastify";
+import { LuArrowUpCircle, LuLoader2 } from "react-icons/lu";
+import { toast } from "react-toastify";
 
-import {Input} from "@/components/ui/input";
-import {Button} from "@/components/ui/button";
-import {useLoginStore} from "@/app/accounts/login/_stores/useLoginStore";
-import {useShallow} from "zustand/shallow";
-import {getUserToken} from "@/lib/getUserToken";
-import {fetchBpsDynamicDataVarList} from "@/lib/api/bps/dynamicData/fetchBpsDynamicDataVarList";
-import {useBpsSearchStore} from "@/app/(main)/bps/search/_stores/useBpsSearchStore";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { useLoginStore } from "@/app/accounts/login/_stores/useLoginStore";
+import { useShallow } from "zustand/shallow";
+import { getUserToken } from "@/lib/getUserToken";
+import { fetchBpsDynamicDataVarList } from "@/lib/api/bps/dynamicData/fetchBpsDynamicDataVarList";
+import { useBpsSearchStore } from "@/app/(main)/bps/search/_stores/useBpsSearchStore";
 
 const BpsSearchBox = () => {
-    const {updateLoginStore} = useLoginStore(
-        useShallow((state) => ({
-            updateLoginStore: state.updateStore,
-        })),
-    );
+  const { updateLoginStore } = useLoginStore(
+    useShallow((state) => ({
+      updateLoginStore: state.updateStore,
+    })),
+  );
 
-    const {isLoading, updateStore} = useBpsSearchStore(
-        useShallow((state) => ({
-            isLoading: state.isLoading,
-            updateStore: state.updateStore,
-        })),
-    );
+  const { isLoading, updateStore } = useBpsSearchStore(
+    useShallow((state) => ({
+      isLoading: state.isLoading,
+      updateStore: state.updateStore,
+    })),
+  );
 
-    const handleAction = async (formData: FormData) => {
-        const token = await getUserToken();
-        if (!token) {
-            updateLoginStore("showLoginModal", true);
-            return;
-        }
+  const handleAction = async (formData: FormData) => {
+    const token = await getUserToken();
+    if (!token) {
+      updateLoginStore("showLoginModal", true);
+      return;
+    }
 
-        const keyword = formData.get("keyword") as string;
-        if (!keyword) {
-            toast("Your search is empty?");
-            return;
-        }
+    const keyword = formData.get("keyword") as string;
+    if (!keyword) {
+      toast("Your search is empty?");
+      return;
+    }
 
-        updateStore("isLoading", true);
-        try {
+    updateStore("isLoading", true);
+    try {
+      const cleanKeyword = keyword.replaceAll(" ", "+");
+      const searchResult = await fetchBpsDynamicDataVarList(cleanKeyword);
+      if (typeof searchResult.data !== "string") {
+        updateStore("pageAndCount", searchResult.data[0]);
+        updateStore("dynamicData", searchResult.data[1]);
+      } else {
+        updateStore("pageAndCount", null);
+        updateStore("dynamicData", "");
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      updateStore("showDynamicData", true);
+      updateStore("isLoading", false);
+    }
 
-            const cleanKeyword = keyword.replaceAll(" ", "+");
-            const searchResult = await fetchBpsDynamicDataVarList(cleanKeyword);
-            if (typeof searchResult.data !== 'string') {
-                updateStore("pageAndCount", searchResult.data[0]);
-                updateStore("dynamicData", searchResult.data[1]);
-            } else {
-                updateStore("pageAndCount", null);
-                updateStore("dynamicData", "");
-            }
-        } catch (err) {
-            console.error(err)
-        } finally {
-            updateStore("showDynamicData", true);
-            updateStore("isLoading", false);
-        }
+    return;
+  };
 
-        return;
-    };
-
-    return (
-        <form
-            className="flex items-center border rounded-full pr-1 bg-background"
-            action={handleAction}
-        >
-            <Input
-                name="keyword"
-                className="rounded-full rounded-r-none border-none bg-background focus:outline-none pl-4 text-xs disabled:bg-background"
-                placeholder="Search anything"
-                disabled={isLoading}
-            />
-            <Button
-                size="icon"
-                className="rounded-full text-2xl"
-                variant="ghost"
-                type="submit"
-                disabled={isLoading}
-            >
-                {isLoading ? (
-                    <LuLoader2 className="animate-spin"/>
-                ) : (
-                    <LuArrowUpCircle/>
-                )}
-            </Button>
-        </form>
-    );
+  return (
+    <form
+      className="flex items-center border rounded-full pr-1 bg-background"
+      action={handleAction}
+    >
+      <Input
+        name="keyword"
+        className="rounded-full rounded-r-none border-none bg-background focus:outline-none pl-4 text-xs disabled:bg-background"
+        placeholder="Search anything"
+        disabled={isLoading}
+      />
+      <Button
+        size="icon"
+        className="rounded-full text-2xl"
+        variant="ghost"
+        type="submit"
+        disabled={isLoading}
+      >
+        {isLoading ? (
+          <LuLoader2 className="animate-spin" />
+        ) : (
+          <LuArrowUpCircle />
+        )}
+      </Button>
+    </form>
+  );
 };
 
 export default BpsSearchBox;
