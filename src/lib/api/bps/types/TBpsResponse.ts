@@ -1,5 +1,4 @@
-export type TBpsResponse<T> = {
+export type TBpsResponse = {
   status: string;
-  "data-availability": string;
-  data: string | Array<T>;
+  "data-availability": "list-not-available" | "available";
 };
