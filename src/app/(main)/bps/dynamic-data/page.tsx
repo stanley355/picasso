@@ -2,10 +2,9 @@ import {
   fetchBpsDynamicData,
   TBpsDynamicDataRequestParam,
 } from "@/lib/api/bps/dynamicData/fetchBpsDynamicData";
-import { AiTwotoneQuestionCircle } from "react-icons/ai";
-import Link from "next/link";
 import DynamicDataNotFound from "@/app/(main)/bps/dynamic-data/_components/NotFound";
 import { processBpsDynamicDataContent } from "@/lib/api/bps/dynamicData/processBpsDynamicDataContent";
+import DynamicDataTable from "@/app/(main)/bps/dynamic-data/_components/DynamicDataTable";
 
 type TBpsDynamicDataPage = {
   searchParams: TBpsDynamicDataRequestParam;
@@ -31,6 +30,9 @@ const BpsDynamicDataPage = async ({ searchParams }: TBpsDynamicDataPage) => {
   return (
     <div>
       <h1 className="p-2 border-b">{dynamicData.var[0].label}</h1>
+      <div className="p-2">
+        <DynamicDataTable data={datacontent} />
+      </div>
     </div>
   );
 };
