@@ -1,6 +1,5 @@
 "use server";
 import { BPS_API_KEY, BPS_API_URL } from "@/lib/api/constant";
-import { TBpsPageAndCount } from "@/lib/api/bps/types/TBpsPageAndCount";
 import { TBpsResponse } from "@/lib/api/bps/types/TBpsResponse";
 
 export type TBpsDynamicDataVar = {
@@ -17,7 +16,6 @@ export type TBpsDynamicDataVar = {
   graph_id: number;
   graph_name: string;
 };
-
 
 export const fetchBpsDynamicDataVarList = async (
   keyword: string,
