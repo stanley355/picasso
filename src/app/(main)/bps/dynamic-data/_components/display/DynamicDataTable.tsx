@@ -1,7 +1,7 @@
 "use client";
 import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
-import {useShallow} from "zustand/shallow";
-import {useDynamicDataStore} from "@/app/(main)/bps/dynamic-data/_stores/useDynamicDataStore";
+import { useShallow } from "zustand/shallow";
+import { useDynamicDataStore } from "@/app/(main)/bps/dynamic-data/_stores/useDynamicDataStore";
 
 type TDynamicDataTable = {
   data: Record<string, string | number>[];
@@ -9,10 +9,10 @@ type TDynamicDataTable = {
 
 const DynamicDataTable = ({ data }: TDynamicDataTable) => {
   const columns = [
-      {
-          accessorKey: "label",
-          header: "Domain",
-      },
+    {
+      accessorKey: "label",
+      header: "Domain",
+    },
     ...Object.keys(data[0])
       .filter((key) => key !== "label")
       .map((time) => ({
