@@ -8,7 +8,7 @@ import {
   Area,
 } from "recharts";
 import { parseDatacontentKeys } from "@/app/(main)/bps/dynamic-data/_stores/parseDatacontentKeys";
-import {stringToColor} from "@/lib/stringToColor";
+import { stringToColor } from "@/lib/stringToColor";
 
 type TDynamicDataAreaChart = {
   data: Record<string, string | number>[];

@@ -24,7 +24,6 @@ const BpsDynamicDataPage = async ({ searchParams }: TBpsDynamicDataPage) => {
     ? processBpsDynamicDataContent(dynamicData, false)
     : [];
 
-
   if (!dataIsAvailable) {
     return <DynamicDataNotFound />;
   }
@@ -33,8 +32,8 @@ const BpsDynamicDataPage = async ({ searchParams }: TBpsDynamicDataPage) => {
     <div>
       <h1 className="p-2 border-b">{dynamicData.var[0].label}</h1>
       <div className="p-2">
-         <div className="w-full h-full max-h-96 overflow-auto">
-        <DynamicDataDisplay datacontent={datacontent} />
+        <div className="w-full h-full max-h-96 overflow-auto">
+          <DynamicDataDisplay datacontent={datacontent} />
         </div>
         <DynamicDataSetting />
       </div>
