@@ -1,7 +1,5 @@
 "use client";
 import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
-import { useShallow } from "zustand/shallow";
-import { useDynamicDataStore } from "@/app/(main)/bps/dynamic-data/_stores/useDynamicDataStore";
 
 type TDynamicDataTable = {
   data: Record<string, string | number>[];
