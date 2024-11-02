@@ -4,7 +4,6 @@ import {
 } from "@/lib/api/bps/dynamicData/fetchBpsDynamicData";
 import DynamicDataNotFound from "@/app/(main)/bps/dynamic-data/_components/NotFound";
 import { processBpsDynamicDataContent } from "@/lib/api/bps/dynamicData/processBpsDynamicDataContent";
-import DynamicDataTable from "@/app/(main)/bps/dynamic-data/_components/display/DynamicDataTable";
 import DynamicDataSetting from "@/app/(main)/bps/dynamic-data/_components/setting";
 import DynamicDataDisplay from "@/app/(main)/bps/dynamic-data/_components/display";
 
@@ -22,8 +21,9 @@ const BpsDynamicDataPage = async ({ searchParams }: TBpsDynamicDataPage) => {
     baseDynamicData["data-availability"] === "available" ||
     dynamicData["data-availability"] === "available";
   const datacontent = dataIsAvailable
-    ? processBpsDynamicDataContent(dynamicData)
+    ? processBpsDynamicDataContent(dynamicData, false)
     : [];
+
 
   if (!dataIsAvailable) {
     return <DynamicDataNotFound />;
@@ -33,7 +33,9 @@ const BpsDynamicDataPage = async ({ searchParams }: TBpsDynamicDataPage) => {
     <div>
       <h1 className="p-2 border-b">{dynamicData.var[0].label}</h1>
       <div className="p-2">
+         <div className="w-full h-full max-h-96 overflow-auto">
         <DynamicDataDisplay datacontent={datacontent} />
+        </div>
         <DynamicDataSetting />
       </div>
     </div>

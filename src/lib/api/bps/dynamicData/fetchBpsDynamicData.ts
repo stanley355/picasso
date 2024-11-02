@@ -10,7 +10,7 @@ export type TBpsDynamicDataRequestParam = {
   turth?: string;
 };
 
-type TDynamicDataHashmap = {
+export type TDynamicDataHashmap = {
   val: number;
   label: string;
 };
@@ -45,7 +45,7 @@ export const fetchBpsDynamicData = async (
   if (param.vervar) {
     url += `/vervar/${param.vervar}`;
   } else {
-    url += `/vervar/9999`; // 9999 = Indonesia
+    url += `/vervar/9999;3100;3400;3578`; // Indonesia;Jakarta;Yogyakarta;Surabaya
   }
 
   if (param.th) {

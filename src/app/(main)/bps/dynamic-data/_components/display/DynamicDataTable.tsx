@@ -11,7 +11,7 @@ const DynamicDataTable = ({ data }: TDynamicDataTable) => {
   const columns = [
     {
       accessorKey: "label",
-      header: "Domain",
+      header: "Year",
     },
     ...Object.keys(data[0])
       .filter((key) => key !== "label")
@@ -44,7 +44,7 @@ const DynamicDataTable = ({ data }: TDynamicDataTable) => {
         {table.getRowModel().rows.map((row) => (
           <tr key={row.id} className="border-b">
             {row.getVisibleCells().map((cell) => (
-              <td key={cell.id} className="p-2 text-sm">
+              <td key={cell.id} className="p-2 text-sm text-center">
                 {String(cell.getValue())}
               </td>
             ))}
