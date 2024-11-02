@@ -23,7 +23,7 @@ type TResponse = (TBpsPageAndCount | TBpsDynamicDataVar[])[];
 export const fetchBpsDynamicDataVarList = async (
   keyword: string,
   page: number,
-): Promise<TBpsResponse<TResponse>> => {
+): Promise<TBpsResponse> => {
   const url = `${BPS_API_URL}list/model/var/domain/0000/page/${page}/key/${BPS_API_KEY}/keyword/${keyword}/`;
 
   try {
@@ -41,7 +41,6 @@ export const fetchBpsDynamicDataVarList = async (
     return {
       status: "ERROR",
       "data-availability": "list-not-available",
-      data: "",
     };
   }
 };
