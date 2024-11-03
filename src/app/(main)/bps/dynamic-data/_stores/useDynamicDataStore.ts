@@ -12,7 +12,7 @@ type TUseDynamicDataStore = {
 };
 
 export const useDynamicDataStore = create<TUseDynamicDataStore>((set) => ({
-    chart: EDynamicDataChart.Table,
+  chart: EDynamicDataChart.Table,
   updateStore: (key, value) =>
     set((state) => ({
       ...state,

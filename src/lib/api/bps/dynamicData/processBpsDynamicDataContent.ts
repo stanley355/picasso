@@ -7,8 +7,11 @@ export const processBpsDynamicDataContent = (
   bpsDynamicData: TBpsDynamicData,
   isDefaultProcessing: boolean,
 ): Record<string, string | number>[] => {
-  if (!bpsDynamicData?.datacontent || Object.keys(bpsDynamicData.datacontent).length === 0) {
-    return []
+  if (
+    !bpsDynamicData?.datacontent ||
+    Object.keys(bpsDynamicData.datacontent).length === 0
+  ) {
+    return [];
   }
 
   if (isDefaultProcessing) {

@@ -43,7 +43,9 @@ const DynamicDataTable = ({ data }: TDynamicDataTable) => {
           <tr key={row.id} className="border-b">
             {row.getVisibleCells().map((cell) => (
               <td key={cell.id} className="p-2 text-sm text-center">
-                {typeof cell.getValue() === 'number' ? Number(cell.getValue()).toLocaleString('id-ID') : String(cell.getValue())}
+                {typeof cell.getValue() === "number"
+                  ? Number(cell.getValue()).toLocaleString("id-ID")
+                  : String(cell.getValue())}
               </td>
             ))}
           </tr>

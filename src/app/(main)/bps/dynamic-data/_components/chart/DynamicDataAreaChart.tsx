@@ -18,7 +18,7 @@ const DynamicDataAreaChart = ({ data }: TDynamicDataAreaChart) => {
   const datacontentKeys = parseDatacontentKeys(data[0]);
 
   return (
-    <ResponsiveContainer className="aspect-square w-full h-60">
+    <ResponsiveContainer className="aspect-square w-full h-full overflow-hidden">
       <AreaChart data={data}>
         <XAxis dataKey={datacontentKeys.labelKey} />
         <YAxis />

@@ -1,5 +1,4 @@
-
-import {Suspense} from "react";
+import { Suspense } from "react";
 import {
   fetchBpsDynamicData,
   TBpsDynamicDataRequestParam,
@@ -10,7 +9,7 @@ import DynamicDataDisplay from "@/app/(main)/bps/dynamic-data/_components/displa
 
 type TBpsDynamicDataPage = {
   searchParams: TBpsDynamicDataRequestParam & {
-    isDefaultRowCol: "0" | "1" | undefined
+    isDefaultRowCol: "0" | "1" | undefined;
   };
 };
 
@@ -19,7 +18,7 @@ const BpsDynamicDataPage = async ({ searchParams }: TBpsDynamicDataPage) => {
     domain: searchParams.domain,
     var: searchParams.var,
   });
-  const dataIsAvailable = baseDynamicData["data-availability"] === "available"
+  const dataIsAvailable = baseDynamicData["data-availability"] === "available";
 
   if (!dataIsAvailable) {
     return <DynamicDataNotFound />;
@@ -28,7 +27,7 @@ const BpsDynamicDataPage = async ({ searchParams }: TBpsDynamicDataPage) => {
   return (
     <div>
       <h1 className="p-2 border-b">{baseDynamicData.var[0].label}</h1>
-      <div className="p-2 flex flex-col gap-4 md:grid grid-cols-2 h-full">
+      <div className="flex flex-col md:grid grid-cols-2 h-full md:divide-x md:divide-x-border">
         <Suspense fallback={<>Loading</>}>
           <DynamicDataDisplay searchParams={searchParams} />
         </Suspense>
