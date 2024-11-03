@@ -1,6 +1,6 @@
 "use client";
-import {useSearchParams} from "next/navigation";
-import {EDynamicDataChart} from "@/app/(main)/bps/dynamic-data/_stores/useDynamicDataStore";
+import { useSearchParams } from "next/navigation";
+import { EDynamicDataChart } from "@/app/(main)/bps/dynamic-data/_stores/useDynamicDataStore";
 import DynamicDataTable from "@/app/(main)/bps/dynamic-data/_components/chart/DynamicDataTable";
 import DynamicDataAreaChart from "@/app/(main)/bps/dynamic-data/_components/chart/DynamicDataAreaChart";
 import DynamicDataBarChart from "@/app/(main)/bps/dynamic-data/_components/chart/DynamicDataBarChart";
@@ -25,7 +25,7 @@ const DynamicDataChart = ({ data }: TDynamicDataChart) => {
     case EDynamicDataChart.BarStack:
       return <DynamicDataBarStackChart data={data} />;
     case EDynamicDataChart.Line:
-      return <DynamicDataLineChart data={data} />
+      return <DynamicDataLineChart data={data} />;
     default:
       return <DynamicDataTable data={data} />;
   }

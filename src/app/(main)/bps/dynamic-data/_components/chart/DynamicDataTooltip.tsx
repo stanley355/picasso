@@ -1,5 +1,4 @@
 const DynamicDataTooltip = ({ active, payload, label }: any) => {
-
   if (active) {
     return (
       <div className="bg-background shadow-lg text-sm p-2">
