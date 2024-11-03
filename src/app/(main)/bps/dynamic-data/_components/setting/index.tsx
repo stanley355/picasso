@@ -5,7 +5,7 @@ const DynamicDataSetting = () => {
   return (
     <div className="p-4">
       <DynamicDataRowColSetting />
-        <DynamicDataChartSetting />
+      <DynamicDataChartSetting />
     </div>
   );
 };
