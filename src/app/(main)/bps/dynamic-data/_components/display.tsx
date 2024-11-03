@@ -26,7 +26,9 @@ const DynamicDataDisplay = async ({ searchParams }: TDynamicDataDisplay) => {
       <div className="w-full h-full max-h-96 md:max-h-[80vh] mb-4 overflow-auto">
         <DynamicDataChart data={datacontent} />
       </div>
-      <div className="text-sm">Unit: {dynamicData.var[0].unit ? dynamicData.var[0].unit : "Tidak ada"}</div>
+      <div className="text-sm">
+        Unit: {dynamicData.var[0].unit ? dynamicData.var[0].unit : "Tidak ada"}
+      </div>
     </div>
   );
 };
