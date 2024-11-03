@@ -1,14 +1,17 @@
+
+import {Suspense} from "react";
 import {
   fetchBpsDynamicData,
   TBpsDynamicDataRequestParam,
 } from "@/lib/api/bps/dynamicData/fetchBpsDynamicData";
 import DynamicDataNotFound from "@/app/(main)/bps/dynamic-data/_components/NotFound";
-import { processBpsDynamicDataContent } from "@/lib/api/bps/dynamicData/processBpsDynamicDataContent";
 import DynamicDataSetting from "@/app/(main)/bps/dynamic-data/_components/setting";
 import DynamicDataDisplay from "@/app/(main)/bps/dynamic-data/_components/display";
 
 type TBpsDynamicDataPage = {
-  searchParams: TBpsDynamicDataRequestParam;
+  searchParams: TBpsDynamicDataRequestParam & {
+    isDefaultRowCol: "0" | "1" | undefined
+  };
 };
 
 const BpsDynamicDataPage = async ({ searchParams }: TBpsDynamicDataPage) => {
@@ -16,13 +19,7 @@ const BpsDynamicDataPage = async ({ searchParams }: TBpsDynamicDataPage) => {
     domain: searchParams.domain,
     var: searchParams.var,
   });
-  const dynamicData = await fetchBpsDynamicData(searchParams);
-  const dataIsAvailable =
-    baseDynamicData["data-availability"] === "available" ||
-    dynamicData["data-availability"] === "available";
-  const datacontent = dataIsAvailable
-    ? processBpsDynamicDataContent(dynamicData, false)
-    : [];
+  const dataIsAvailable = baseDynamicData["data-availability"] === "available"
 
   if (!dataIsAvailable) {
     return <DynamicDataNotFound />;
@@ -30,11 +27,11 @@ const BpsDynamicDataPage = async ({ searchParams }: TBpsDynamicDataPage) => {
 
   return (
     <div>
-      <h1 className="p-2 border-b">{dynamicData.var[0].label}</h1>
-      <div className="p-2">
-        <div className="w-full h-full max-h-96 overflow-auto">
-          <DynamicDataDisplay datacontent={datacontent} />
-        </div>
+      <h1 className="p-2 border-b">{baseDynamicData.var[0].label}</h1>
+      <div className="p-2 flex flex-col gap-4 md:grid grid-cols-2 h-full">
+        <Suspense fallback={<>Loading</>}>
+          <DynamicDataDisplay searchParams={searchParams} />
+        </Suspense>
         <DynamicDataSetting />
       </div>
     </div>

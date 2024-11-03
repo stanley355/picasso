@@ -1,9 +1,10 @@
-import DynamicDataDisplaySetting from "@/app/(main)/bps/dynamic-data/_components/setting/DisplaySetting";
+import DynamicDataRowColSetting from "@/app/(main)/bps/dynamic-data/_components/setting/RowColSetting";
 
 const DynamicDataSetting = () => {
   return (
-    <div className="my-4">
-      <DynamicDataDisplaySetting />
+    <div>
+      {/*<DynamicDataDisplaySetting />*/}
+      <DynamicDataRowColSetting />
     </div>
   );
 };

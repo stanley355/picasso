@@ -1,18 +1,18 @@
 import { create } from "zustand";
 
-export enum EDynamicDataDisplay {
+export enum EDynamicDataChart {
   Table = "Table",
   Area = "Area",
   Bar = "Bar",
 }
 
 type TUseDynamicDataStore = {
-  display: string;
+  chart: EDynamicDataChart;
   updateStore: (key: keyof TUseDynamicDataStore, value: any) => void;
 };
 
 export const useDynamicDataStore = create<TUseDynamicDataStore>((set) => ({
-  display: "",
+    chart: EDynamicDataChart.Table,
   updateStore: (key, value) =>
     set((state) => ({
       ...state,

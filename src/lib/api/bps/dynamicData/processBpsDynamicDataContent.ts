@@ -6,7 +6,11 @@ import {
 export const processBpsDynamicDataContent = (
   bpsDynamicData: TBpsDynamicData,
   isDefaultProcessing: boolean,
-) => {
+): Record<string, string | number>[] => {
+  if (!bpsDynamicData?.datacontent || Object.keys(bpsDynamicData.datacontent).length === 0) {
+    return []
+  }
+
   if (isDefaultProcessing) {
     return processBpsDynamicDataContentByVervar(bpsDynamicData);
   }
@@ -20,7 +24,7 @@ const processBpsDynamicDataContentByVervar = (
 
   const newDataContent = vervar.map((vervarObj, vervarIndex) => {
     const dataContentRecord: Record<string, string | number> = {
-      label: vervarObj.label,
+      label: sanitizeLabel(vervarObj.label),
     };
     for (
       let variCount = 0;
