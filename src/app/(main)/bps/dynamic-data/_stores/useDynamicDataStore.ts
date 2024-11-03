@@ -4,7 +4,7 @@ export enum EDynamicDataChart {
   Table = "Table",
   Area = "Area",
   Bar = "Bar",
-    BarStack = "Bar - Stack"
+  BarStack = "Bar - Stack",
 }
 
 type TUseDynamicDataStore = {
