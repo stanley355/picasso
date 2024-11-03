@@ -3,7 +3,6 @@ import {
   TBpsDynamicDataRequestParam,
 } from "@/lib/api/bps/dynamicData/fetchBpsDynamicData";
 import { processBpsDynamicDataContent } from "@/lib/api/bps/dynamicData/processBpsDynamicDataContent";
-import DynamicDataTable from "@/app/(main)/bps/dynamic-data/_components/chart/DynamicDataTable";
 import DynamicDataChart from "@/app/(main)/bps/dynamic-data/_components/chart";
 
 type TDynamicDataDisplay = {
@@ -24,10 +23,10 @@ const DynamicDataDisplay = async ({ searchParams }: TDynamicDataDisplay) => {
 
   return (
     <div className="p-4">
-      <div className="w-full h-full max-h-60 md:max-h-[80vh] mb-4 overflow-auto">
+      <div className="w-full h-full max-h-96 md:max-h-[80vh] mb-4 overflow-auto">
         <DynamicDataChart data={datacontent} />
       </div>
-      <div className="text-sm">Unit: {dynamicData.var[0].unit}</div>
+      <div className="text-sm">Unit: {dynamicData.var[0].unit ? dynamicData.var[0].unit : "Tidak ada"}</div>
     </div>
   );
 };
