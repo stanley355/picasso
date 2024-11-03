@@ -9,7 +9,7 @@ const DynamicDataTable = ({ data }: TDynamicDataTable) => {
   const columns = [
     {
       accessorKey: "label",
-      header: "Year",
+      header: "Label",
     },
     ...Object.keys(data[0])
       .filter((key) => key !== "label")

@@ -1,6 +1,6 @@
 const DynamicDataLegend = ({ payload }: any) => {
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="flex flex-wrap gap-2 text-xs">
       {payload.map((item: any) => (
         <div key={item.dataKey} className="flex gap-1 items-center">
           <div

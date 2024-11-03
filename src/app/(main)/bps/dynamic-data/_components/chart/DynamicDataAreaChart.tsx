@@ -2,7 +2,6 @@ import {
   ResponsiveContainer,
   AreaChart,
   XAxis,
-  YAxis,
   CartesianGrid,
   Tooltip,
   Area,
@@ -24,7 +23,6 @@ const DynamicDataAreaChart = ({ data }: TDynamicDataAreaChart) => {
     <ResponsiveContainer className="aspect-square w-full h-full max-h-96 md:max-h-full overflow-hidden">
       <AreaChart
         data={data}
-        className={"w-full"}
         margin={{ left: 25, right: 25 }}
       >
         <XAxis
@@ -36,7 +34,6 @@ const DynamicDataAreaChart = ({ data }: TDynamicDataAreaChart) => {
         <Tooltip content={<DynamicDataTooltip />} />
         {datacontentKeys.valueKeys.map((valKey) => (
           <Area
-            type="natural"
             dataKey={valKey}
             key={valKey}
             stroke={stringToColor(valKey)}

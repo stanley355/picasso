@@ -6,7 +6,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { LuAreaChart, LuTable } from "react-icons/lu";
+import {LuAreaChart, LuBarChart, LuTable} from "react-icons/lu";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { EDynamicDataChart } from "@/app/(main)/bps/dynamic-data/_stores/useDynamicDataStore";
 import { Label } from "@/components/ui/label";
@@ -50,6 +50,18 @@ const DynamicDataChartSetting = () => {
             <div className="flex gap-2 items-center">
               <LuAreaChart />
               {EDynamicDataChart.Area}
+            </div>
+          </SelectItem>
+          <SelectItem value={EDynamicDataChart.Bar} className="gap-2">
+            <div className="flex gap-2 items-center">
+              <LuBarChart />
+              {EDynamicDataChart.Bar}
+            </div>
+          </SelectItem>
+          <SelectItem value={EDynamicDataChart.BarStack} className="gap-2">
+            <div className="flex gap-2 items-center">
+              <LuBarChart />
+              {EDynamicDataChart.BarStack}
             </div>
           </SelectItem>
         </SelectContent>
