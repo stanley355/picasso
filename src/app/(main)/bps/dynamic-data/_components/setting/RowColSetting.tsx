@@ -34,9 +34,9 @@ const DynamicDataRowColSetting = () => {
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value={"0"}>Year Row & Domain Col</SelectItem>
+          <SelectItem value={"0"}>Year to Domain</SelectItem>
           <SelectItem value={"1"} className="gap-2">
-            Domain Row & Year Col
+            Domain to Year
           </SelectItem>
         </SelectContent>
       </Select>

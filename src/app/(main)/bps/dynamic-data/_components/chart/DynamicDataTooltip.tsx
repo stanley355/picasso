@@ -1,4 +1,5 @@
 const DynamicDataTooltip = ({ active, payload, label }: any) => {
+
   if (active) {
     return (
       <div className="bg-background shadow-lg text-sm p-2">
@@ -9,7 +10,7 @@ const DynamicDataTooltip = ({ active, payload, label }: any) => {
               <div className="flex gap-1 items-center">
                 <div
                   className="w-2.5 h-2.5 rounded border"
-                  style={{ backgroundColor: item.fill }}
+                  style={{ backgroundColor: item.color }}
                 />
                 <span>{item.dataKey}</span>
               </div>

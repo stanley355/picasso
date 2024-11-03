@@ -21,7 +21,7 @@ const DynamicDataAreaChart = ({ data }: TDynamicDataAreaChart) => {
 
   return (
     <ResponsiveContainer className="aspect-square w-full h-full max-h-96 md:max-h-full overflow-hidden">
-      <AreaChart data={data} margin={{ left: 25, right: 25 }}>
+      <AreaChart data={data} >
         <XAxis
           className="text-xs"
           dataKey={datacontentKeys.labelKey}

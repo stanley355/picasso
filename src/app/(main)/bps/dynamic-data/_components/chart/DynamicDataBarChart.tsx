@@ -21,7 +21,7 @@ const DynamicDataBarChart = ({ data }: TDynamicDataBarChart) => {
 
   return (
     <ResponsiveContainer className="aspect-square w-full h-full max-h-96 md:max-h-full overflow-hidden">
-      <BarChart data={data} margin={{ left: 25, right: 25 }}>
+      <BarChart data={data} >
         <XAxis
           className="text-xs"
           dataKey={datacontentKeys.labelKey}
