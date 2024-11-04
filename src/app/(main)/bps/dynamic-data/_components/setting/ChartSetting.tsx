@@ -6,7 +6,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { LuAreaChart, LuBarChart, LuLineChart, LuTable } from "react-icons/lu";
+import {LuAreaChart, LuBarChart, LuLineChart, LuPieChart, LuScatterChart, LuTable} from "react-icons/lu";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { EDynamicDataChart } from "@/app/(main)/bps/dynamic-data/_stores/useDynamicDataStore";
 import { Label } from "@/components/ui/label";

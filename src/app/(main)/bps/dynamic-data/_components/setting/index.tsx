@@ -11,6 +11,7 @@ import TuryearSetting from "@/app/(main)/bps/dynamic-data/_components/setting/Tu
 import DynamicDataLabelSetting from "@/app/(main)/bps/dynamic-data/_components/setting/LabelSetting";
 import { EDynamicDataChart } from "@/app/(main)/bps/dynamic-data/_stores/useDynamicDataStore";
 import { cn } from "@/lib/utils";
+import DynamicDataShareBtn from "@/app/(main)/bps/dynamic-data/_components/setting/ShareBtn";
 
 type TDynamicDataSetting = {
   vervars: TDynamicDataHashmap[];
@@ -39,7 +40,7 @@ const DynamicDataSetting = ({
       </div>
       <div
         className={cn(
-          "md:grid-cols-2 md:gap-4 md:place-items-center",
+          "md:grid-cols-2 md:gap-4 md:place-items-center mb-4",
           !chart || chart === EDynamicDataChart.Table ? "hidden" : "grid",
         )}
       >
@@ -49,6 +50,7 @@ const DynamicDataSetting = ({
           <DynamicDataLabelSetting />
         </div>
       </div>
+        <DynamicDataShareBtn />
     </div>
   );
 };

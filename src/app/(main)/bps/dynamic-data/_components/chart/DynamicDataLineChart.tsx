@@ -17,19 +17,19 @@ import {
 } from "@/app/(main)/bps/dynamic-data/_components/setting/constant";
 import { useMemo } from "react";
 
-type TDynamicDataBarChart = {
+type TDynamicDataLineChart = {
   data: Record<string, string | number>[];
   chartColor: EChartColor;
   showLegend: boolean;
   showLabel: boolean;
 };
 
-const DynamicDataBarChart = ({
+const DynamicDataLineChart = ({
   data,
   chartColor,
   showLegend,
   showLabel,
-}: TDynamicDataBarChart) => {
+}: TDynamicDataLineChart) => {
   const datacontentKeys = parseDatacontentKeys(data[0]);
   const chartColorList = useMemo(
     () =>
@@ -65,4 +65,4 @@ const DynamicDataBarChart = ({
   );
 };
 
-export default DynamicDataBarChart;
+export default DynamicDataLineChart;
