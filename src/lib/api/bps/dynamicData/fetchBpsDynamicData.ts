@@ -34,7 +34,8 @@ export type TBpsDynamicData = TBpsResponse & {
 };
 
 export const fetchBpsDynamicData = async (
-  param: TBpsDynamicDataRequestParam, isBaseData: boolean
+  param: TBpsDynamicDataRequestParam,
+  isBaseData: boolean,
 ): Promise<TBpsDynamicData> => {
   let url = `${BPS_API_URL}list/model/data/domain/${param.domain}/var/${param.var}`;
 

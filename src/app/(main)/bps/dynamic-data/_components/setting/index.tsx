@@ -6,7 +6,7 @@ import { TDynamicDataHashmap } from "@/lib/api/bps/dynamicData/fetchBpsDynamicDa
 import VervarSetting from "@/app/(main)/bps/dynamic-data/_components/setting/VervarSetting";
 
 type TDynamicDataSetting = {
-    vervars: TDynamicDataHashmap[];
+  vervars: TDynamicDataHashmap[];
   turvars: TDynamicDataHashmap[];
 };
 
@@ -15,7 +15,7 @@ const DynamicDataSetting = ({ turvars, vervars }: TDynamicDataSetting) => {
     <div className="p-4">
       <DynamicDataRowColSetting />
       <DynamicDataChartSetting />
-        <VervarSetting vervars={vervars} />
+      <VervarSetting vervars={vervars} />
       <TurvarSetting turvars={turvars} />
       {/*<DynamicDataColorSetting />*/}
       {/*<DynamicDataLegendSetting />*/}
