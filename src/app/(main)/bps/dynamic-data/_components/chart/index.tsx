@@ -21,16 +21,17 @@ const DynamicDataChart = ({ data }: TDynamicDataChart) => {
   const chartColor = searchParams.get("chartColor")
     ? (searchParams.get("chartColor") as EChartColor)
     : EChartColor.Combination;
+  const showLegend = searchParams.get("showLegend") ? searchParams.get("showLegend") === "1" : false;
 
   switch (chartType) {
     case EDynamicDataChart.Area:
-      return <DynamicDataAreaChart data={data} chartColor={chartColor} />;
+      return <DynamicDataAreaChart data={data} chartColor={chartColor} showLegend={showLegend} />;
     case EDynamicDataChart.Bar:
-      return <DynamicDataBarChart data={data} chartColor={chartColor} />;
+      return <DynamicDataBarChart data={data} chartColor={chartColor} showLegend={showLegend} />;
     case EDynamicDataChart.BarStack:
-      return <DynamicDataBarStackChart data={data} chartColor={chartColor} />;
+      return <DynamicDataBarStackChart data={data} chartColor={chartColor} showLegend={showLegend} />;
     case EDynamicDataChart.Line:
-      return <DynamicDataLineChart data={data} chartColor={chartColor} />;
+      return <DynamicDataLineChart data={data} chartColor={chartColor} showLegend={showLegend} />;
     default:
       return <DynamicDataTable data={data} />;
   }

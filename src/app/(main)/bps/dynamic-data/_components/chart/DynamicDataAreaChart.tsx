@@ -19,9 +19,10 @@ import { useMemo } from "react";
 type TDynamicDataAreaChart = {
   data: Record<string, string | number>[];
   chartColor: EChartColor;
+  showLegend: boolean;
 };
 
-const DynamicDataAreaChart = ({ data, chartColor }: TDynamicDataAreaChart) => {
+const DynamicDataAreaChart = ({ data, chartColor, showLegend }: TDynamicDataAreaChart) => {
   const datacontentKeys = parseDatacontentKeys(data[0]);
   const chartColorList = useMemo(
     () =>
@@ -49,7 +50,7 @@ const DynamicDataAreaChart = ({ data, chartColor }: TDynamicDataAreaChart) => {
             stackId={datacontentKeys.labelKey}
           />
         ))}
-        <Legend content={<DynamicDataLegend />} />
+        {showLegend && <Legend content={<DynamicDataLegend />} />}
       </AreaChart>
     </ResponsiveContainer>
   );

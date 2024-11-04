@@ -19,11 +19,13 @@ import { useMemo } from "react";
 type TDynamicDataBarChart = {
   data: Record<string, string | number>[];
   chartColor: EChartColor;
+  showLegend: boolean
 };
 
 const DynamicDataBarStackChart = ({
   data,
   chartColor,
+    showLegend
 }: TDynamicDataBarChart) => {
   const datacontentKeys = parseDatacontentKeys(data[0]);
   const chartColorList = useMemo(
@@ -51,7 +53,7 @@ const DynamicDataBarStackChart = ({
             stackId={datacontentKeys.labelKey}
           />
         ))}
-        <Legend content={<DynamicDataLegend />} />
+        {showLegend && <Legend content={<DynamicDataLegend />} />}
       </BarChart>
     </ResponsiveContainer>
   );
