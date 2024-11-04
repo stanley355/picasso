@@ -7,7 +7,6 @@ import DynamicDataNotFound from "@/app/(main)/bps/dynamic-data/_components/NotFo
 import DynamicDataSetting from "@/app/(main)/bps/dynamic-data/_components/setting";
 import DynamicDataDisplay from "@/app/(main)/bps/dynamic-data/_components/display";
 import DynamicDataLoading from "@/app/(main)/bps/dynamic-data/_components/loading";
-import chart from "@/app/(main)/bps/dynamic-data/_components/chart";
 import { EDynamicDataChart } from "@/app/(main)/bps/dynamic-data/_stores/useDynamicDataStore";
 
 type TBpsDynamicDataPage = {

@@ -10,8 +10,6 @@ import {
   LuAreaChart,
   LuBarChart,
   LuLineChart,
-  LuPieChart,
-  LuScatterChart,
   LuTable,
 } from "react-icons/lu";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
