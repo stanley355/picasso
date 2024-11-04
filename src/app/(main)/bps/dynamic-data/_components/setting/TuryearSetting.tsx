@@ -19,7 +19,7 @@ const TuryearSetting = ({ turyears }: TTuryearSetting) => {
   const pathname = usePathname();
 
   const [turyearValues, setTuryearValues] = useState(
-    turyearParams ? turyearParams: "",
+    turyearParams ? turyearParams : "",
   );
 
   const selectOptions = useMemo(() => {

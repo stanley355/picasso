@@ -25,8 +25,8 @@ const DynamicDataChart = ({ data }: TDynamicDataChart) => {
     ? searchParams.get("showLegend") === "1"
     : false;
   const showLabel = searchParams.get("showLabel")
-      ? searchParams.get("showLabel") === "1"
-      : false;
+    ? searchParams.get("showLabel") === "1"
+    : false;
 
   switch (chartType) {
     case EDynamicDataChart.Area:

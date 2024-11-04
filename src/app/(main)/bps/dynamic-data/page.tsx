@@ -8,12 +8,12 @@ import DynamicDataSetting from "@/app/(main)/bps/dynamic-data/_components/settin
 import DynamicDataDisplay from "@/app/(main)/bps/dynamic-data/_components/display";
 import DynamicDataLoading from "@/app/(main)/bps/dynamic-data/_components/loading";
 import chart from "@/app/(main)/bps/dynamic-data/_components/chart";
-import {EDynamicDataChart} from "@/app/(main)/bps/dynamic-data/_stores/useDynamicDataStore";
+import { EDynamicDataChart } from "@/app/(main)/bps/dynamic-data/_stores/useDynamicDataStore";
 
 type TBpsDynamicDataPage = {
   searchParams: TBpsDynamicDataRequestParam & {
     isDefaultRowCol: "0" | "1" | undefined;
-    chart: EDynamicDataChart | undefined
+    chart: EDynamicDataChart | undefined;
   };
 };
 
@@ -39,7 +39,7 @@ const BpsDynamicDataPage = async ({ searchParams }: TBpsDynamicDataPage) => {
           <DynamicDataDisplay searchParams={searchParams} />
         </Suspense>
         <DynamicDataSetting
-            chart={searchParams.chart}
+          chart={searchParams.chart}
           vervars={baseDynamicData.vervar}
           turvars={baseDynamicData.turvar}
           years={baseDynamicData.tahun}

@@ -16,7 +16,7 @@ const VervarSetting = ({ vervars }: TVervarSetting) => {
   const searchParams = useSearchParams();
   const baseVervar = "9999;3100;3400;3578"; // Indonesia;Jakarta;Yogyakarta;Surabaya
   const vervarParams = searchParams.get("vervar")
-    ? searchParams.get("vervar") as string
+    ? (searchParams.get("vervar") as string)
     : baseVervar;
   const router = useRouter();
   const pathname = usePathname();

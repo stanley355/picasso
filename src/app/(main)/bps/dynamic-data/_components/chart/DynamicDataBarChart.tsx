@@ -5,7 +5,8 @@ import {
   CartesianGrid,
   Tooltip,
   Bar,
-  Legend, LabelList,
+  Legend,
+  LabelList,
 } from "recharts";
 import { parseDatacontentKeys } from "@/app/(main)/bps/dynamic-data/_stores/parseDatacontentKeys";
 import DynamicDataTooltip from "@/app/(main)/bps/dynamic-data/_components/chart/DynamicDataTooltip";
@@ -27,7 +28,7 @@ const DynamicDataBarChart = ({
   data,
   chartColor,
   showLegend,
-    showLabel
+  showLabel,
 }: TDynamicDataBarChart) => {
   const datacontentKeys = parseDatacontentKeys(data[0]);
   const chartColorList = useMemo(
@@ -48,12 +49,10 @@ const DynamicDataBarChart = ({
         <CartesianGrid vertical={false} />
         <Tooltip content={<DynamicDataTooltip />} />
         {datacontentKeys.valueKeys.map((valKey, index) => (
-          <Bar
-            key={valKey}
-            dataKey={valKey}
-            fill={chartColorList[index % 10]}
-          >
-            {showLabel && <LabelList className="fill-text text-xs" position="top" />}
+          <Bar key={valKey} dataKey={valKey} fill={chartColorList[index % 10]}>
+            {showLabel && (
+              <LabelList className="fill-text text-xs" position="top" />
+            )}
           </Bar>
         ))}
         {showLegend && <Legend content={<DynamicDataLegend />} />}

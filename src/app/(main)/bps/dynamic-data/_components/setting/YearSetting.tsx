@@ -18,9 +18,7 @@ const YearSetting = ({ years }: TTimeSetting) => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const [yearValues, setTimeValues] = useState(
-    yearParams ? yearParams : "",
-  );
+  const [yearValues, setTimeValues] = useState(yearParams ? yearParams : "");
 
   const selectOptions = useMemo(() => {
     const options = years.map((year) => {
