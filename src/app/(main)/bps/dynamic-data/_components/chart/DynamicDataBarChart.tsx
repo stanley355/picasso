@@ -8,7 +8,6 @@ import {
   Legend,
 } from "recharts";
 import { parseDatacontentKeys } from "@/app/(main)/bps/dynamic-data/_stores/parseDatacontentKeys";
-import { stringToColor } from "@/lib/stringToColor";
 import DynamicDataTooltip from "@/app/(main)/bps/dynamic-data/_components/chart/DynamicDataTooltip";
 import DynamicDataLegend from "@/app/(main)/bps/dynamic-data/_components/chart/DynamicDataLegend";
 import {
