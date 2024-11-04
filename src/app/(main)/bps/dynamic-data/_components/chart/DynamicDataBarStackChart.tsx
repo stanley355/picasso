@@ -5,7 +5,7 @@ import {
   CartesianGrid,
   Tooltip,
   Bar,
-  Legend,
+  Legend, LabelList,
 } from "recharts";
 import { parseDatacontentKeys } from "@/app/(main)/bps/dynamic-data/_stores/parseDatacontentKeys";
 import DynamicDataTooltip from "@/app/(main)/bps/dynamic-data/_components/chart/DynamicDataTooltip";
@@ -20,12 +20,14 @@ type TDynamicDataBarChart = {
   data: Record<string, string | number>[];
   chartColor: EChartColor;
   showLegend: boolean;
+  showLabel: boolean
 };
 
 const DynamicDataBarStackChart = ({
   data,
   chartColor,
   showLegend,
+    showLabel
 }: TDynamicDataBarChart) => {
   const datacontentKeys = parseDatacontentKeys(data[0]);
   const chartColorList = useMemo(
@@ -51,7 +53,9 @@ const DynamicDataBarStackChart = ({
             dataKey={valKey}
             fill={chartColorList[index % 10]}
             stackId={datacontentKeys.labelKey}
-          />
+          >
+            {showLabel && <LabelList className="fill-text text-xs" position="top" />}
+          </Bar>
         ))}
         {showLegend && <Legend content={<DynamicDataLegend />} />}
       </BarChart>

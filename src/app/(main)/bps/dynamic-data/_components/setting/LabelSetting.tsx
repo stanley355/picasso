@@ -3,26 +3,26 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-const DynamicDataLegendSetting = () => {
+const DynamicDataLabelSetting = () => {
   const searchParams = useSearchParams();
-  const defaultChecked = searchParams.get("showLegend")
-    ? searchParams.get("showLegend") === "1"
+  const defaultChecked = searchParams.get("showLabel")
+    ? searchParams.get("showLabel") === "1"
     : false;
   const router = useRouter();
   const pathname = usePathname();
 
   const onCheckedChange = (value: boolean) => {
     const urlParams = new URLSearchParams(window.location.search);
-    urlParams.set("showLegend", value ? "1" : "0");
+    urlParams.set("showLabel", value ? "1" : "0");
     const newQueryString = urlParams.toString();
     router.push(`${pathname}?${newQueryString}`);
   };
 
   return (
-    <div className="flex items-center gap-4 mb-4">
-      <Label id="showLegend">Show Legend:</Label>
+    <div className="flex items-center gap-4">
+      <Label id="showLabel">Show Label:</Label>
       <Switch
-        id="showLegend"
+        id="showLabel"
         defaultChecked={defaultChecked}
         onCheckedChange={onCheckedChange}
       />
@@ -30,4 +30,4 @@ const DynamicDataLegendSetting = () => {
   );
 };
 
-export default DynamicDataLegendSetting;
+export default DynamicDataLabelSetting;

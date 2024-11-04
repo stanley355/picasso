@@ -24,6 +24,9 @@ const DynamicDataChart = ({ data }: TDynamicDataChart) => {
   const showLegend = searchParams.get("showLegend")
     ? searchParams.get("showLegend") === "1"
     : false;
+  const showLabel = searchParams.get("showLabel")
+      ? searchParams.get("showLabel") === "1"
+      : false;
 
   switch (chartType) {
     case EDynamicDataChart.Area:
@@ -40,6 +43,7 @@ const DynamicDataChart = ({ data }: TDynamicDataChart) => {
           data={data}
           chartColor={chartColor}
           showLegend={showLegend}
+          showLabel={showLabel}
         />
       );
     case EDynamicDataChart.BarStack:
@@ -48,6 +52,7 @@ const DynamicDataChart = ({ data }: TDynamicDataChart) => {
           data={data}
           chartColor={chartColor}
           showLegend={showLegend}
+          showLabel={showLabel}
         />
       );
     case EDynamicDataChart.Line:
@@ -56,6 +61,7 @@ const DynamicDataChart = ({ data }: TDynamicDataChart) => {
           data={data}
           chartColor={chartColor}
           showLegend={showLegend}
+          showLabel={showLabel}
         />
       );
     default:

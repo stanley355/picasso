@@ -8,69 +8,72 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 // https://github.com/JedWatson/react-select/issues/5459
 const Select = dynamic(() => import("react-select"), { ssr: false });
 
-type TVervarSetting = {
-  vervars: TDynamicDataHashmap[];
+type TTuryearSetting = {
+  turyears: TDynamicDataHashmap[];
 };
 
-const VervarSetting = ({ vervars }: TVervarSetting) => {
+const TuryearSetting = ({ turyears }: TTuryearSetting) => {
   const searchParams = useSearchParams();
-  const baseVervar = "9999;3100;3400;3578"; // Indonesia;Jakarta;Yogyakarta;Surabaya
-  const vervarParams = searchParams.get("vervar")
-    ? searchParams.get("vervar") as string
-    : baseVervar;
+  const turyearParams = searchParams.get("turth");
   const router = useRouter();
   const pathname = usePathname();
 
-  const [vervarValues, setVervarValues] = useState(vervarParams);
+  const [turyearValues, setTuryearValues] = useState(
+    turyearParams ? turyearParams: "",
+  );
 
   const selectOptions = useMemo(() => {
-    const options = vervars.map((vervar) => {
+    const options = turyears.map((turyear) => {
       return {
-        value: vervar.val,
-        label: vervar.label,
+        value: turyear.val,
+        label: turyear.label,
       };
     });
     return options;
-  }, [vervars]);
+  }, [turyears]);
 
   const defaultOptions = useMemo(() => {
-    const options = vervars
-      .map((vervar) => {
+    const options = turyears
+      .map((turyear) => {
         return {
-          value: vervar.val,
-          label: vervar.label,
-          isDefault: vervarParams?.includes(String(vervar.val)),
+          value: turyear.val,
+          label: turyear.label,
+          isDefault: turyearParams?.includes(String(turyear.val)),
         };
       })
-      .filter((vervar) => vervar.isDefault);
+      .filter((turyear) => turyear.isDefault);
     return options;
-  }, [vervars, vervarParams]);
+  }, [turyears, turyearParams]);
 
   const onValueChange = (newValue: unknown) => {
     const selectValues = newValue as { label: string; value: number }[];
-    const newVervarValues = selectValues.map((item) => item.value).join(";");
-    setVervarValues(newVervarValues);
+    const newTuryearValues = selectValues.map((item) => item.value).join(";");
+    setTuryearValues(newTuryearValues);
     return;
   };
 
   const onBlur = () => {
     const urlParams = new URLSearchParams(window.location.search);
-    urlParams.set("vervar", vervarValues);
+    urlParams.set("turth", turyearValues);
     const newQueryString = urlParams.toString();
     router.push(`${pathname}?${newQueryString}`);
   };
 
+  if (turyears.length === 1 && turyears[0].val === 0) {
+    return null;
+  }
+
   return (
     <div className="mb-4 flex flex-col gap-2">
-      <Label id="turvars">Domain</Label>
+      <Label id="turyears">Period</Label>
       <span className="text-xs text-slate-500">
         *Click area outside box to apply changes
       </span>
       <Select
-        id="turvars"
-        name="turvars"
+        id="turyears"
+        name="turyears"
         isMulti
-        defaultValue={vervarParams ? defaultOptions : selectOptions}
+        defaultValue={turyearParams ? defaultOptions : selectOptions}
         options={selectOptions}
         onChange={onValueChange}
         onBlur={onBlur}
@@ -88,4 +91,4 @@ const VervarSetting = ({ vervars }: TVervarSetting) => {
   );
 };
 
-export default memo(VervarSetting);
+export default memo(TuryearSetting);

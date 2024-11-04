@@ -45,7 +45,7 @@ const DynamicDataTable = ({ data }: TDynamicDataTable) => {
               <td key={cell.id} className="p-2 text-sm text-left">
                 {typeof cell.getValue() === "number"
                   ? Number(cell.getValue()).toLocaleString("id-ID")
-                  : String(cell.getValue())}
+                  : String(cell.getValue() ? cell.getValue() : "")}
               </td>
             ))}
           </tr>
