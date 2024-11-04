@@ -18,7 +18,7 @@ const BpsDynamicDataPage = async ({ searchParams }: TBpsDynamicDataPage) => {
   const baseDynamicData = await fetchBpsDynamicData({
     domain: searchParams.domain,
     var: searchParams.var,
-  });
+  }, true);
   const dataIsAvailable = baseDynamicData["data-availability"] === "available";
 
   if (!dataIsAvailable) {
@@ -32,7 +32,10 @@ const BpsDynamicDataPage = async ({ searchParams }: TBpsDynamicDataPage) => {
         <Suspense fallback={<DynamicDataLoading />}>
           <DynamicDataDisplay searchParams={searchParams} />
         </Suspense>
-        <DynamicDataSetting turvars={baseDynamicData.turvar} />
+        <DynamicDataSetting
+           vervars={baseDynamicData.vervar}
+            turvars={baseDynamicData.turvar}
+        />
       </div>
     </div>
   );

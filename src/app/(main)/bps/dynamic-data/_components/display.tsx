@@ -12,7 +12,7 @@ type TDynamicDataDisplay = {
 };
 
 const DynamicDataDisplay = async ({ searchParams }: TDynamicDataDisplay) => {
-  const dynamicData = await fetchBpsDynamicData(searchParams);
+  const dynamicData = await fetchBpsDynamicData(searchParams, false);
   const dataIsAvailable = dynamicData["data-availability"] === "available";
   const datacontent = dataIsAvailable
     ? processBpsDynamicDataContent(

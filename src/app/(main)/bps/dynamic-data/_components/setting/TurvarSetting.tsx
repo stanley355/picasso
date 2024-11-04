@@ -65,7 +65,7 @@ const TurvarSetting = ({ turvars }: TTurvarSetting) => {
 
   return (
     <div className="mb-4 flex flex-col gap-2">
-      <Label id="turvars">Sub wilayah </Label>
+      <Label id="turvars">Sub domain</Label>
       <span className="text-xs text-slate-500">
         *Click area outside box to apply changes
       </span>
@@ -81,7 +81,7 @@ const TurvarSetting = ({ turvars }: TTurvarSetting) => {
         classNames={{
           container: () => "border rounded-md text-sm",
           control: () => "rounded-lg p-2",
-          menu: () => "border rounded-md",
+          menu: () => "border rounded-md bg-foreground",
           option: () => "p-2 text-sm rounded-md",
           clearIndicator: () => "mr-2",
           multiValue: () => "mr-2",
