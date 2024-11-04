@@ -23,7 +23,11 @@ type TDynamicDataBarChart = {
   showLegend: boolean;
 };
 
-const DynamicDataBarChart = ({ data, chartColor, showLegend }: TDynamicDataBarChart) => {
+const DynamicDataBarChart = ({
+  data,
+  chartColor,
+  showLegend,
+}: TDynamicDataBarChart) => {
   const datacontentKeys = parseDatacontentKeys(data[0]);
   const chartColorList = useMemo(
     () =>

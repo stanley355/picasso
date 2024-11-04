@@ -9,7 +9,7 @@ const DynamicDataSetting = () => {
       <DynamicDataRowColSetting />
       <DynamicDataChartSetting />
       <DynamicDataColorSetting />
-        <DynamicDataLegendSetting />
+      <DynamicDataLegendSetting />
     </div>
   );
 };

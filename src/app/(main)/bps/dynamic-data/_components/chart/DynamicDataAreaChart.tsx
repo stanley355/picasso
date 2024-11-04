@@ -22,7 +22,11 @@ type TDynamicDataAreaChart = {
   showLegend: boolean;
 };
 
-const DynamicDataAreaChart = ({ data, chartColor, showLegend }: TDynamicDataAreaChart) => {
+const DynamicDataAreaChart = ({
+  data,
+  chartColor,
+  showLegend,
+}: TDynamicDataAreaChart) => {
   const datacontentKeys = parseDatacontentKeys(data[0]);
   const chartColorList = useMemo(
     () =>
