@@ -32,9 +32,7 @@ const BpsDynamicDataPage = async ({ searchParams }: TBpsDynamicDataPage) => {
         <Suspense fallback={<DynamicDataLoading />}>
           <DynamicDataDisplay searchParams={searchParams} />
         </Suspense>
-        <DynamicDataSetting
-       turvars={baseDynamicData.turvar}
-        />
+        <DynamicDataSetting turvars={baseDynamicData.turvar} />
       </div>
     </div>
   );

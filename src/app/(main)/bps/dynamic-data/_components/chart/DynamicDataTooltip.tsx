@@ -1,4 +1,3 @@
-
 const DynamicDataTooltip = ({ active, payload, label }: any) => {
   if (active) {
     return (
@@ -14,7 +13,11 @@ const DynamicDataTooltip = ({ active, payload, label }: any) => {
                 />
                 <span>{item.dataKey}</span>
               </div>
-              <span>{typeof  item.value === 'number' ? Number(item.value).toLocaleString("id-ID") : "-"}</span>
+              <span>
+                {typeof item.value === "number"
+                  ? Number(item.value).toLocaleString("id-ID")
+                  : "-"}
+              </span>
             </div>
           ))}
         </div>
