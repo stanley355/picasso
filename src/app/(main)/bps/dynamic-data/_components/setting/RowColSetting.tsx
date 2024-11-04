@@ -26,11 +26,11 @@ const DynamicDataRowColSetting = () => {
     <div className="mb-4">
       <Label>Row & Col Setting</Label>
       <Select
-        name="rowColSetting"
+        name="isDefaultRowCol"
         defaultValue={isDefaultRowCol ? isDefaultRowCol : "0"}
         onValueChange={onValueChange}
       >
-        <SelectTrigger id="rowColSetting" className="h-10">
+        <SelectTrigger id="isDefaultRowCol" className="h-10">
           <SelectValue />
         </SelectTrigger>
         <SelectContent>

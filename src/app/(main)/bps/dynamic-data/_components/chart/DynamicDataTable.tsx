@@ -31,7 +31,7 @@ const DynamicDataTable = ({ data }: TDynamicDataTable) => {
         {table.getHeaderGroups().map((headerGroup) => (
           <tr key={headerGroup.id} className="border-b">
             {headerGroup.headers.map((header) => (
-              <th key={header.id} className="p-2 text-sm">
+              <th key={header.id} className="p-2 text-sm text-left">
                 {String(header.column.columnDef.header)}
               </th>
             ))}
@@ -42,7 +42,7 @@ const DynamicDataTable = ({ data }: TDynamicDataTable) => {
         {table.getRowModel().rows.map((row) => (
           <tr key={row.id} className="border-b">
             {row.getVisibleCells().map((cell) => (
-              <td key={cell.id} className="p-2 text-sm text-center">
+              <td key={cell.id} className="p-2 text-sm text-left">
                 {typeof cell.getValue() === "number"
                   ? Number(cell.getValue()).toLocaleString("id-ID")
                   : String(cell.getValue())}

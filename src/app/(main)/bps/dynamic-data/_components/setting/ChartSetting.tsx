@@ -30,11 +30,11 @@ const DynamicDataChartSetting = () => {
     <div className="mb-4">
       <Label>Chart Type</Label>
       <Select
-        name="display"
+        name="chart"
         defaultValue={defaultChart}
         onValueChange={onValueChange}
       >
-        <SelectTrigger id="display" className="h-10">
+        <SelectTrigger id="chart" className="h-10">
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
