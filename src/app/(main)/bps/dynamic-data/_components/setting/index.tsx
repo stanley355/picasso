@@ -7,7 +7,7 @@ const DynamicDataSetting = () => {
     <div className="p-4">
       <DynamicDataRowColSetting />
       <DynamicDataChartSetting />
-        <DynamicDataColorSetting />
+      <DynamicDataColorSetting />
     </div>
   );
 };

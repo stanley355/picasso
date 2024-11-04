@@ -15,7 +15,9 @@ const DynamicDataChartSetting = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
-  const defaultChart = searchParams.get("chart") ?searchParams.get("chart") as EDynamicDataChart: EDynamicDataChart.Table;
+  const defaultChart = searchParams.get("chart")
+    ? (searchParams.get("chart") as EDynamicDataChart)
+    : EDynamicDataChart.Table;
 
   const onValueChange = (value: string) => {
     const urlParams = new URLSearchParams(window.location.search);
