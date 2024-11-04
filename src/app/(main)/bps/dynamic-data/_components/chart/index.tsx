@@ -1,11 +1,13 @@
 "use client";
-import { useSearchParams } from "next/navigation";
-import { EDynamicDataChart } from "@/app/(main)/bps/dynamic-data/_stores/useDynamicDataStore";
+import {memo} from "react";
+import {useSearchParams} from "next/navigation";
+import {EDynamicDataChart} from "@/app/(main)/bps/dynamic-data/_stores/useDynamicDataStore";
 import DynamicDataTable from "@/app/(main)/bps/dynamic-data/_components/chart/DynamicDataTable";
 import DynamicDataAreaChart from "@/app/(main)/bps/dynamic-data/_components/chart/DynamicDataAreaChart";
 import DynamicDataBarChart from "@/app/(main)/bps/dynamic-data/_components/chart/DynamicDataBarChart";
 import DynamicDataBarStackChart from "@/app/(main)/bps/dynamic-data/_components/chart/DynamicDataBarStackChart";
 import DynamicDataLineChart from "@/app/(main)/bps/dynamic-data/_components/chart/DynamicDataLineChart";
+import {EChartColor} from "@/app/(main)/bps/dynamic-data/_components/setting/constant";
 
 type TDynamicDataChart = {
   data: Record<string, string | number>[];
@@ -16,19 +18,20 @@ const DynamicDataChart = ({ data }: TDynamicDataChart) => {
   const chartType = searchParams.get("chart")
     ? (searchParams.get("chart") as EDynamicDataChart)
     : EDynamicDataChart.Table;
+  const chartColor = searchParams.get("chartColor") ? searchParams.get("chartColor") as EChartColor : EChartColor.Combination;
 
   switch (chartType) {
     case EDynamicDataChart.Area:
-      return <DynamicDataAreaChart data={data} />;
+      return <DynamicDataAreaChart data={data} chartColor={chartColor} />;
     case EDynamicDataChart.Bar:
-      return <DynamicDataBarChart data={data} />;
+      return <DynamicDataBarChart data={data} chartColor={chartColor} />;
     case EDynamicDataChart.BarStack:
-      return <DynamicDataBarStackChart data={data} />;
+      return <DynamicDataBarStackChart data={data} chartColor={chartColor} />;
     case EDynamicDataChart.Line:
-      return <DynamicDataLineChart data={data} />;
+      return <DynamicDataLineChart data={data} chartColor={chartColor} />;
     default:
       return <DynamicDataTable data={data} />;
   }
 };
 
-export default DynamicDataChart;
+export default memo(DynamicDataChart);

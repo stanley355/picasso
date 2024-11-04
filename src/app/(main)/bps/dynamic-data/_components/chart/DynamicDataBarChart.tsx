@@ -11,13 +11,17 @@ import { parseDatacontentKeys } from "@/app/(main)/bps/dynamic-data/_stores/pars
 import { stringToColor } from "@/lib/stringToColor";
 import DynamicDataTooltip from "@/app/(main)/bps/dynamic-data/_components/chart/DynamicDataTooltip";
 import DynamicDataLegend from "@/app/(main)/bps/dynamic-data/_components/chart/DynamicDataLegend";
+import {CHART_COLORS, EChartColor} from "@/app/(main)/bps/dynamic-data/_components/setting/constant";
+import {useMemo} from "react";
 
 type TDynamicDataBarChart = {
   data: Record<string, string | number>[];
+  chartColor: EChartColor
 };
 
-const DynamicDataBarChart = ({ data }: TDynamicDataBarChart) => {
+const DynamicDataBarChart = ({ data, chartColor }: TDynamicDataBarChart) => {
   const datacontentKeys = parseDatacontentKeys(data[0]);
+  const chartColorList = useMemo(()=> CHART_COLORS.find((colorItem) => colorItem.label === chartColor)?.list as string[], [chartColor]);
 
   return (
     <ResponsiveContainer className="aspect-square w-full h-full max-h-96 md:max-h-full overflow-hidden">
@@ -29,8 +33,10 @@ const DynamicDataBarChart = ({ data }: TDynamicDataBarChart) => {
         />
         <CartesianGrid vertical={false} />
         <Tooltip content={<DynamicDataTooltip />} />
-        {datacontentKeys.valueKeys.map((valKey) => (
-          <Bar key={valKey} dataKey={valKey} fill={stringToColor(valKey)} />
+        {datacontentKeys.valueKeys.map((valKey, index) => (
+          <Bar key={valKey} dataKey={valKey}
+               fill={chartColorList[index % 10]}
+          />
         ))}
         <Legend content={<DynamicDataLegend />} />
       </BarChart>

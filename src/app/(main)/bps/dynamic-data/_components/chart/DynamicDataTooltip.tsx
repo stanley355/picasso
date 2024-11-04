@@ -3,7 +3,7 @@ const DynamicDataTooltip = ({ active, payload, label }: any) => {
     return (
       <div className="bg-background shadow-lg text-sm p-2">
         <div className="font-semibold mb-2">{label}</div>
-        <div>
+        <div className="inline-flex flex-wrap gap-2">
           {payload.map((item: any) => (
             <div key={item.dataKey} className="flex gap-4 justify-between">
               <div className="flex gap-1 items-center">

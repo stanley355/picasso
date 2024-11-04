@@ -15,7 +15,7 @@ const DynamicDataChartSetting = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
-  const defaultChart = searchParams.get("chart");
+  const defaultChart = searchParams.get("chart") ?searchParams.get("chart") as EDynamicDataChart: EDynamicDataChart.Table;
 
   const onValueChange = (value: string) => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -29,11 +29,7 @@ const DynamicDataChartSetting = () => {
       <Label>Chart Type</Label>
       <Select
         name="display"
-        defaultValue={
-          defaultChart
-            ? (defaultChart as EDynamicDataChart)
-            : EDynamicDataChart.Table
-        }
+        defaultValue={defaultChart}
         onValueChange={onValueChange}
       >
         <SelectTrigger id="display" className="h-10">
