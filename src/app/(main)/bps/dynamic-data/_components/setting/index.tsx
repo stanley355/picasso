@@ -50,7 +50,7 @@ const DynamicDataSetting = ({
           <DynamicDataLabelSetting />
         </div>
       </div>
-        <DynamicDataShareBtn />
+      <DynamicDataShareBtn />
     </div>
   );
 };
