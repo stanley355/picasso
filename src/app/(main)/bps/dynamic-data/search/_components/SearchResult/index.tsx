@@ -27,7 +27,7 @@ const BpsDynamicDataSearchResult = async ({
   return (
     <div>
       <BpsDynamicDataSearchResultList
-          domain={searchParams.domain}
+        domain={searchParams.domain}
         varList={varList.data[1] as TBpsDynamicDataVar[]}
       />
       <BpsDynamicDataSearchResultPagination

@@ -79,7 +79,7 @@ const YearSetting = ({ years }: TTimeSetting) => {
           option: () => "p-2 text-sm rounded-md",
           clearIndicator: () => "mr-2",
           multiValue: () => "mr-2",
-            noOptionsMessage: () => "p-2"
+          noOptionsMessage: () => "p-2",
         }}
       />
     </div>

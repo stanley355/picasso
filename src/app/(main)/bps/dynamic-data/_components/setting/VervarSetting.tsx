@@ -14,7 +14,7 @@ type TVervarSetting = {
 
 const VervarSetting = ({ vervars }: TVervarSetting) => {
   const searchParams = useSearchParams();
-  const vervarParams = searchParams.get("vervar") as string
+  const vervarParams = searchParams.get("vervar") as string;
   const router = useRouter();
   const pathname = usePathname();
 
@@ -31,22 +31,21 @@ const VervarSetting = ({ vervars }: TVervarSetting) => {
   }, [vervars]);
 
   const defaultOptions = useMemo(() => {
-    const options = vervars
-      .map((vervar) => {
-        return {
-          value: vervar.val,
-          label: vervar.label,
-          isDefault: vervarParams?.includes(String(vervar.val)),
-        };
-      });
+    const options = vervars.map((vervar) => {
+      return {
+        value: vervar.val,
+        label: vervar.label,
+        isDefault: vervarParams?.includes(String(vervar.val)),
+      };
+    });
 
     if (vervarParams) {
-        return options.filter((vervar) => vervar.isDefault);
+      return options.filter((vervar) => vervar.isDefault);
     }
 
     return [options[0]];
   }, [vervars, vervarParams]);
-    console.log(defaultOptions)
+  console.log(defaultOptions);
 
   const onValueChange = (newValue: unknown) => {
     const selectValues = newValue as { label: string; value: number }[];
@@ -84,7 +83,7 @@ const VervarSetting = ({ vervars }: TVervarSetting) => {
           option: () => "p-2 text-sm rounded-md",
           clearIndicator: () => "mr-2",
           multiValue: () => "mr-2",
-            noOptionsMessage: () => "p-2"
+          noOptionsMessage: () => "p-2",
         }}
       />
     </div>

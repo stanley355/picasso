@@ -57,7 +57,6 @@ export const fetchBpsDynamicData = async (
     }
   }
 
-
   url += `/key/${BPS_API_KEY}`;
 
   try {

@@ -9,7 +9,7 @@ type TBpsDynamicDataSearchResultList = {
 };
 
 const BpsDynamicDataSearchResultList = ({
-    domain,
+  domain,
   varList,
 }: TBpsDynamicDataSearchResultList) => {
   const containerRef = useRef(null);
