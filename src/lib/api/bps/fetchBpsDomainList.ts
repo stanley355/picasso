@@ -3,7 +3,7 @@ import { BPS_API_KEY, BPS_API_URL } from "@/lib/api/constant";
 import { TBpsResponse } from "@/lib/api/bps/types/TBpsResponse";
 import { TBpsPageAndCount } from "@/lib/api/bps/types/TBpsPageAndCount";
 
-export  type TBpsDomain = {
+export type TBpsDomain = {
   domain_id: string;
   domain_name: string;
   domain_url: string;

@@ -2,14 +2,14 @@ import BpsDynamicDataSearchHeader from "@/app/(main)/bps/dynamic-data/search/_co
 import BpsDynamicDataSearchFilters from "@/app/(main)/bps/dynamic-data/search/_components/SearchFilters";
 
 export type TBpsDynamicDataSearchParams = {
-    domain: string | undefined;
-}
+  domain: string | undefined;
+};
 
-type TDynamicDataSearch  ={
-    searchParams:TBpsDynamicDataSearchParams
-}
+type TDynamicDataSearch = {
+  searchParams: TBpsDynamicDataSearchParams;
+};
 
-const DynamicDataSearch = ({searchParams}: TDynamicDataSearch) => {
+const DynamicDataSearch = ({ searchParams }: TDynamicDataSearch) => {
   return (
     <div className="w-full h-full overflow-hidden">
       <BpsDynamicDataSearchHeader />
