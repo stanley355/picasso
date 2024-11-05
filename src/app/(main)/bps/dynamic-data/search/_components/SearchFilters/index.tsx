@@ -5,7 +5,7 @@ const BpsDynamicDataSearchFilters = ({
   domain,
 }: TBpsDynamicDataSearchParams) => {
   return (
-    <div>
+    <div className="mb-4">
       <BpsDynamicDataSearchDomainFilter domainParam={domain} />
     </div>
   );
