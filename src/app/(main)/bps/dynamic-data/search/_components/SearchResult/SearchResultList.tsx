@@ -35,7 +35,7 @@ const BpsDynamicDataSearchResultList = ({
           <div className="underline text-sm">{varItem.title}</div>
           <div className="inline-flex gap-2 text-xs">
             <span>{varItem.subcsa_name}</span>
-            <span>|</span>
+            {varItem.subcsa_name && <span>|</span>}
             <span>{varItem.sub_name}</span>
           </div>
         </Link>

@@ -1,51 +1,64 @@
+'use client'
 import {
-  fetchBpsDomainList,
-  TBpsDomain,
+    TBpsDomain,
 } from "@/lib/api/bps/fetchBpsDomainList";
-import { Label } from "@/components/ui/label";
+import {Label} from "@/components/ui/label";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
 } from "@/components/ui/select";
-import { TBpsResponse } from "@/lib/api/bps/types/TBpsResponse";
+import {TBpsResponse} from "@/lib/api/bps/types/TBpsResponse";
+import {usePathname, useRouter} from "next/navigation";
 
 type TBpsDynamicDataSearchDomainFilter = {
-  domainParam: string | undefined;
+    domainParam: string | undefined;
+    domainResponse: TBpsResponse<TBpsDomain[]>
 };
 
-const BpsDynamicDataSearchDomainFilter = async ({
-  domainParam,
-}: TBpsDynamicDataSearchDomainFilter) => {
-  const domains = (await fetchBpsDomainList("all")) as TBpsResponse<
-    TBpsDomain[]
-  >;
-  if (domains["data-availability"] === "list-not-available") {
-    return null;
-  }
+const BpsDynamicDataSearchDomainFilter = ({
+                                                    domainParam,
+                                                    domainResponse
+                                                }: TBpsDynamicDataSearchDomainFilter) => {
+    const pathname = usePathname();
+    const router = useRouter();
 
-  return (
-    <div>
-      <Label id="domains">Domain</Label>
-      <Select
-        defaultValue={domainParam ? domainParam : domains.data[1][0].domain_id}
-        name="domains"
-      >
-        <SelectTrigger>
-          <SelectValue />
-        </SelectTrigger>
-        <SelectContent>
-          {domains.data[1].map((domainItem: TBpsDomain) => (
-            <SelectItem value={domainItem.domain_id} key={domainItem.domain_id}>
-              {domainItem.domain_name}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
-    </div>
-  );
+    if (domainResponse["data-availability"] === "list-not-available") {
+        return null;
+    }
+
+    const onValueChange = (value: string) => {
+        const urlParams = new URLSearchParams(window.location.search);
+        urlParams.set("page", "1");
+        urlParams.set("domain", value)
+        const newQueryString = urlParams.toString();
+        const newPath = pathname + "?" + newQueryString;
+        router.replace(newPath)
+    };
+
+    return (
+        <div>
+            <Label id="domains">Domain</Label>
+            <Select
+                defaultValue={domainParam ? domainParam : domainResponse?.data[1][0].domain_id}
+                onValueChange={onValueChange}
+                name="domains"
+            >
+                <SelectTrigger>
+                    <SelectValue/>
+                </SelectTrigger>
+                <SelectContent>
+                    {domainResponse.data[1].map((domainItem: TBpsDomain) => (
+                        <SelectItem value={domainItem.domain_id} key={domainItem.domain_id}>
+                            {domainItem.domain_name}
+                        </SelectItem>
+                    ))}
+                </SelectContent>
+            </Select>
+        </div>
+    );
 };
 
 export default BpsDynamicDataSearchDomainFilter;

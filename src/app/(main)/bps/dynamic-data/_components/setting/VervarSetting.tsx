@@ -45,7 +45,6 @@ const VervarSetting = ({ vervars }: TVervarSetting) => {
 
     return [options[0]];
   }, [vervars, vervarParams]);
-  console.log(defaultOptions);
 
   const onValueChange = (newValue: unknown) => {
     const selectValues = newValue as { label: string; value: number }[];

@@ -17,7 +17,7 @@ const BpsDynamicDataSearchResultPagination = ({
   const pathname = usePathname();
 
   const createPageUrl = (pageNumber: number) => {
-    if (window) {
+    if (typeof window !== 'undefined') {
       const urlParams = new URLSearchParams(window.location.search);
       urlParams.set("page", String(pageNumber));
       const newQueryString = urlParams.toString();
