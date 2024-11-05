@@ -1,9 +1,9 @@
 import Image from "next/image";
 
 type TBpsDynamicDataHeader = {
-    title: string
-}
-const BpsDynamicDataHeader = ({title}: TBpsDynamicDataHeader) => {
+  title: string;
+};
+const BpsDynamicDataHeader = ({ title }: TBpsDynamicDataHeader) => {
   return (
     <div className="flex items-center justify-start md:justify-between p-2 border-b">
       <span className="flex items-center gap-2">

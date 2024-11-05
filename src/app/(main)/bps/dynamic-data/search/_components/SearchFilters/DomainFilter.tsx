@@ -38,7 +38,9 @@ const BpsDynamicDataSearchDomainFilter = ({
 
   return (
     <div>
-      <Label id="domains" className="text-xs">Domain</Label>
+      <Label id="domains" className="text-xs">
+        Domain
+      </Label>
       <Select
         defaultValue={
           domainParam ? domainParam : domainResponse?.data[1][0].domain_id

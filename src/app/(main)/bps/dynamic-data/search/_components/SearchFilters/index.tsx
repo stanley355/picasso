@@ -5,13 +5,12 @@ import {
   TBpsDomain,
 } from "@/lib/api/bps/fetchBpsDomainList";
 import { TBpsResponse } from "@/lib/api/bps/types/TBpsResponse";
-import BpsDynamicDataSearchKeywordFilter
-    from "@/app/(main)/bps/dynamic-data/search/_components/SearchFilters/KeywordFilter";
+import BpsDynamicDataSearchKeywordFilter from "@/app/(main)/bps/dynamic-data/search/_components/SearchFilters/KeywordFilter";
 
 const BpsDynamicDataSearchFilters = async ({
   domain,
 }: TBpsDynamicDataSearchParams) => {
-  const fetchDomainList= (await fetchBpsDomainList("all")) as TBpsResponse<
+  const fetchDomainList = (await fetchBpsDomainList("all")) as TBpsResponse<
     TBpsDomain[]
   >;
 
@@ -21,7 +20,7 @@ const BpsDynamicDataSearchFilters = async ({
         domainParam={domain}
         domainResponse={fetchDomainList}
       />
-        <BpsDynamicDataSearchKeywordFilter />
+      <BpsDynamicDataSearchKeywordFilter />
     </div>
   );
 };
