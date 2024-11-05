@@ -23,7 +23,7 @@ const DynamicDataChartSetting = () => {
     const urlParams = new URLSearchParams(window.location.search);
     urlParams.set("chart", value);
     const newQueryString = urlParams.toString();
-    router.push(`${pathname}?${newQueryString}`);
+    router.replace(`${pathname}?${newQueryString}`);
   };
 
   return (

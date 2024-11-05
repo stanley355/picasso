@@ -15,7 +15,7 @@ const DynamicDataLegendSetting = () => {
     const urlParams = new URLSearchParams(window.location.search);
     urlParams.set("showLegend", value ? "1" : "0");
     const newQueryString = urlParams.toString();
-    router.push(`${pathname}?${newQueryString}`);
+    router.replace(`${pathname}?${newQueryString}`);
   };
 
   return (

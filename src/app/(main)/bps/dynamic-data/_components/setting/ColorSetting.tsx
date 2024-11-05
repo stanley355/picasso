@@ -19,7 +19,7 @@ const DynamicDataColorSetting = () => {
     const urlParams = new URLSearchParams(window.location.search);
     urlParams.set("chartColor", value);
     const newQueryString = urlParams.toString();
-    router.push(`${pathname}?${newQueryString}`);
+    router.replace(`${pathname}?${newQueryString}`);
   };
 
   return (

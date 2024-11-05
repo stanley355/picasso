@@ -19,7 +19,7 @@ const DynamicDataRowColSetting = () => {
     const urlParams = new URLSearchParams(window.location.search);
     urlParams.set("isDefaultRowCol", value);
     const newQueryString = urlParams.toString();
-    router.push(`${pathname}?${newQueryString}`);
+    router.replace(`${pathname}?${newQueryString}`);
   };
 
   return (

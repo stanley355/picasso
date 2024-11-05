@@ -56,7 +56,7 @@ const TuryearSetting = ({ turyears }: TTuryearSetting) => {
     const urlParams = new URLSearchParams(window.location.search);
     urlParams.set("turth", turyearValues);
     const newQueryString = urlParams.toString();
-    router.push(`${pathname}?${newQueryString}`);
+    router.replace(`${pathname}?${newQueryString}`);
   };
 
   if (turyears.length === 1 && turyears[0].val === 0) {

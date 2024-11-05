@@ -23,7 +23,7 @@ type TDynamicDataVar = TDynamicDataHashmap & {
   note: string;
 };
 
-export type TBpsDynamicData = TBpsResponse & {
+export type TBpsDynamicData = TBpsResponse<string> & {
   var: TDynamicDataVar[];
   turvar: TDynamicDataHashmap[];
   labelvervar: string[];
@@ -72,6 +72,6 @@ export const fetchBpsDynamicData = async (
     const data = await response.json();
     return data;
   } catch (err: any) {
-    throw new Error(err);
+    throw new Error(err)
   }
 };

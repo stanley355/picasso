@@ -18,7 +18,12 @@ const BpsSidebarMenu = () => {
   return (
     <div>
       <div className="font-bold px-4 mb-2 flex gap-2 items-center">
-        <Image src="/images/indonesia.svg" alt="Indonesia Statistic" width={25} height={25} />
+        <Image
+          src="/images/indonesia.svg"
+          alt="Indonesia Statistic"
+          width={25}
+          height={25}
+        />
         <span>Statistics</span>
       </div>
       <div className="flex flex-col gap-2">
@@ -28,7 +33,7 @@ const BpsSidebarMenu = () => {
             key={item.title}
             className={cn(
               buttonVariants({
-                variant: pathname.includes(item.href) ? "default" : "ghost",
+                variant: item.href.includes(pathname) ? "default" : "ghost",
               }),
               "justify-start",
             )}

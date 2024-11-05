@@ -57,7 +57,7 @@ const VervarSetting = ({ vervars }: TVervarSetting) => {
     const urlParams = new URLSearchParams(window.location.search);
     urlParams.set("vervar", vervarValues);
     const newQueryString = urlParams.toString();
-    router.push(`${pathname}?${newQueryString}`);
+    router.replace(`${pathname}?${newQueryString}`);
   };
 
   return (

@@ -54,7 +54,7 @@ const YearSetting = ({ years }: TTimeSetting) => {
     const urlParams = new URLSearchParams(window.location.search);
     urlParams.set("th", yearValues);
     const newQueryString = urlParams.toString();
-    router.push(`${pathname}?${newQueryString}`);
+    router.replace(`${pathname}?${newQueryString}`);
   };
 
   return (

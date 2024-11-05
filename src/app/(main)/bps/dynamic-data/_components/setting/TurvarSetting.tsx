@@ -56,7 +56,7 @@ const TurvarSetting = ({ turvars }: TTurvarSetting) => {
     const urlParams = new URLSearchParams(window.location.search);
     urlParams.set("turvar", turvarValues);
     const newQueryString = urlParams.toString();
-    router.push(`${pathname}?${newQueryString}`);
+    router.replace(`${pathname}?${newQueryString}`);
   };
 
   if (turvars.length === 1 && turvars[0].val === 0) {

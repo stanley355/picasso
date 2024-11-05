@@ -46,7 +46,7 @@ const HeaderMobileMenu = () => {
         onClick={() => updateStore("showMobileMenu", false)}
       >
         <LanguageSidebarMenu />
-          <BpsSidebarMenu />
+        <BpsSidebarMenu />
         <SupportSidebarMenu />
       </div>
       <div
