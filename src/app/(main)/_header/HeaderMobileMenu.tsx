@@ -9,6 +9,7 @@ import LanguageSidebarMenu from "../_sidebar/LanguageSidebarMenu";
 import SupportSidebarMenu from "../_sidebar/SupportSidebarMenu";
 import AccountSidebarMenu from "../_sidebar/AccountSidebarMenu";
 import { cn } from "@/lib/utils";
+import BpsSidebarMenu from "@/app/(main)/_sidebar/BpsSidebarMenu";
 
 const HeaderMobileMenu = () => {
   const [isAccountTab, setIsAccountTab] = useState(false);
@@ -45,6 +46,7 @@ const HeaderMobileMenu = () => {
         onClick={() => updateStore("showMobileMenu", false)}
       >
         <LanguageSidebarMenu />
+          <BpsSidebarMenu />
         <SupportSidebarMenu />
       </div>
       <div
