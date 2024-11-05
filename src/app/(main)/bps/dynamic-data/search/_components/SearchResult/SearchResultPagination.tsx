@@ -3,7 +3,7 @@ import { TBpsPageAndCount } from "@/lib/api/bps/types/TBpsPageAndCount";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 type TBpsDynamicDataSearchResultPagination = {
   currentPage: number | undefined;
