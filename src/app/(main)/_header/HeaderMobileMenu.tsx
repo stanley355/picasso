@@ -8,8 +8,8 @@ import { Button } from "@/components/ui/button";
 import LanguageSidebarMenu from "../_sidebar/LanguageSidebarMenu";
 import SupportSidebarMenu from "../_sidebar/SupportSidebarMenu";
 import AccountSidebarMenu from "../_sidebar/AccountSidebarMenu";
-// import BpsSidebarmenu from "../_sidebar/BpsSidebarMenu";
 import { cn } from "@/lib/utils";
+import BpsSidebarMenu from "@/app/(main)/_sidebar/BpsSidebarMenu";
 
 const HeaderMobileMenu = () => {
   const [isAccountTab, setIsAccountTab] = useState(false);
@@ -46,7 +46,7 @@ const HeaderMobileMenu = () => {
         onClick={() => updateStore("showMobileMenu", false)}
       >
         <LanguageSidebarMenu />
-        {/*<BpsSidebarmenu />*/}
+        <BpsSidebarMenu />
         <SupportSidebarMenu />
       </div>
       <div

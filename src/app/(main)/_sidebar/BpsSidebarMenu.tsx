@@ -5,30 +5,45 @@ import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import Image from "next/image";
 
-const BpsSidebarmenu = () => {
+const BpsSidebarMenu = () => {
   const pathname = usePathname();
+
+  const MENU = [
+    {
+      title: "Dynamic Data",
+      href: "/bps/dynamic-data/search",
+    },
+  ];
 
   return (
     <div>
-      <div className="font-bold px-4 mb-2 flex items-center gap-2">
-        <Image src="/images/bps.png" alt="BPS" width={25} height={25} />
-        Statistics
+      <div className="font-bold px-4 mb-2 flex gap-2 items-center">
+        <Image
+          src="/images/indonesia.svg"
+          alt="Indonesia Statistic"
+          width={25}
+          height={25}
+        />
+        <span>Statistics</span>
       </div>
       <div className="flex flex-col gap-2">
-        <Link
-          href="/statistic/census"
-          className={cn(
-            buttonVariants({
-              variant: pathname === "/blame-me" ? "default" : "ghost",
-            }),
-            "justify-start",
-          )}
-        >
-          Census Data
-        </Link>
+        {MENU.map((item) => (
+          <Link
+            href={item.href}
+            key={item.title}
+            className={cn(
+              buttonVariants({
+                variant: item.href.includes(pathname) ? "default" : "ghost",
+              }),
+              "justify-start",
+            )}
+          >
+            {item.title}
+          </Link>
+        ))}
       </div>
     </div>
   );
 };
 
-export default BpsSidebarmenu;
+export default BpsSidebarMenu;

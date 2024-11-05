@@ -7,6 +7,7 @@ import { LuChevronDown, LuChevronUp } from "react-icons/lu";
 import { cn } from "@/lib/utils";
 
 const Select = SelectPrimitive.Root;
+const SelectValue = SelectPrimitive.Value;
 
 const SelectTrigger = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Trigger>,
@@ -114,6 +115,7 @@ SelectItem.displayName = SelectPrimitive.Item.displayName;
 
 export {
   Select,
+  SelectValue,
   SelectTrigger,
   SelectContent,
   SelectItem,
