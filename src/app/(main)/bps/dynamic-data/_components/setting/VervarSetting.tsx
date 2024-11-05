@@ -14,10 +14,7 @@ type TVervarSetting = {
 
 const VervarSetting = ({ vervars }: TVervarSetting) => {
   const searchParams = useSearchParams();
-  const baseVervar = "9999;3100;3400;3578"; // Indonesia;Jakarta;Yogyakarta;Surabaya
-  const vervarParams = searchParams.get("vervar")
-    ? (searchParams.get("vervar") as string)
-    : baseVervar;
+  const vervarParams = searchParams.get("vervar") as string
   const router = useRouter();
   const pathname = usePathname();
 
@@ -41,10 +38,15 @@ const VervarSetting = ({ vervars }: TVervarSetting) => {
           label: vervar.label,
           isDefault: vervarParams?.includes(String(vervar.val)),
         };
-      })
-      .filter((vervar) => vervar.isDefault);
-    return options;
+      });
+
+    if (vervarParams) {
+        return options.filter((vervar) => vervar.isDefault);
+    }
+
+    return [options[0]];
   }, [vervars, vervarParams]);
+    console.log(defaultOptions)
 
   const onValueChange = (newValue: unknown) => {
     const selectValues = newValue as { label: string; value: number }[];
@@ -70,7 +72,7 @@ const VervarSetting = ({ vervars }: TVervarSetting) => {
         id="turvars"
         name="turvars"
         isMulti
-        defaultValue={vervarParams ? defaultOptions : selectOptions}
+        defaultValue={defaultOptions}
         options={selectOptions}
         onChange={onValueChange}
         onBlur={onBlur}
@@ -82,6 +84,7 @@ const VervarSetting = ({ vervars }: TVervarSetting) => {
           option: () => "p-2 text-sm rounded-md",
           clearIndicator: () => "mr-2",
           multiValue: () => "mr-2",
+            noOptionsMessage: () => "p-2"
         }}
       />
     </div>

@@ -35,7 +35,7 @@ const BpsDynamicDataPage = async ({ searchParams }: TBpsDynamicDataPage) => {
       <h1 className="p-2 border-b">{baseDynamicData.var[0].label}</h1>
       <div className="flex flex-col md:grid grid-cols-2 h-full md:divide-x md:divide-x-border max-h-[75vh] md:max-h-none overflow-auto gap-8 md:gap-0">
         <Suspense fallback={<DynamicDataLoading />}>
-          <DynamicDataDisplay searchParams={searchParams} />
+          <DynamicDataDisplay searchParams={searchParams} defaultVervar={String(baseDynamicData.vervar[0].val)} />
         </Suspense>
         <DynamicDataSetting
           chart={searchParams.chart}

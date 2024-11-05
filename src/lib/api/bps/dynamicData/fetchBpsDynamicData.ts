@@ -39,25 +39,24 @@ export const fetchBpsDynamicData = async (
 ): Promise<TBpsDynamicData> => {
   let url = `${BPS_API_URL}list/model/data/domain/${param.domain}/var/${param.var}`;
 
-  if (param.turvar) {
-    url += `/turvar/${param.turvar}`;
+  if (!isBaseData) {
+    if (param.turvar) {
+      url += `/turvar/${param.turvar}`;
+    }
+
+    if (param.vervar) {
+      url += `/vervar/${param.vervar}`;
+    }
+
+    if (param.th) {
+      url += `/th/${param.th}`;
+    }
+
+    if (param.turth) {
+      url += `/turth/${param.turth}`;
+    }
   }
 
-  if (!isBaseData && !param.vervar) {
-    url += `/vervar/9999;3100;3400;3578`; // Indonesia;Jakarta;Yogyakarta;Surabaya
-  }
-
-  if (param.vervar) {
-    url += `/vervar/${param.vervar}`;
-  }
-
-  if (param.th) {
-    url += `/th/${param.th}`;
-  }
-
-  if (param.turth) {
-    url += `/turth/${param.turth}`;
-  }
 
   url += `/key/${BPS_API_KEY}`;
 
