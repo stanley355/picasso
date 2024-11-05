@@ -6,6 +6,7 @@ type TBpsDynamicDataVarListRequestParam = {
   domain?: string;
   subject?: number;
   page?: number;
+  keyword?:string;
 };
 
 export type TBpsDynamicDataVar = {
@@ -35,6 +36,9 @@ export const fetchBpsDynamicDataVarList = async (
 
   if (param.page) {
     url += `/page/${param.page}`;
+  }
+  if (param.keyword) {
+    url += `/keyword/${param.keyword}`
   }
 
   url += `/key/${BPS_API_KEY}`;

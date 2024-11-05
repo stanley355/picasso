@@ -6,6 +6,7 @@ import DynamicDataLoading from "@/app/(main)/bps/dynamic-data/_components/loadin
 
 export type TBpsDynamicDataSearchParams = {
   domain: string | undefined;
+  keyword?: string | undefined;
   page?: number | undefined;
 };
 
@@ -18,7 +19,7 @@ const DynamicDataSearch = ({ searchParams }: TDynamicDataSearch) => {
     <div className="w-full h-full overflow-hidden">
       <BpsDynamicDataSearchHeader />
       <Suspense fallback={<DynamicDataLoading />}>
-        <div className="p-4">
+        <div className="p-2 md:p-4">
           <BpsDynamicDataSearchFilters domain={searchParams.domain} />
           <BpsDynamicDataSearchResult searchParams={searchParams} />
         </div>

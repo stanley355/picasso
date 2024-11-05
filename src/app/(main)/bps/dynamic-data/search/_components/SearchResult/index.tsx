@@ -18,6 +18,7 @@ const BpsDynamicDataSearchResult = async ({
   const varList = await fetchBpsDynamicDataVarList({
     domain: searchParams.domain,
     page: searchParams.page,
+      keyword: searchParams.keyword
   });
 
   if (varList["data-availability"] === "list-not-available") {

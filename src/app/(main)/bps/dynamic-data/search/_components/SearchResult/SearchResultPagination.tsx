@@ -17,7 +17,7 @@ const BpsDynamicDataSearchResultPagination = ({
   const pathname = usePathname();
 
   const createPageUrl = (pageNumber: number) => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       const urlParams = new URLSearchParams(window.location.search);
       urlParams.set("page", String(pageNumber));
       const newQueryString = urlParams.toString();
@@ -28,7 +28,7 @@ const BpsDynamicDataSearchResultPagination = ({
 
   return (
     <div className="flex flex-row items-center gap-2 w-full overflow-hidden py-2">
-      Page:
+      <span className="text-sm hidden md:block">Page:</span>
       {...Array.from({ length: pageAndCount.pages }).map((arVal, index) => (
         <Link
           href={createPageUrl(index + 1)}
