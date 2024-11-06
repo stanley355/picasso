@@ -55,7 +55,15 @@ const DynamicDataLineChart = ({
             stroke={chartColorList[index % 10]}
           >
             {showLabel && (
-              <LabelList className="fill-text text-xs" position="top" />
+              <LabelList
+                className="fill-text text-xs"
+                position="top"
+                formatter={(value: string | number) =>
+                  typeof value === "number"
+                    ? value.toLocaleString("id-ID")
+                    : value
+                }
+              />
             )}
           </Line>
         ))}

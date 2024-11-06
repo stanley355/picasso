@@ -14,111 +14,140 @@ export const processBpsDynamicDataContent = (
     return [];
   }
 
+  const { vervar, turvar, tahun, turtahun, datacontent } = bpsDynamicData;
+  const timeVervar = createTimeVervar(turvar, tahun, turtahun);
   if (isDefaultProcessing) {
-    return processBpsDynamicDataContentByVervar(bpsDynamicData);
+    return processDatacontentByVervar(
+      timeVervar,
+      vervar,
+      bpsDynamicData.var,
+      datacontent,
+    );
   }
-  return processBpsDynamicDataContentByYear(bpsDynamicData);
+  return processDatacontentByTimeVervar(
+    timeVervar,
+    vervar,
+    bpsDynamicData.var,
+    datacontent,
+  );
 };
 
-const processBpsDynamicDataContentByVervar = (
-  bpsDynamicData: TBpsDynamicData,
-) => {
-  const { vervar, turvar, tahun, turtahun, datacontent } = bpsDynamicData;
+export const sanitizeLabel = (label: string) => {
+  return label.replace("&lt;b&gt;", "").replaceAll("&lt;/b&gt;", "");
+};
 
-  const newDataContent = vervar.map((vervarObj, vervarIndex) => {
+const createTimeVervar = (
+  turvar: TDynamicDataHashmap[],
+  year: TDynamicDataHashmap[],
+  turyear: TDynamicDataHashmap[],
+): TDynamicDataHashmap[] => {
+  let timeVervar = [];
+
+  for (let turvarIndex = 0; turvarIndex < turvar.length; turvarIndex++) {
+    for (let yearIndex = 0; yearIndex < year.length; yearIndex++) {
+      for (
+        let turyearIndex = 0;
+        turyearIndex < turyear.length;
+        turyearIndex++
+      ) {
+        const turvarVal = turvar[turvarIndex].val;
+        const turvarLabel = turvarVal === 0 ? "" : turvar[turvarIndex].label;
+        const yearVal = year[yearIndex].val;
+        const yearLabel = year[yearIndex].label;
+        const turyearVal = turyear[turyearIndex].val;
+        const turyearLabel =
+          turyearVal === 0 ? "" : turyear[turyearIndex].label;
+        const val = `${turvarVal}${yearVal}${turyearVal}`;
+        const label = turvarLabel + " " + yearLabel + " " + turyearLabel;
+
+        timeVervar.push({
+          val,
+          label: label.trim(),
+        });
+      }
+    }
+  }
+  return timeVervar;
+};
+
+const processDatacontentByVervar = (
+  timeVervar: TDynamicDataHashmap[],
+  vervar: TDynamicDataHashmap[],
+  variable: TDynamicDataHashmap[],
+  datacontent: Record<any, number>,
+): Record<string, string | number>[] => {
+  let newDataContent = [];
+
+  for (let vervarIndex = 0; vervarIndex < vervar.length; vervarIndex++) {
+    const vervarLabel = vervar[vervarIndex].label;
     const dataContentRecord: Record<string, string | number> = {
-      label: sanitizeLabel(vervarObj.label),
+      label: sanitizeLabel(vervarLabel),
     };
     for (
-      let variCount = 0;
-      variCount < bpsDynamicData.var.length;
-      variCount++
+      let variableIndex = 0;
+      variableIndex < variable.length;
+      variableIndex++
     ) {
-      for (let turvarCount = 0; turvarCount < turvar.length; turvarCount++) {
-        for (let thCount = 0; thCount < tahun.length; thCount++) {
-          for (let turthCount = 0; turthCount < turtahun.length; turthCount++) {
-            const vervarVal = String(vervar[vervarIndex].val);
-            const varVal = String(bpsDynamicData.var[variCount].val);
-            const turvarVal = String(turvar[turvarCount].val);
-            const tahunVal = String(tahun[thCount].val);
-            const turtahunVal = String(turtahun[turthCount].val);
-            const dataContentKey =
-              vervarVal + varVal + turvarVal + tahunVal + turtahunVal;
-            const dataContentValue = datacontent[dataContentKey];
-            // 0 means no turtahun
-            const newDataContentKey =
-              turtahun[0].val === 0
-                ? tahun[thCount].label
-                : turtahun[turthCount].label + " " + tahun[thCount].label;
-            dataContentRecord[sanitizeLabel(newDataContentKey)] =
-              dataContentValue ? dataContentValue : "-";
-          }
-        }
+      for (
+        let timeVervarIndex = 0;
+        timeVervarIndex < timeVervar.length;
+        timeVervarIndex++
+      ) {
+        const vervarVal = vervar[vervarIndex].val;
+        const variableVal = variable[variableIndex].val;
+        const timeVervarVal = timeVervar[timeVervarIndex].val;
+        const oldDatacontentKey = `${vervarVal}${variableVal}${timeVervarVal}`;
+        const dataContentValue = datacontent[oldDatacontentKey];
+        const newDataContentKey = timeVervar[timeVervarIndex].label;
+        dataContentRecord[newDataContentKey] = dataContentValue
+          ? dataContentValue
+          : "-";
       }
     }
 
-    return dataContentRecord;
-  });
+    newDataContent.push(dataContentRecord);
+  }
 
   return newDataContent;
 };
 
-const combineYearAndTurYear = (
-  year: TDynamicDataHashmap[],
-  turyear: TDynamicDataHashmap[],
-) => {
-  let newTimeVervar = [];
+const processDatacontentByTimeVervar = (
+  timeVervar: TDynamicDataHashmap[],
+  vervar: TDynamicDataHashmap[],
+  variable: TDynamicDataHashmap[],
+  datacontent: Record<any, number>,
+): Record<string, string | number>[] => {
+  let newDataContent = [];
 
-  for (let yearIndex = 0; yearIndex < year.length; yearIndex++) {
-    for (let turyearIndex = 0; turyearIndex < turyear.length; turyearIndex++) {
-      newTimeVervar.push({
-        val: parseInt(`${year[yearIndex].val}${turyear[turyearIndex].val}`),
-        label:
-          turyear[turyearIndex].val === 0
-            ? year[yearIndex].label
-            : `${turyear[turyearIndex].label} ${year[yearIndex].label}`,
-      });
-    }
-  }
-  return newTimeVervar;
-};
-
-const processBpsDynamicDataContentByYear = (
-  bpsDynamicData: TBpsDynamicData,
-) => {
-  const { vervar, turvar, tahun, turtahun, datacontent } = bpsDynamicData;
-
-  const newTimeVervar = combineYearAndTurYear(tahun, turtahun);
-
-  const newDataContent = newTimeVervar.map((timeVervar) => {
+  for (
+    let timeVervarIndex = 0;
+    timeVervarIndex < timeVervar.length;
+    timeVervarIndex++
+  ) {
+    const timeVervarLabel = timeVervar[timeVervarIndex].label;
     const dataContentRecord: Record<string, string | number> = {
-      label: timeVervar.label,
+      label: sanitizeLabel(timeVervarLabel),
     };
     for (let vervarIndex = 0; vervarIndex < vervar.length; vervarIndex++) {
       for (
-        let variCount = 0;
-        variCount < bpsDynamicData.var.length;
-        variCount++
+        let variableIndex = 0;
+        variableIndex < variable.length;
+        variableIndex++
       ) {
-        for (let turvarCount = 0; turvarCount < turvar.length; turvarCount++) {
-          const vervarVal = String(vervar[vervarIndex].val);
-          const varVal = String(bpsDynamicData.var[variCount].val);
-          const turvarVal = String(turvar[turvarCount].val);
-          const timeVervarVal = String(timeVervar.val);
-          const dataContentKey = vervarVal + varVal + turvarVal + timeVervarVal;
-          const dataContentValue = datacontent[dataContentKey];
-          const newDataContentKey = sanitizeLabel(vervar[vervarIndex].label);
-          dataContentRecord[newDataContentKey] = dataContentValue
-            ? dataContentValue
-            : "";
-        }
+        const vervarVal = vervar[vervarIndex].val;
+        const variableVal = variable[variableIndex].val;
+        const timeVervarVal = timeVervar[timeVervarIndex].val;
+        const oldDatacontentKey = `${vervarVal}${variableVal}${timeVervarVal}`;
+        const dataContentValue = datacontent[oldDatacontentKey];
+        const newDataContentKey = sanitizeLabel(vervar[vervarIndex].label);
+        dataContentRecord[newDataContentKey] = dataContentValue
+          ? dataContentValue
+          : "-";
       }
     }
-    return dataContentRecord;
-  });
-  return newDataContent;
-};
 
-const sanitizeLabel = (label: string) => {
-  return label.replace("&lt;b&gt;", "").replaceAll("&lt;/b&gt;", "");
+    newDataContent.push(dataContentRecord);
+  }
+
+  return newDataContent;
 };

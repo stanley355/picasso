@@ -4,6 +4,7 @@ import { TDynamicDataHashmap } from "@/lib/api/bps/dynamicData/fetchBpsDynamicDa
 import { useMemo, memo, useState } from "react";
 import dynamic from "next/dynamic";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { sanitizeLabel } from "@/lib/api/bps/dynamicData/processBpsDynamicDataContent";
 
 // https://github.com/JedWatson/react-select/issues/5459
 const Select = dynamic(() => import("react-select"), { ssr: false });
@@ -24,7 +25,7 @@ const VervarSetting = ({ vervars }: TVervarSetting) => {
     const options = vervars.map((vervar) => {
       return {
         value: vervar.val,
-        label: vervar.label,
+        label: sanitizeLabel(vervar.label),
       };
     });
     return options;
@@ -34,13 +35,17 @@ const VervarSetting = ({ vervars }: TVervarSetting) => {
     const options = vervars.map((vervar) => {
       return {
         value: vervar.val,
-        label: vervar.label,
+        label: sanitizeLabel(vervar.label),
         isDefault: vervarParams?.includes(String(vervar.val)),
       };
     });
 
     if (vervarParams) {
       return options.filter((vervar) => vervar.isDefault);
+    }
+
+    if (options.length > 3) {
+      return options.slice(0, 3);
     }
 
     return [options[0]];

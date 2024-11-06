@@ -11,7 +11,7 @@ export type TBpsDynamicDataRequestParam = {
 };
 
 export type TDynamicDataHashmap = {
-  val: number;
+  val: number | string;
   label: string;
 };
 
@@ -70,6 +70,17 @@ export const fetchBpsDynamicData = async (
     const data = await response.json();
     return data;
   } catch (err: any) {
-    throw new Error(err);
+    return {
+      status: err?.response?.status ? err.response?.status : "ERROR",
+      "data-availability": "list-not-available",
+      data: [],
+      var: [],
+      turvar: [],
+      vervar: [],
+      labelvervar: [],
+      tahun: [],
+      turtahun: [],
+      datacontent: {},
+    };
   }
 };

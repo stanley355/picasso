@@ -4,7 +4,7 @@ import { AUTHOR_TOKEN, AUTHOR_URL } from "../../constant";
 
 export const loginUser = async (
   email: string,
-  password: string
+  password: string,
 ): Promise<{ token: string }> => {
   const url = `${AUTHOR_URL}v1/users/login/`;
 
