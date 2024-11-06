@@ -11,7 +11,7 @@ export type TBpsDynamicDataRequestParam = {
 };
 
 export type TDynamicDataHashmap = {
-  val: number;
+  val: number | string;
   label: string;
 };
 

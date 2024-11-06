@@ -4,7 +4,7 @@ import { JwtPayload } from "jsonwebtoken";
 import { AUTHOR_TOKEN, AUTHOR_URL } from "../../constant";
 
 export const loginUserWithGmail = async (
-  payload: JwtPayload
+  payload: JwtPayload,
 ): Promise<boolean> => {
   const url = `${AUTHOR_URL}v1/users/login/gmail/`;
   const data = {

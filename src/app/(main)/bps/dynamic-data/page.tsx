@@ -9,6 +9,7 @@ import DynamicDataDisplay from "@/app/(main)/bps/dynamic-data/_components/displa
 import DynamicDataLoading from "@/app/(main)/bps/dynamic-data/_components/loading";
 import { EDynamicDataChart } from "@/app/(main)/bps/dynamic-data/_stores/useDynamicDataStore";
 import BpsDynamicDataHeader from "@/app/(main)/bps/dynamic-data/_components/header";
+import {createDefaultVervarVal} from "@/app/(main)/bps/dynamic-data/_stores/createDefaultVervarVal";
 
 type TBpsDynamicDataPage = {
   searchParams: TBpsDynamicDataRequestParam & {
@@ -38,7 +39,7 @@ const BpsDynamicDataPage = async ({ searchParams }: TBpsDynamicDataPage) => {
         <Suspense fallback={<DynamicDataLoading />}>
           <DynamicDataDisplay
             searchParams={searchParams}
-            defaultVervar={String(baseDynamicData.vervar[0].val)}
+            defaultVervar={createDefaultVervarVal(baseDynamicData.vervar)}
           />
         </Suspense>
         <DynamicDataSetting
