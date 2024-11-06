@@ -30,7 +30,7 @@ const BpsDynamicDataSearchKeywordFilter = () => {
   return (
     <div>
       <Label id="keyword" className="text-xs">
-        1 Word Keyword:
+        Search Keyword:
       </Label>
       <Input
         id="keyword"
@@ -38,7 +38,7 @@ const BpsDynamicDataSearchKeywordFilter = () => {
         placeholder={
           searchParams.get("keyword")
             ? (searchParams.get("keyword") as string)
-            : "iklim/geografi/kemiskinan"
+            : "1 keyword (iklim, penduduk, kemiskinan)"
         }
         onChange={onSearch}
         className="h-8 placeholder:text-xs"
