@@ -80,7 +80,7 @@ export const fetchBpsDynamicData = async (
       labelvervar: [],
       tahun: [],
       turtahun: [],
-      datacontent: {}
-    }
+      datacontent: {},
+    };
   }
 };
