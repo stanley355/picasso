@@ -30,7 +30,6 @@ export const processBpsDynamicDataContent = (
     bpsDynamicData.var,
     datacontent,
   );
-
 };
 
 export const sanitizeLabel = (label: string) => {
@@ -100,7 +99,9 @@ const processDatacontentByVervar = (
         const oldDatacontentKey = `${vervarVal}${variableVal}${timeVervarVal}`;
         const dataContentValue = datacontent[oldDatacontentKey];
         const newDataContentKey = timeVervar[timeVervarIndex].label;
-        dataContentRecord[newDataContentKey] = dataContentValue ? dataContentValue : "-";
+        dataContentRecord[newDataContentKey] = dataContentValue
+          ? dataContentValue
+          : "-";
       }
     }
 
@@ -139,7 +140,9 @@ const processDatacontentByTimeVervar = (
         const oldDatacontentKey = `${vervarVal}${variableVal}${timeVervarVal}`;
         const dataContentValue = datacontent[oldDatacontentKey];
         const newDataContentKey = sanitizeLabel(vervar[vervarIndex].label);
-        dataContentRecord[newDataContentKey] = dataContentValue ? dataContentValue : "-";
+        dataContentRecord[newDataContentKey] = dataContentValue
+          ? dataContentValue
+          : "-";
       }
     }
 
@@ -148,4 +151,3 @@ const processDatacontentByTimeVervar = (
 
   return newDataContent;
 };
-

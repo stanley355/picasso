@@ -4,7 +4,7 @@ import { TDynamicDataHashmap } from "@/lib/api/bps/dynamicData/fetchBpsDynamicDa
 import { useMemo, memo, useState } from "react";
 import dynamic from "next/dynamic";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import {sanitizeLabel} from "@/lib/api/bps/dynamicData/processBpsDynamicDataContent";
+import { sanitizeLabel } from "@/lib/api/bps/dynamicData/processBpsDynamicDataContent";
 
 // https://github.com/JedWatson/react-select/issues/5459
 const Select = dynamic(() => import("react-select"), { ssr: false });
@@ -45,7 +45,7 @@ const VervarSetting = ({ vervars }: TVervarSetting) => {
     }
 
     if (options.length > 3) {
-        return  options.slice(0, 3)
+      return options.slice(0, 3);
     }
 
     return [options[0]];
