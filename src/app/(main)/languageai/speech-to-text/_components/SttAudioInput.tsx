@@ -4,9 +4,10 @@ import { useLoginStore } from "@/app/accounts/login/_stores/useLoginStore";
 import { toast } from "react-toastify";
 import { IoIosAperture, IoIosCloudUpload } from "react-icons/io";
 
-import { Button } from "@/components/ui/button";
+import {Button, buttonVariants} from "@/components/ui/button";
 import { getUserToken } from "@/lib/getUserToken";
 import { useSttStore } from "../_stores/useSttStore";
+import {cn} from "@/lib/utils";
 
 const SttAudioInput = () => {
   const inputRef = useRef<any>(null);
@@ -45,34 +46,34 @@ const SttAudioInput = () => {
   };
 
   return (
-    <div className="w-full mb-4 flex-1">
-      <input
-        type="file"
-        id="file"
-        name="file"
-        ref={inputRef}
-        accept="*.mp3, *.wav"
-        className="invisible h-0"
-        onChange={handleUpload}
-      />
-      <Button
-        type="button"
-        className="w-full h-full rounded-none flex-col gap-2 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-accent"
-        variant="ghost"
-        onClick={() => inputRef.current.click()}
-        disabled={isLoading}
-      >
-        {isLoading ? (
-          <IoIosAperture className="text-3xl animate-spin" />
-        ) : (
-          <IoIosCloudUpload className="text-3xl" />
-        )}
-        <div className="line-clamp-1 max-w-[75%]">
-          {file?.name ? file.name : "Upload your file here"}
-        </div>
-        <div>{file?.size ? `${file.size % 1024} KB` : "*.mp3 or *.wav"}</div>
-      </Button>
-    </div>
+      <div className="w-full flex-1 px-4 pt-4">
+        <Button
+            type="button"
+            className={cn(buttonVariants({variant: "accent"}), 'h-full w-full gap-2 flex-col')}
+            variant="ghost"
+            onClick={() => inputRef.current.click()}
+            disabled={isLoading}
+        >
+          {isLoading ? (
+              <IoIosAperture className="text-3xl animate-spin"/>
+          ) : (
+              <IoIosCloudUpload className="text-3xl"/>
+          )}
+          <div className="line-clamp-1 max-w-[75%]">
+            {file?.name ? file.name : "Upload your file here"}
+          </div>
+          <div>{file?.size ? `${file.size % 1024} KB` : "*.mp3 or *.wav"}</div>
+        </Button>
+        <input
+            type="file"
+            id="file"
+            name="file"
+            ref={inputRef}
+            accept="*.mp3, *.wav"
+            className="invisible h-0"
+            onChange={handleUpload}
+        />
+      </div>
   );
 };
 
