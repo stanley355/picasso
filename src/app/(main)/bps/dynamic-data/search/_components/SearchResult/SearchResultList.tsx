@@ -23,14 +23,14 @@ const BpsDynamicDataSearchResultList = ({
 
   return (
     <div
-      className="flex flex-col gap-2  mb-4 max-h-[65vh] md:max-h-[70vh] overflow-auto w-full"
+      className="flex flex-col gap-2  mb-4 max-h-[65vh] md:max-h-[70vh] overflow-auto w-full md:pr-4"
       ref={containerRef}
     >
       {varList.map((varItem) => (
         <Link
           href={`/bps/dynamic-data?var=${varItem.var_id}&domain=${domain ? domain : "0000"}`}
           key={varItem.title}
-          className="p-2 rounded-md hover:bg-blue-300 dark:hover:bg-blue-800"
+          className="p-2 rounded-md hover:bg-primary hover:text-primary-foreground"
         >
           <div className="underline text-sm">{varItem.title}</div>
           <div className="inline-flex gap-2 text-xs">

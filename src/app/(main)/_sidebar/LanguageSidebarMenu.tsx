@@ -34,8 +34,7 @@ const LanguageSidebarMenu = () => {
           <Link
             href={item.href}
             key={item.title}
-            className=
-                {cn(
+            className={cn(
               buttonVariants({
                 variant: pathname === item.href ? "default" : "ghost",
               }),
