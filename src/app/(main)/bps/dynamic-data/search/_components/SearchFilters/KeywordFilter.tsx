@@ -41,7 +41,7 @@ const BpsDynamicDataSearchKeywordFilter = () => {
             : "1 keyword (iklim, penduduk, kemiskinan)"
         }
         onChange={onSearch}
-        className="h-8 placeholder:text-xs"
+        className="placeholder:text-xs"
       />
     </div>
   );

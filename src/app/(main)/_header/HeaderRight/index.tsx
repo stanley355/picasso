@@ -19,8 +19,9 @@ const HeaderRight = () => {
         <div className="hidden md:flex items-center gap-2">
           <ThemeButton />
           <Link
+
             href="/accounts"
-            className={cn(buttonVariants({ variant: "default", size: "icon" }))}
+            className={cn(buttonVariants({ variant: "default", size: "icon", }))}
           >
             <LuUser />
           </Link>
@@ -29,7 +30,7 @@ const HeaderRight = () => {
         <div className="hidden md:flex items-center gap-2">
           <Link
             href="/accounts/login"
-            className={buttonVariants({ variant: "secondary" })}
+            className={buttonVariants({ variant: "outline" })}
           >
             Login
           </Link>
