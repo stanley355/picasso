@@ -14,7 +14,7 @@ const config: Config = {
         foreground: "var(--foreground)",
         text: {
           DEFAULT: "var(--text)",
-          foreground: "var(--text-foreground)"
+          foreground: "var(--text-foreground)",
         },
         popover: {
           DEFAULT: "var(--popover)",

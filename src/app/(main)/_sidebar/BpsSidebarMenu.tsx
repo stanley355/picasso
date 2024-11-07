@@ -17,16 +17,16 @@ const BpsSidebarMenu = () => {
 
   return (
     <div>
-      <div className="font-bold px-4 mb-2 flex gap-2 items-center">
+      <div className="font-semibold px-4 mb-2 flex gap-2 items-center text-sm">
         <Image
           src="/images/indonesia.svg"
           alt="Indonesia Statistic"
           width={25}
           height={25}
         />
-        <span>Statistics</span>
+        <span>STATISTICS</span>
       </div>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-1">
         {MENU.map((item) => (
           <Link
             href={item.href}
@@ -35,7 +35,7 @@ const BpsSidebarMenu = () => {
               buttonVariants({
                 variant: item.href.includes(pathname) ? "default" : "ghost",
               }),
-              "justify-start",
+              "justify-start h-8",
             )}
           >
             {item.title}

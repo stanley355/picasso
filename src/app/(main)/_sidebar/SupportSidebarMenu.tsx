@@ -9,15 +9,15 @@ const SupportSidebarMenu = () => {
 
   return (
     <div>
-      <div className="font-bold px-4 mb-2">Error?</div>
-      <div className="flex flex-col gap-2">
+      <div className="font-semibold px-4 mb-2 text-sm">ERROR?</div>
+      <div className="flex flex-col gap-1">
         <Link
           href="/blame-me"
           className={cn(
             buttonVariants({
               variant: pathname === "/blame-me" ? "default" : "ghost",
             }),
-            "justify-start",
+            "justify-start h-8",
           )}
         >
           Blame me!

@@ -42,8 +42,8 @@ const AccountSidebarMenu = () => {
 
   return (
     <div>
-      <div className="font-bold px-4 mb-2">Account</div>
-      <div className={cn("flex-col gap-2", hasToken ? "hidden" : "flex")}>
+      <div className="font-semibold px-4 mb-2 text-sm">ACCOUNT</div>
+      <div className={cn("flex-col gap-1", hasToken ? "hidden" : "flex")}>
         {BASE_MENU.map((item) => (
           <Link
             href={item.href}
@@ -52,14 +52,14 @@ const AccountSidebarMenu = () => {
               buttonVariants({
                 variant: pathname === item.href ? "default" : "ghost",
               }),
-              "justify-start",
+              "justify-start h-8",
             )}
           >
             {item.title}
           </Link>
         ))}
       </div>
-      <div className={cn("flex-col gap-2", hasToken ? "flex" : "hidden")}>
+      <div className={cn("flex-col gap-1", hasToken ? "flex" : "hidden")}>
         {MENU.map((item) => (
           <Link
             href={item.href}
@@ -68,7 +68,7 @@ const AccountSidebarMenu = () => {
               buttonVariants({
                 variant: pathname === item.href ? "default" : "ghost",
               }),
-              "justify-start",
+              "justify-start h-8",
             )}
           >
             {item.title}

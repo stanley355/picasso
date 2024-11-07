@@ -28,17 +28,18 @@ const LanguageSidebarMenu = () => {
 
   return (
     <div>
-      <div className="font-bold px-4 mb-2">Languageai</div>
-      <div className="flex flex-col gap-2">
+      <div className="font-semibold px-4 mb-1 text-sm">LANGUAGEAI</div>
+      <div className="flex flex-col gap-1">
         {MENU.map((item) => (
           <Link
             href={item.href}
             key={item.title}
-            className={cn(
+            className=
+                {cn(
               buttonVariants({
                 variant: pathname === item.href ? "default" : "ghost",
               }),
-              "justify-start",
+              "justify-start h-8",
             )}
           >
             {item.title}
