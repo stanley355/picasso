@@ -5,7 +5,7 @@ import BpsSidebarMenu from "@/app/(main)/_sidebar/BpsSidebarMenu";
 
 const Sidebar = () => {
   return (
-    <div className="hidden md:flex pr-4 flex-col gap-4">
+    <div className="hidden md:flex pr-4 flex-col gap-2">
       <LanguageSidebarMenu />
       <BpsSidebarMenu />
       <AccountSidebarMenu />

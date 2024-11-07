@@ -29,7 +29,7 @@ const HeaderRight = () => {
         <div className="hidden md:flex items-center gap-2">
           <Link
             href="/accounts/login"
-            className={buttonVariants({ variant: "secondary" })}
+            className={buttonVariants({ variant: "outline" })}
           >
             Login
           </Link>
