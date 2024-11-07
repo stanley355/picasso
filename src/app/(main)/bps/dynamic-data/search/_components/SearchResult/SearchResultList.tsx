@@ -23,7 +23,7 @@ const BpsDynamicDataSearchResultList = ({
 
   return (
     <div
-      className="flex flex-col gap-2  mb-4 max-h-[60vh] md:max-h-[65vh] overflow-auto w-full md:pr-4"
+      className="flex flex-col gap-2  mb-2 max-h-[65vh] md:max-h-[70vh] overflow-auto w-full md:pr-4"
       ref={containerRef}
     >
       {varList.map((varItem) => (

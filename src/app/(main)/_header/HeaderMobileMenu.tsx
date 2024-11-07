@@ -12,7 +12,7 @@ const HeaderMobileMenu = () => {
   const { showMobileMenu, updateStore } = useHeaderStore(
     useShallow((state) => ({
       showMobileMenu: state.showMobileMenu,
-      updateStore: state.updateStore
+      updateStore: state.updateStore,
     })),
   );
 
@@ -25,14 +25,22 @@ const HeaderMobileMenu = () => {
           <TabsTrigger value="0">AI</TabsTrigger>
           <TabsTrigger value="1">Account</TabsTrigger>
         </TabsList>
-        <TabsContent value="0" className="mt-4" onClick={()=> updateStore('showMobileMenu', false)}>
-          <div className="flex flex-col gap-2" >
+        <TabsContent
+          value="0"
+          className="mt-4"
+          onClick={() => updateStore("showMobileMenu", false)}
+        >
+          <div className="flex flex-col gap-2">
             <LanguageSidebarMenu />
             <BpsSidebarMenu />
             <SupportSidebarMenu />
           </div>
         </TabsContent>
-        <TabsContent value="1" className="mt-4" onClick={()=> updateStore('showMobileMenu', false)}>
+        <TabsContent
+          value="1"
+          className="mt-4"
+          onClick={() => updateStore("showMobileMenu", false)}
+        >
           <AccountSidebarMenu />
         </TabsContent>
       </Tabs>
