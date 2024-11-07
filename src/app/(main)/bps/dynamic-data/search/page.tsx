@@ -19,7 +19,7 @@ const DynamicDataSearch = ({ searchParams }: TDynamicDataSearch) => {
     <div className="w-full h-full overflow-hidden">
       <BpsDynamicDataSearchHeader />
       <Suspense fallback={<DynamicDataLoading />}>
-        <div className="p-2 md:p-4">
+        <div className="p-2 md:px-4">
           <BpsDynamicDataSearchFilters domain={searchParams.domain} />
           <BpsDynamicDataSearchResult searchParams={searchParams} />
         </div>
