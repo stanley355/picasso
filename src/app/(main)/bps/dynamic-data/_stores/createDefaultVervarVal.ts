@@ -10,5 +10,5 @@ export const createDefaultVervarVal = (vervar: TDynamicDataHashmap[]) => {
     return String(vervar[0].val);
   }
 
-  return ""
+  return "";
 };
