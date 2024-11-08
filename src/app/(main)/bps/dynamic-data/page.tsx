@@ -4,7 +4,6 @@ import {
   TBpsDynamicDataRequestParam,
 } from "@/lib/api/bps/dynamicData/fetchBpsDynamicData";
 import DynamicDataNotFound from "@/app/(main)/bps/dynamic-data/_components/NotFound";
-import DynamicDataSetting from "@/app/(main)/bps/dynamic-data/_components/setting";
 import DynamicDataDisplay from "@/app/(main)/bps/dynamic-data/_components/display";
 import DynamicDataLoading from "@/app/(main)/bps/dynamic-data/_components/loading";
 import { EDynamicDataChart } from "@/app/(main)/bps/dynamic-data/_stores/useDynamicDataStore";
@@ -43,13 +42,6 @@ const BpsDynamicDataPage = async ({ searchParams }: TBpsDynamicDataPage) => {
             defaultVervar={createDefaultVervarVal(baseDynamicData.vervar)}
           />
         </Suspense>
-        {/*<DynamicDataSetting*/}
-        {/*  chart={searchParams.chart}*/}
-        {/*  vervars={baseDynamicData.vervar}*/}
-        {/*  turvars={baseDynamicData.turvar}*/}
-        {/*  years={baseDynamicData.tahun}*/}
-        {/*  turyears={baseDynamicData.turtahun}*/}
-        {/*/>*/}
         <div className="p-4">
           <BpsDynamicDataTabs baseDynamicData={baseDynamicData} />
         </div>
