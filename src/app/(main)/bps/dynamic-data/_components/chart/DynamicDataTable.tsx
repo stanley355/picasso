@@ -10,7 +10,7 @@ const DynamicDataTable = ({ data }: TDynamicDataTable) => {
       <thead>
         <tr className="border-b">
           {Object.keys(data[0]).map((header) => (
-            <th key={header} className="p-2 text-sm text-left">
+            <th key={header} className="p-2 text-sm text-left font-normal text-text-foreground">
               {header}
             </th>
           ))}

@@ -10,6 +10,7 @@ import DynamicDataLoading from "@/app/(main)/bps/dynamic-data/_components/loadin
 import { EDynamicDataChart } from "@/app/(main)/bps/dynamic-data/_stores/useDynamicDataStore";
 import BpsDynamicDataHeader from "@/app/(main)/bps/dynamic-data/_components/header";
 import { createDefaultVervarVal } from "@/app/(main)/bps/dynamic-data/_stores/createDefaultVervarVal";
+import BpsDynamicDataTabs from "@/app/(main)/bps/dynamic-data/_components/Tabs";
 
 type TBpsDynamicDataPage = {
   searchParams: TBpsDynamicDataRequestParam & {
@@ -35,20 +36,23 @@ const BpsDynamicDataPage = async ({ searchParams }: TBpsDynamicDataPage) => {
   return (
     <div className="w-full h-full overflow-hidden">
       <BpsDynamicDataHeader title={baseDynamicData.var[0].label} />
-      <div className="flex flex-col md:grid grid-cols-2 h-full md:divide-x md:divide-x-border max-h-[80vh] md:max-h-none overflow-auto">
+      <div className="flex flex-col md:grid grid-cols-2 h-full max-h-[80vh] md:max-h-none overflow-auto">
         <Suspense fallback={<DynamicDataLoading />}>
           <DynamicDataDisplay
             searchParams={searchParams}
             defaultVervar={createDefaultVervarVal(baseDynamicData.vervar)}
           />
         </Suspense>
-        <DynamicDataSetting
-          chart={searchParams.chart}
-          vervars={baseDynamicData.vervar}
-          turvars={baseDynamicData.turvar}
-          years={baseDynamicData.tahun}
-          turyears={baseDynamicData.turtahun}
-        />
+        {/*<DynamicDataSetting*/}
+        {/*  chart={searchParams.chart}*/}
+        {/*  vervars={baseDynamicData.vervar}*/}
+        {/*  turvars={baseDynamicData.turvar}*/}
+        {/*  years={baseDynamicData.tahun}*/}
+        {/*  turyears={baseDynamicData.turtahun}*/}
+        {/*/>*/}
+        <div className="p-4">
+          <BpsDynamicDataTabs baseDynamicData={baseDynamicData} />
+        </div>
       </div>
     </div>
   );

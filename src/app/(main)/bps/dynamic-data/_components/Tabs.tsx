@@ -1,14 +1,25 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {TBpsDynamicData} from "@/lib/api/bps/dynamicData/fetchBpsDynamicData";
+import DynamicDataSetting from "@/app/(main)/bps/dynamic-data/_components/setting";
+import DynamicDataDisplaySetting from "@/app/(main)/bps/dynamic-data/_components/setting/DisplaySetting";
 
-const BpsDynamicDataTabs = () => {
+type TBpsDynamicDataTable = {
+    baseDynamicData: TBpsDynamicData
+}
+
+const BpsDynamicDataTabs = ({baseDynamicData}: TBpsDynamicDataTable) => {
   return (
-    <Tabs>
+    <Tabs defaultValue="data">
       <TabsList>
-        <TabsTrigger value="1">Satu</TabsTrigger>
-        <TabsTrigger value="2">Satu</TabsTrigger>
+        <TabsTrigger value="data">Data</TabsTrigger>
+        <TabsTrigger value="display">Display</TabsTrigger>
       </TabsList>
-      <TabsContent value="1">Satu</TabsContent>
-      <TabsContent value="2">Dua</TabsContent>
+      <TabsContent value="data">
+              <DynamicDataSetting vervars={baseDynamicData.vervar} turvars={baseDynamicData.turvar} years={baseDynamicData.tahun} turyears={baseDynamicData.turtahun} />
+      </TabsContent>
+      <TabsContent value="display">
+          <DynamicDataDisplaySetting />
+      </TabsContent>
     </Tabs>
   );
 };

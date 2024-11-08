@@ -7,7 +7,7 @@ import { Tooltip } from "react-tooltip";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-const DynamicDataShareBtn = () => {
+const DynamicDataSettingBtn = () => {
   const [isCopied, setIsCopied] = useState(false);
 
   const onClick = () => {
@@ -15,13 +15,13 @@ const DynamicDataShareBtn = () => {
     setIsCopied(true);
   };
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-between mt-8">
       <Link
         href="/bps/dynamic-data/search"
         className={cn(buttonVariants({ variant: "outline" }), "gap-2")}
       >
         <LuArrowLeft />
-        <span>Back</span>
+        <span>To search</span>
       </Link>
       <Button className="h-10 gap-2" id="share" onClick={onClick}>
         <LuCopy />
@@ -34,4 +34,4 @@ const DynamicDataShareBtn = () => {
   );
 };
 
-export default DynamicDataShareBtn;
+export default DynamicDataSettingBtn;
