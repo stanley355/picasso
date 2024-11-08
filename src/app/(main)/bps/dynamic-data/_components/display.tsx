@@ -27,13 +27,7 @@ const DynamicDataDisplay = async ({
     },
     false,
   );
-  const dataIsAvailable = dynamicData["data-availability"] === "available";
-  const datacontent = dataIsAvailable
-    ? processBpsDynamicDataContent(
-        dynamicData,
-        searchParams?.isDefaultRowCol === "1",
-      )
-    : [];
+  const datacontent = processBpsDynamicDataContent(dynamicData, searchParams?.isDefaultRowCol === "1",);
 
   if (dynamicData["data-availability"] === "list-not-available") {
     return <DynamicDataNotFound />;
