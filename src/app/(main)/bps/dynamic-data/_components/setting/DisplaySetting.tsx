@@ -5,15 +5,15 @@ import DynamicDataLegendSetting from "@/app/(main)/bps/dynamic-data/_components/
 import DynamicDataSettingBtn from "@/app/(main)/bps/dynamic-data/_components/setting/DynamicDataSettingBtn";
 
 const DynamicDataDisplaySetting = () => {
-    return (
-        <div className="p-2">
-           <DynamicDataChartSetting />
-            <DynamicDataColorSetting />
-            <DynamicDataLegendSetting />
-            <DynamicDataLabelSetting />
-            <DynamicDataSettingBtn />
-        </div>
-    )
+  return (
+    <div className="p-2">
+      <DynamicDataChartSetting />
+      <DynamicDataColorSetting />
+      <DynamicDataLegendSetting />
+      <DynamicDataLabelSetting />
+      <DynamicDataSettingBtn />
+    </div>
+  );
 };
 
-export default DynamicDataDisplaySetting
+export default DynamicDataDisplaySetting;
