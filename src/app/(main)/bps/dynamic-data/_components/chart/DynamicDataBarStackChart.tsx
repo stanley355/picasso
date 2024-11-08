@@ -6,7 +6,8 @@ import {
   Tooltip,
   Bar,
   Legend,
-  LabelList, YAxis,
+  LabelList,
+  YAxis,
 } from "recharts";
 import { parseDatacontentKeys } from "@/app/(main)/bps/dynamic-data/_stores/parseDatacontentKeys";
 import DynamicDataTooltip from "@/app/(main)/bps/dynamic-data/_components/chart/DynamicDataTooltip";
@@ -47,10 +48,10 @@ const DynamicDataBarStackChart = ({
           tickFormatter={(value) => value.slice(0, 4)}
         />
         <YAxis
-            className="text-xs"
-            allowDataOverflow
-            width={30}
-            tickFormatter={(value)=> value.toLocaleString("id-ID").slice(0,4)}
+          className="text-xs"
+          allowDataOverflow
+          width={30}
+          tickFormatter={(value) => value.toLocaleString("id-ID").slice(0, 4)}
         />
         <CartesianGrid vertical={false} />
         <Tooltip content={<DynamicDataTooltip />} />

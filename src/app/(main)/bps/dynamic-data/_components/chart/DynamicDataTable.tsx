@@ -20,7 +20,10 @@ const DynamicDataTable = ({ data }: TDynamicDataTable) => {
         {data.map((row, rowIndex) => (
           <tr key={row.label} className="border-b">
             {Object.values(row).map((cell, cellIndex) => (
-              <td key={`${rowIndex}_${cellIndex}_${cell}`} className="p-2 text-sm text-left">
+              <td
+                key={`${rowIndex}_${cellIndex}_${cell}`}
+                className="p-2 text-sm text-left"
+              >
                 {typeof cell === "number"
                   ? Number(cell).toLocaleString("id-ID")
                   : cell
