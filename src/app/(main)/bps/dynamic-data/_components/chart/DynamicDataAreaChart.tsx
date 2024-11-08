@@ -5,7 +5,7 @@ import {
   CartesianGrid,
   Tooltip,
   Area,
-  Legend,
+  Legend, YAxis,
 } from "recharts";
 import { parseDatacontentKeys } from "@/app/(main)/bps/dynamic-data/_stores/parseDatacontentKeys";
 import DynamicDataTooltip from "@/app/(main)/bps/dynamic-data/_components/chart/DynamicDataTooltip";
@@ -42,6 +42,13 @@ const DynamicDataAreaChart = ({
           className="text-xs"
           dataKey={datacontentKeys.labelKey}
           tickFormatter={(value) => value.slice(0, 4)}
+          tickLine={false}
+        />
+        <YAxis
+       className="text-xs"
+       allowDataOverflow
+       width={30}
+       tickFormatter={(value)=> value.toLocaleString("id-ID").slice(0,4)}
         />
         <CartesianGrid vertical={false} />
         <Tooltip content={<DynamicDataTooltip />} />

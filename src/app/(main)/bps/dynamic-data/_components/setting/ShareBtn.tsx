@@ -21,7 +21,7 @@ const DynamicDataShareBtn = () => {
         className={cn(buttonVariants({ variant: "outline" }), "gap-2")}
       >
         <LuArrowLeft />
-        <span>Back to search</span>
+        <span>Back</span>
       </Link>
       <Button className="h-10 gap-2" id="share" onClick={onClick}>
         <LuCopy />

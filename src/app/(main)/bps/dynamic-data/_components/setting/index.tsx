@@ -40,7 +40,7 @@ const DynamicDataSetting = ({
       </div>
       <div
         className={cn(
-          "md:grid-cols-2 md:gap-4 md:place-items-center mb-4",
+          "md:grid-cols-2 md:gap-4 md:place-items-left mb-4",
           !chart || chart === EDynamicDataChart.Table ? "hidden" : "grid",
         )}
       >
