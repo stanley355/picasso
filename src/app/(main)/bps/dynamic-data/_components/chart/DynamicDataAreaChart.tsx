@@ -42,14 +42,18 @@ const DynamicDataAreaChart = ({
         <XAxis
           className="text-xs"
           dataKey={datacontentKeys.labelKey}
-          tickFormatter={(value) => value.length > 5 ?  value.slice(0, 5) : value}
+          tickFormatter={(value) =>
+            value.length > 5 ? value.slice(0, 5) : value
+          }
           tickLine={false}
         />
         <YAxis
           className="text-xs"
           allowDataOverflow
           width={30}
-          tickFormatter={(value) => value.length > 5 ? value.toLocaleString("id-ID").slice(0, 5) : value}
+          tickFormatter={(value) =>
+            value.length > 5 ? value.toLocaleString("id-ID").slice(0, 5) : value
+          }
         />
         <CartesianGrid vertical={false} />
         <Tooltip content={<DynamicDataTooltip />} />

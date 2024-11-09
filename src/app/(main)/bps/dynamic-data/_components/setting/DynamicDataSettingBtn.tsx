@@ -24,7 +24,7 @@ const DynamicDataSettingBtn = () => {
         <LuArrowLeft />
         <span>To search</span>
       </Link>
-        <DynamicDataLinkExport />
+      <DynamicDataLinkExport />
     </div>
   );
 };
