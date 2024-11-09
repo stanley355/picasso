@@ -31,10 +31,7 @@ const DynamicDataImageExport = ({
         link.href = dataUrl;
         link.click();
       })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [elementRef]);
+  }, [elementRef, dynamicData.var]);
 
   return (
     <div className="relative w-full">
