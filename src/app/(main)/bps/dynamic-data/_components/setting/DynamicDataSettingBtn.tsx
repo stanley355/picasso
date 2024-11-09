@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Tooltip } from "react-tooltip";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import DynamicDataLinkExport from "@/app/(main)/bps/dynamic-data/_components/export/LinkExport";
 
 const DynamicDataSettingBtn = () => {
   const [isCopied, setIsCopied] = useState(false);
@@ -23,13 +24,7 @@ const DynamicDataSettingBtn = () => {
         <LuArrowLeft />
         <span>To search</span>
       </Link>
-      <Button className="h-10 gap-2" id="share" onClick={onClick}>
-        <LuCopy />
-        <span>Share link</span>
-      </Button>
-      <Tooltip anchorSelect="#share">
-        {isCopied ? "Copied to clipboard" : "Click to copy"}
-      </Tooltip>
+        <DynamicDataLinkExport />
     </div>
   );
 };

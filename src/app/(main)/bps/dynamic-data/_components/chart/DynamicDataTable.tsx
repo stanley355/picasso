@@ -6,7 +6,7 @@ type TDynamicDataTable = {
 
 const DynamicDataTable = ({ data }: TDynamicDataTable) => {
   return (
-    <table className="max-h-96 h-full w-full">
+    <table className="h-full w-full">
       <thead>
         <tr className="border-b">
           {Object.keys(data[0]).map((header) => (

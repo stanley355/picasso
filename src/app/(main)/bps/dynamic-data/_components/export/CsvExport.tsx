@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { FaFileCsv } from "react-icons/fa6";
+import { FaFileCsv } from "react-icons/fa";
 
 type TDynamicDataCsvExport = {
   title: string;
@@ -12,10 +12,11 @@ const DynamicDataCsvExport = ({
   title,
 }: TDynamicDataCsvExport) => {
   const onClick = () => {
+    const head = Object.keys(datacontent[0]).join(",") + "\n";
     const rows = datacontent
       .map((obj) => Object.values(obj).join(","))
       .join("\n");
-    const csvContent = "data:text/csv;charset=utf-8," + rows;
+    const csvContent = "data:text/csv;charset=utf-8," + head + rows;
     const encodedUri = encodeURI(csvContent);
     const downloadLink = document.createElement("a");
     downloadLink.setAttribute("href", encodedUri);
