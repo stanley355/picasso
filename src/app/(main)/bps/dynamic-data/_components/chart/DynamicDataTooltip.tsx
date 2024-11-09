@@ -1,7 +1,7 @@
 const DynamicDataTooltip = ({ active, payload, label }: any) => {
   if (active) {
     return (
-      <div className="bg-background shadow-lg text-sm p-2 rounded-md">
+      <div className="bg-foreground shadow-lg text-sm p-2 rounded-md border">
         <div className="font-semibold mb-2">{label}</div>
         <div>
           {payload.map((item: any) => (

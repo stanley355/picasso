@@ -23,9 +23,9 @@ const DynamicDataColorSetting = () => {
   };
 
   return (
-    <div className="mb-4">
+    <div className="mb-8">
       <Label>Chart color: </Label>
-      <div className="grid grid-cols-4 gap-x-8 gap-y-4 mt-4 w-fit">
+      <div className="grid grid-cols-4 md:grid-cols-8 gap-x-8 gap-y-4 mt-4 w-fit">
         {CHART_COLORS.map((color) => (
           <button
             key={color.label}

@@ -9,7 +9,7 @@ type TMainLayout = {
 
 const MainLayout = ({ children }: TMainLayout) => {
   return (
-    <div className="h-screen w-full overflow-hidden p-2 flex flex-col md:p-4">
+    <div className="h-screen w-full overflow-hidden p-2 flex flex-col md:p-4 bg-background">
       <MainHeader />
       <div className="rounded-lg flex-1 md:flex">
         <Sidebar />
